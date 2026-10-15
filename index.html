@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#123c34" />
+    <meta name="description" content="{{DESCRIPTION}}" />
+    <title>{{TITLE}}</title>
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/assets/fonts/fonts.css" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/assets/archava/widget.css" />
+    <script type="module" src="/app.js"></script>
+    <script type="module" src="/assets/archava/widget.js"></script>
+  </head>
+  <body data-page="{{PAGE}}" data-product-id="{{PRODUCT_ID}}">
+    <a class="skip-link" href="#mainContent">Lewati ke konten utama</a>
+    <svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <symbol id="i-compare" viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 7l3-3 3 3M15 17l3 3 3-3M6 4v13M18 20V7"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+      <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 16V3m-4 4 4-4 4 4M5 12v9h14v-9"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></symbol>
+      <symbol id="i-bag" viewBox="0 0 24 24"><path d="M4.5 8.5h15l-1 12h-13zM9 9V6a3 3 0 0 1 6 0v3"/></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.2 5.8a4.6 4.6 0 0 0-6.5 0L12 7.5l-1.7-1.7a4.6 4.6 0 1 0-6.5 6.5L12 20.5l8.2-8.2a4.6 4.6 0 0 0 0-6.5Z"/></symbol>
+      <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-7-7 7 7-7 7"/></symbol>
+      <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+      <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2.8 2.8 5.7 6.3.9-4.5 4.5 1.1 6.3-5.7-3-5.7 3 1.1-6.3L2.9 9.4l6.3-.9z"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="M5 5 19 19M19 5 5 19"/></symbol>
+      <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+      <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 6h12v11H2zM14 10h4l4 4v3h-8z"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5.2 3.2 8.6 8 11 4.8-2.4 8-5.8 8-11V5z"/><path d="m8.5 12 2.3 2.3 4.7-4.7"/></symbol>
+      <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="m12 2 1.8 7.2L21 11l-7.2 1.8L12 20l-1.8-7.2L3 11l7.2-1.8zM19 18l.5 1.5L21 20l-1.5.5L19 22l-.5-1.5L17 20l1.5-.5z"/></symbol>
+      <symbol id="i-headphones" viewBox="0 0 24 24"><path d="M4 14v-3a8 8 0 0 1 16 0v3M4 11H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zM20 11h1a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1zM18 19c-1 2-3 2-5 2"/></symbol>
+      <symbol id="i-plant" viewBox="0 0 24 24"><path d="M7 15h10l-1.5 7h-7zM12 15V7M12 11C5 11 4 7 4 4c5 0 8 2 8 7ZM12 8c0-4 3-6 8-6 0 4-3 6-8 6ZM12 14c0-4 3-5 7-5 0 3-3 5-7 5Z"/></symbol>
+      <symbol id="i-bottle" viewBox="0 0 24 24"><path d="M9 2h6v4H9zM10 6v3L6 12v9h12v-9l-4-3V6M6 14h12M9 18h6"/></symbol>
+      <symbol id="i-shoe" viewBox="0 0 24 24"><path d="M2 15V9l4 2 4-4 4 6 6 2a3 3 0 0 1 2 3v3H2zM2 18h20M10 10l3-2M12 13l3-2M15 15l2-2"/></symbol>
+      <symbol id="i-coffee" viewBox="0 0 24 24"><path d="M4 8h13v8a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM17 9h2a3 3 0 0 1 0 6h-2M8 2v3M12 2v3M16 2v3"/></symbol>
+      <symbol id="i-camera" viewBox="0 0 24 24"><path d="M3 7h4l2-3h6l2 3h4v14H3z"/><circle cx="12" cy="14" r="4"/><path d="M18 10h1"/></symbol>
+    </svg>
+
+    <div class="announcement"><div class="container announcement-inner"><span>✦ Belanja pilihan, harga bikin senang</span><a href="/produk">Lihat koleksi hari ini <svg class="icon"><use href="#i-arrow"/></svg></a></div></div>
+
+    <header class="site-header" id="top">
+      <div class="container header-main">
+        <button class="icon-button mobile-menu-toggle" id="menuToggle" aria-label="Buka menu" aria-expanded="false"><svg class="icon"><use href="#i-menu"/></svg></button>
+        <a class="brand" href="/" aria-label="KALA, ke beranda"><span class="brand-mark"><span></span><span></span><span></span><span></span></span><span>KALA<span class="brand-dot">.</span></span></a>
+        <form class="search" id="searchForm" role="search" method="get" action="/produk">
+          <svg class="icon search-icon"><use href="#i-search"/></svg>
+          <input id="searchInput" name="q" value="{{QUERY}}" type="search" placeholder="Cari barang yang kamu suka..." autocomplete="off" aria-label="Cari produk" />
+          <button type="submit">Cari</button>
+        </form>
+        <div class="header-actions">
+          <a class="header-action" id="wishlistButton" aria-label="Lihat favorit" href="/favorit"><svg class="icon"><use href="#i-heart"/></svg><span class="action-label">Favorit</span><span class="count-badge" id="favoriteCount" hidden>0</span></a>
+          <a class="header-action" id="cartButton" aria-label="Buka keranjang" href="/keranjang"><svg class="icon"><use href="#i-bag"/></svg><span class="action-label">Keranjang</span><span class="count-badge" id="cartCount" hidden>0</span></a>
+          <a class="header-action account-action" id="accountButton" aria-label="Akun" href="/akun"><svg class="icon"><use href="#i-user"/></svg><span class="action-label">Akun</span></a>
+        </div>
+      </div>
+      <nav class="container header-nav" id="mainNav" aria-label="Kategori utama">
+        <a href="/kategori">Semua Kategori</a><a href="/promo">Flash Sale</a><a href="/kategori/elektronik">Elektronik</a><a href="/kategori/fashion">Fashion</a><a href="/kategori/rumah">Rumah & Living</a><a href="/kategori/kecantikan">Kecantikan</a><a href="/kategori/olahraga">Olahraga</a><a href="/bandingkan">Bandingkan</a>
+        <span class="nav-note">Pilihan kecil, rasa besar ✨</span>
+      </nav>
+    </header>
+
+    <main id="mainContent"><div id="catalog-section">{{BODY}}</div></main>
+
+    <footer class="site-footer" id="business-section"><div class="container footer-top"><div><a class="brand footer-brand" href="/"><span class="brand-mark"><span></span><span></span><span></span><span></span></span><span>KALA<span class="brand-dot">.</span></span></a><p id="protocol-section">Tempat menemukan barang pilihan yang terasa lebih kamu. Jelajahi, simpan, dan nikmati setiap temuan.</p></div><div class="footer-links"><div><strong>Jelajahi</strong><a href="/kategori">Kategori</a><a href="/promo">Promo kilat</a><a href="/produk">Produk pilihan</a><a href="/bandingkan">Bandingkan produk</a></div><div><strong>Bantuan</strong><a href="/bantuan">Hubungi kami</a><a href="/">Kembali ke atas</a></div></div></div><div class="container footer-bottom"><span>© 2026 KALA. Dibuat untuk eksplorasi.</span><span>Demo belanja · Harga, stok, dan ulasan merupakan contoh.</span></div></footer>
+
+    <nav class="mobile-bottom-nav" aria-label="Navigasi mobile"><a href="/"><span>⌂</span>Beranda</a><a href="/kategori"><span>▦</span>Kategori</a><a id="mobileSearchButton" href="/produk"><svg class="icon"><use href="#i-search"/></svg>Cari</a><a id="mobileCartButton" href="/keranjang"><svg class="icon"><use href="#i-bag"/></svg>Keranjang</a></nav>
+
+    <aside class="comparison-tray" id="comparisonTray" aria-label="Pilihan perbandingan" hidden></aside>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <div id="archava-widget-root"></div>
+  </body>
+</html>

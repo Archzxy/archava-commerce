@@ -1,0 +1,280 @@
+{
+  "date": "2026-10-04",
+  "model": "gemini-2.5-flash-native-audio-preview-12-2025",
+  "mode": "realtime-native-audio-with-text-input-and-fake-page-context",
+  "stagedVerification": true,
+  "passed": true,
+  "results": [
+    {
+      "case": "headphone-discovery",
+      "passed": true,
+      "seconds": 40.3,
+      "turns": [
+        {
+          "question": "Ada headphone wireless di sini? Pilihannya apa dan bedanya apa?",
+          "answer": "Ya, kami punya tiga pilihan headphone wireless dalam katalog demo kami. SOUNDROOM Studio Wireless Headphones memiliki baterai hingga 30 jam dan dapat terhubung ke dua perangkat sekaligus, cocok untuk penggunaan sehari-hari. AUDIA Focus One ANC Headphones punya baterai 40 jam dan Active Noise Cancelling untuk fokus di tempat ramai, meskipun harga dan bobotnya lebih berat. Sementara itu, RITME Lite Wireless Headphones adalah pilihan paling terjangkau dan ringan, tapi tanpa ANC dan multipoint. Apakah ada prioritas tertentu yang kamu inginkan, seperti daya baterai atau harga?",
+          "calls": [
+            {
+              "name": "compare_catalog_products",
+              "arguments": {
+                "product_ids": [
+                  "headphones",
+                  "audia-focus-one",
+                  "ritme-lite"
+                ],
+                "max_price": 0,
+                "priority": "none"
+              }
+            }
+          ],
+          "checks": {
+            "answers_in_indonesian": true,
+            "merchandise_uses_catalog_tools": true,
+            "no_generic_website_facts_substitution": true,
+            "no_invalid_search_filter": true,
+            "known_headphone_options": true,
+            "comparison_grounded": true
+          },
+          "passed": true
+        }
+      ],
+      "evaluationStage": "after full page knowledge synchronization and catalog routing fix"
+    },
+    {
+      "case": "current-product",
+      "passed": true,
+      "seconds": 16.96,
+      "turns": [
+        {
+          "question": "Headphone ini ada ANC? Baterainya berapa lama? Bisa terhubung laptop dan HP sekaligus?",
+          "answer": "Headphone SOUNDROOM Studio Wireless tidak memiliki Active Noise Cancelling atau ANC, tapi baterainya bisa bertahan hingga 30 jam dan bisa terhubung ke laptop dan HP secara bersamaan. Apakah kamu mencari headphone dengan ANC?",
+          "calls": [],
+          "checks": {
+            "answers_in_indonesian": true,
+            "no_generic_website_facts_substitution": true,
+            "no_invalid_search_filter": true,
+            "battery_30_hours": true,
+            "anc_absence_reported": true,
+            "multipoint_reported": true,
+            "page_knowledge_revision_synced": true
+          },
+          "passed": true
+        }
+      ],
+      "evaluationStage": "after full page knowledge synchronization and catalog routing fix"
+    },
+    {
+      "case": "budget-battery",
+      "passed": true,
+      "seconds": 46.29,
+      "turns": [
+        {
+          "question": "Bandingkan tiga headphone wireless. Budget maksimal Rp500.000, pilih yang baterainya paling lama dan jelaskan komprominya.",
+          "answer": "Dengan budget Rp500.000, SOUNDROOM Studio Wireless Headphones menjadi pilihan terbaik untuk baterai paling tahan lama dengan 30 jam. Sebagai kompromi, headphone ini belum memiliki fitur Active Noise Cancelling untuk meredam suara sekitar, namun tetap bisa terhubung ke dua perangkat sekaligus. Apakah ada prioritas lain yang ingin kamu diskusikan?",
+          "calls": [
+            {
+              "name": "compare_catalog_products",
+              "arguments": {
+                "product_ids": [
+                  "headphones",
+                  "audia-focus-one",
+                  "ritme-lite"
+                ],
+                "priority": "battery",
+                "max_price": 500000
+              }
+            }
+          ],
+          "checks": {
+            "answers_in_indonesian": true,
+            "merchandise_uses_catalog_tools": true,
+            "no_generic_website_facts_substitution": true,
+            "no_invalid_search_filter": true,
+            "budget_and_priority_passed": true,
+            "eligible_battery_winner": true,
+            "recommendation_named": true,
+            "battery_30_hours": true,
+            "does_not_negate_supported_multipoint": true
+          },
+          "passed": true
+        },
+        {
+          "question": "Kalau yang lebih murah dari itu apa, baterainya berapa? Budget tetap sama.",
+          "answer": "Dengan budget yang sama, Ritme Lite bisa menjadi pilihan dengan harga paling terjangkau yaitu Rp359.000. Headphone ini menawarkan baterai hingga 24 jam, tapi komprominya adalah tidak adanya fitur Active Noise Cancelling, multipoint, dan mode kabel audio.",
+          "calls": [],
+          "checks": {
+            "answers_in_indonesian": true,
+            "merchandise_uses_catalog_tools": true,
+            "no_generic_website_facts_substitution": true,
+            "no_invalid_search_filter": true,
+            "remembers_cheaper_alternative": true,
+            "battery_24_hours": true
+          },
+          "passed": true
+        }
+      ],
+      "evaluationStage": "after recommendedProduct compaction and boolean consistency checks"
+    },
+    {
+      "case": "commuter",
+      "passed": true,
+      "seconds": 26.04,
+      "turns": [
+        {
+          "question": "Aku mau headphone buat di kereta yang ramai, perlu ANC, budget maksimal Rp600.000. Mana yang cocok?",
+          "answer": "Untuk kebutuhan Active Noise Cancelling dan baterai tahan lama untuk di kereta ramai dengan budget maksimal Rp600.000, AUDIA Focus One sangat cocok karena memiliki ANC dan baterai hingga 40 jam (perlu diingat ini spesifikasi demo). SOUNDROOM juga masuk budget tapi tidak punya ANC. Apakah ANC prioritas utama?",
+          "calls": [
+            {
+              "name": "compare_catalog_products",
+              "arguments": {
+                "priority": "battery",
+                "max_price": 600000,
+                "product_ids": [
+                  "headphones",
+                  "audia-focus-one",
+                  "ritme-lite"
+                ]
+              }
+            }
+          ],
+          "checks": {
+            "answers_in_indonesian": true,
+            "merchandise_uses_catalog_tools": true,
+            "no_generic_website_facts_substitution": true,
+            "no_invalid_search_filter": true,
+            "comparison_respects_budget": true,
+            "anc_option_named": true
+          },
+          "passed": true
+        }
+      ],
+      "evaluationStage": "after full page knowledge synchronization and catalog routing fix"
+    },
+    {
+      "case": "beats-knowledge",
+      "passed": true,
+      "seconds": 15.55,
+      "turns": [
+        {
+          "question": "Beats Flex Wireless Earphones baterainya berapa jam dan earbud-nya magnetik nggak?",
+          "answer": "Menurut deskripsi demo, Beats Flex Wireless Earphones memiliki baterai hingga 12 jam dan earbud-nya magnetik. Sebagai catatan, semua data deskripsi ini adalah contoh, bukan spesifikasi pabrikan yang terverifikasi.",
+          "calls": [
+            {
+              "name": "get_catalog_product",
+              "arguments": {
+                "product_id": "beats-flex-wireless-earphones"
+              }
+            }
+          ],
+          "checks": {
+            "answers_in_indonesian": true,
+            "merchandise_uses_catalog_tools": true,
+            "no_generic_website_facts_substitution": true,
+            "no_invalid_search_filter": true,
+            "fetches_beats_outside_comparison": true,
+            "battery_12_hours": true,
+            "magnetic_earbuds": true
+          },
+          "passed": true
+        }
+      ],
+      "evaluationStage": "after full page knowledge synchronization and catalog routing fix"
+    },
+    {
+      "case": "unknown-laptop-variant",
+      "passed": true,
+      "seconds": 22.95,
+      "turns": [
+        {
+          "question": "MacBook Pro 14 Inch Space Grey di katalog ini RAM dan chip-nya apa?",
+          "answer": "Berdasarkan pengetahuan demo untuk Apple MacBook Pro 14 Inch Space Grey ini, informasi mengenai generasi chip, RAM, penyimpanan, port, dan durasi baterai tidak tersedia atau tidak diketahui. Sebagai tambahan, harga dan spesifikasi yang tercantum merupakan data demo. Apakah ada hal lain yang ingin kamu tanyakan tentang laptop ini?",
+          "calls": [
+            {
+              "name": "get_catalog_product",
+              "arguments": {
+                "product_id": "apple-macbook-pro-14-inch-space-grey"
+              }
+            }
+          ],
+          "checks": {
+            "answers_in_indonesian": true,
+            "merchandise_uses_catalog_tools": true,
+            "no_generic_website_facts_substitution": true,
+            "no_invalid_search_filter": true,
+            "fetches_correct_laptop": true,
+            "unknown_variant_acknowledged": true,
+            "no_invented_variant": true
+          },
+          "passed": true
+        }
+      ],
+      "evaluationStage": "after full page knowledge synchronization and catalog routing fix"
+    },
+    {
+      "case": "page-followup",
+      "passed": true,
+      "seconds": 29.95,
+      "turns": [
+        {
+          "question": "Produk yang aku buka ini baterainya berapa lama?",
+          "answer": "Headphone Beats Flex Wireless Earphones yang kamu buka ini, menurut deskripsi demo, baterainya bisa bertahan hingga 12 jam. Sebagai catatan, spesifikasi dan harga adalah contoh ya. Apakah ada detail lain yang ingin kamu tanyakan?",
+          "calls": [],
+          "checks": {
+            "answers_in_indonesian": true,
+            "no_generic_website_facts_substitution": true,
+            "no_invalid_search_filter": true,
+            "battery_12_hours": true,
+            "page_knowledge_revision_synced": true
+          },
+          "passed": true
+        },
+        {
+          "question": "Sekarang produk yang aku buka ada ANC? Baterainya berapa?",
+          "answer": "Produk yang kamu buka sekarang, Studio Wireless Headphones, tidak memiliki Active Noise Cancelling atau ANC ya. Tapi, baterainya bisa bertahan hingga 30 jam. Ada hal lain yang ingin kamu tanyakan",
+          "calls": [],
+          "checks": {
+            "answers_in_indonesian": true,
+            "no_generic_website_facts_substitution": true,
+            "no_invalid_search_filter": true,
+            "battery_30_hours": true,
+            "anc_absence_reported": true,
+            "page_knowledge_revision_synced": true
+          },
+          "passed": true
+        }
+      ],
+      "evaluationStage": "after full page knowledge synchronization and catalog routing fix"
+    },
+    {
+      "case": "blender-knowledge",
+      "passed": true,
+      "seconds": 16.04,
+      "turns": [
+        {
+          "question": "Blender Dapur yang 560 ribu itu kapasitas dan daya listriknya berapa? Ada penggiling bumbu?",
+          "answer": "Blender Dapur kapasitasnya 1,5 liter dengan daya 350 watt. Spesifikasi demo ini menyebutkan ada gelas penggiling untuk bumbu, jadi cocok buat keperluan harianmu. Apakah ada fitur lain yang ingin kamu tanyakan?",
+          "calls": [
+            {
+              "name": "get_catalog_product",
+              "arguments": {
+                "product_id": "boxed-blender"
+              }
+            }
+          ],
+          "checks": {
+            "answers_in_indonesian": true,
+            "merchandise_uses_catalog_tools": true,
+            "no_generic_website_facts_substitution": true,
+            "no_invalid_search_filter": true,
+            "fetches_correct_blender": true,
+            "capacity_1_5_litres": true,
+            "power_350_watts": true,
+            "grinder_reported": true
+          },
+          "passed": true
+        }
+      ],
+      "evaluationStage": "after full page knowledge synchronization and catalog routing fix"
+    }
+  ]
+}

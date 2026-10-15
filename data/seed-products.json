@@ -1,0 +1,234 @@
+[
+  {
+    "id": "headphones",
+    "name": "Studio Wireless Headphones",
+    "brand": "SOUNDROOM",
+    "category": "Elektronik",
+    "price": 429000,
+    "oldPrice": 699000,
+    "rating": 4.9,
+    "sold": 1240,
+    "image": "headphones",
+    "photo": "1505740420928-5e560c06d30e",
+    "badge": "BEST SELLER",
+    "stock": 18,
+    "progress": 77,
+    "specs": [
+      "Bluetooth 5.3",
+      "30 jam baterai",
+      "Over-ear"
+    ],
+    "description": "Teman untuk lagu favorit, sesi fokus, dan perjalananmu. Headphone dengan bantalan empuk, suara seimbang, serta koneksi wireless yang praktis."
+  },
+  {
+    "id": "watch",
+    "name": "Everyday Minimal Watch",
+    "brand": "WAKTU",
+    "category": "Fashion",
+    "price": 279000,
+    "oldPrice": 399000,
+    "rating": 4.8,
+    "sold": 860,
+    "image": "watch",
+    "photo": "1523275335684-37898b6baf30",
+    "badge": "PILIHAN KALA",
+    "stock": 24,
+    "progress": 61,
+    "specs": [
+      "Diameter 38 mm",
+      "Tali silikon",
+      "Unisex"
+    ],
+    "description": "Jam tangan dengan desain sederhana yang gampang dipadukan dengan gaya harian. Ringan, nyaman, dan siap menemani setiap momen."
+  },
+  {
+    "id": "bag",
+    "name": "City Everyday Shoulder Bag",
+    "brand": "SORA STUDIO",
+    "category": "Fashion",
+    "price": 189000,
+    "oldPrice": 299000,
+    "rating": 4.9,
+    "sold": 2150,
+    "image": "bag",
+    "photo": "1548036328-c9fa89d128fa",
+    "badge": "TERLARIS",
+    "stock": 12,
+    "progress": 86,
+    "specs": [
+      "Kulit sintetis",
+      "Tali adjustable",
+      "Kompartemen dalam"
+    ],
+    "description": "Satu tas untuk banyak rencana. Ukuran yang pas buat barang penting, dengan bentuk klasik dan warna yang mudah masuk ke outfit pilihanmu."
+  },
+  {
+    "id": "camera",
+    "name": "Instant Camera — Retro Edition",
+    "brand": "MEMORI",
+    "category": "Hobi",
+    "price": 1299000,
+    "oldPrice": 1599000,
+    "rating": 4.8,
+    "sold": 325,
+    "image": "camera",
+    "photo": "1526170375885-4d8ecf77b99f",
+    "badge": "LIMITED FINDS",
+    "stock": 8,
+    "progress": 70,
+    "specs": [
+      "Desain retro",
+      "Foto instan",
+      "Untuk koleksi"
+    ],
+    "description": "Untuk kamu yang suka menyimpan cerita dengan cara yang berbeda. Sebuah pilihan bergaya retro untuk melengkapi koleksi dan sudut kreatifmu."
+  },
+  {
+    "id": "sneakers",
+    "name": "Move Everyday Sneakers",
+    "brand": "LANGKAH",
+    "category": "Olahraga",
+    "price": 349000,
+    "oldPrice": 499000,
+    "rating": 4.9,
+    "sold": 1650,
+    "image": "sneakers",
+    "photo": "1542291026-7eec264c27ff",
+    "badge": "BEST SELLER",
+    "specs": [
+      "Ukuran 36–44",
+      "Sol ringan",
+      "Mesh breathable"
+    ],
+    "description": "Siap buat langkah santai sampai jadwal yang padat. Sneakers dengan tampilan berani dan sol ringan, untuk menemani hari yang aktif."
+  },
+  {
+    "id": "perfume",
+    "name": "Daily Eau de Parfum — 50 ml",
+    "brand": "AROMA LAB",
+    "category": "Kecantikan",
+    "price": 159000,
+    "oldPrice": 229000,
+    "rating": 4.7,
+    "sold": 970,
+    "image": "perfume",
+    "photo": "1541643600914-78b084683601",
+    "badge": "NEW FIND",
+    "specs": [
+      "50 ml",
+      "Floral & woody",
+      "Eau de parfum"
+    ],
+    "description": "Aroma hangat dengan sentuhan floral yang lembut. Sebuah detail kecil untuk memulai hari dengan perasaan yang lebih baik."
+  },
+  {
+    "id": "lamp",
+    "name": "Warm Table Lamp",
+    "brand": "RUMAH RASA",
+    "category": "Rumah",
+    "price": 249000,
+    "oldPrice": 329000,
+    "rating": 4.8,
+    "sold": 610,
+    "image": "lamp",
+    "photo": "1507473885765-e6ed057f782c",
+    "badge": "PILIHAN KALA",
+    "specs": [
+      "Cahaya hangat",
+      "Desain minimal",
+      "Untuk meja & kamar"
+    ],
+    "description": "Ciptakan sudut nyaman untuk membaca, bekerja, atau sekadar menikmati malam. Lampu meja dengan siluet sederhana dan karakter yang hangat."
+  },
+  {
+    "id": "sunglasses",
+    "name": "Classic Everyday Sunglasses",
+    "brand": "SORA STUDIO",
+    "category": "Fashion",
+    "price": 129000,
+    "oldPrice": 179000,
+    "rating": 4.8,
+    "sold": 1140,
+    "image": "sunglasses",
+    "photo": "1511499767150-a48a237f0083",
+    "specs": [
+      "Frame ringan",
+      "Unisex",
+      "Pouch included"
+    ],
+    "description": "Bentuk klasik untuk gaya yang effortless. Ringan dipakai dan gampang dibawa, dari perjalanan pagi sampai akhir pekan yang panjang."
+  },
+  {
+    "id": "chair",
+    "name": "Nordic Lounge Chair",
+    "brand": "RUMAH RASA",
+    "category": "Rumah",
+    "price": 899000,
+    "oldPrice": 1199000,
+    "rating": 4.9,
+    "sold": 240,
+    "image": "chair",
+    "photo": "1598300042247-d088f8ab3a91",
+    "badge": "NEW FIND",
+    "specs": [
+      "Gaya Scandinavian",
+      "Rangka kayu",
+      "Untuk ruang santai"
+    ],
+    "description": "Satu tempat untuk duduk lebih lama dan menikmati momen pelan. Kursi dengan garis bersih yang menghidupkan ruang favoritmu."
+  },
+  {
+    "id": "coffee",
+    "name": "Morning Ritual Coffee Set",
+    "brand": "SEDARI",
+    "category": "Rumah",
+    "price": 169000,
+    "oldPrice": 219000,
+    "rating": 4.8,
+    "sold": 430,
+    "image": "coffee",
+    "photo": "1514432324607-a09d9b4aefdd",
+    "specs": [
+      "Set cangkir",
+      "Keramik",
+      "Untuk ritual pagi"
+    ],
+    "description": "Karena pagi yang bagus sering dimulai dari hal sederhana. Set kopi untuk menikmati minuman favorit dengan lebih santai."
+  },
+  {
+    "id": "smartwatch",
+    "name": "Active Everyday Smartwatch",
+    "brand": "SOUNDROOM",
+    "category": "Elektronik",
+    "price": 549000,
+    "oldPrice": 749000,
+    "rating": 4.7,
+    "sold": 760,
+    "image": "smartwatch",
+    "photo": "1546868871-7041f2a55e12",
+    "specs": [
+      "Monitor aktivitas",
+      "Layar sentuh",
+      "Tali adjustable"
+    ],
+    "description": "Bantu kamu mengikuti ritme harian dengan cara yang simpel. Smartwatch ringkas untuk menemani aktivitas dan menjaga hal penting tetap dekat."
+  },
+  {
+    "id": "backpack",
+    "name": "Weekend Adventure Backpack",
+    "brand": "LANGKAH",
+    "category": "Olahraga",
+    "price": 299000,
+    "oldPrice": 399000,
+    "rating": 4.8,
+    "sold": 590,
+    "image": "backpack",
+    "photo": "1553062407-98eeb64c6a62",
+    "specs": [
+      "20 liter",
+      "Kompartemen laptop",
+      "Tali empuk"
+    ],
+    "description": "Bawa rencana besarmu dalam satu tas. Ruang yang cukup, detail yang praktis, dan tampilan yang pas untuk kegiatan sehari-hari."
+  }
+]

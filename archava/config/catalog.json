@@ -1,0 +1,4686 @@
+{
+  "version": 2,
+  "currency": "IDR",
+  "demo": true,
+  "notice": "Harga, stok, rating, dan spesifikasi adalah contoh; pembayaran dan pengiriman tidak aktif.",
+  "categories": [
+    {
+      "name": "Elektronik",
+      "slug": "elektronik",
+      "label": "Elektronik"
+    },
+    {
+      "name": "Fashion",
+      "slug": "fashion",
+      "label": "Fashion"
+    },
+    {
+      "name": "Rumah",
+      "slug": "rumah",
+      "label": "Rumah & Living"
+    },
+    {
+      "name": "Kecantikan",
+      "slug": "kecantikan",
+      "label": "Kecantikan"
+    },
+    {
+      "name": "Olahraga",
+      "slug": "olahraga",
+      "label": "Olahraga"
+    },
+    {
+      "name": "Hobi",
+      "slug": "hobi",
+      "label": "Hobi & Kreatif"
+    },
+    {
+      "name": "Makanan",
+      "slug": "makanan",
+      "label": "Makanan & Minuman"
+    }
+  ],
+  "groups": [
+    {
+      "id": "headphone-wireless",
+      "label": "Headphone wireless",
+      "symbol": "headphones",
+      "category": "Elektronik",
+      "segment": "Over-ear · Rp350–550 ribu",
+      "description": "Untuk musik, kerja, dan perjalanan. Pilih antara baterai, ANC, dan harga.",
+      "fields": [
+        {
+          "key": "connection",
+          "label": "Koneksi"
+        },
+        {
+          "key": "driverMm",
+          "label": "Ukuran driver",
+          "unit": "mm"
+        },
+        {
+          "key": "batteryHours",
+          "label": "Baterai hingga",
+          "unit": "jam"
+        },
+        {
+          "key": "anc",
+          "label": "Active noise cancelling",
+          "type": "boolean"
+        },
+        {
+          "key": "multipoint",
+          "label": "Dua perangkat sekaligus",
+          "type": "boolean"
+        },
+        {
+          "key": "weightG",
+          "label": "Berat",
+          "unit": "g"
+        },
+        {
+          "key": "wired",
+          "label": "Mode kabel audio",
+          "type": "boolean"
+        },
+        {
+          "key": "warrantyMonths",
+          "label": "Garansi contoh",
+          "unit": "bulan"
+        }
+      ]
+    },
+    {
+      "id": "smartwatch-harian",
+      "label": "Smartwatch harian",
+      "symbol": "user",
+      "category": "Elektronik",
+      "segment": "Aktivitas harian · Rp450–700 ribu",
+      "description": "Lihat perbedaan layar, baterai, GPS, dan fitur panggilan.",
+      "fields": [
+        {
+          "key": "screenType",
+          "label": "Jenis layar"
+        },
+        {
+          "key": "screenInches",
+          "label": "Ukuran layar",
+          "unit": "inci"
+        },
+        {
+          "key": "batteryDays",
+          "label": "Baterai hingga",
+          "unit": "hari"
+        },
+        {
+          "key": "gps",
+          "label": "GPS bawaan",
+          "type": "boolean"
+        },
+        {
+          "key": "calls",
+          "label": "Panggilan Bluetooth",
+          "type": "boolean"
+        },
+        {
+          "key": "waterResistance",
+          "label": "Ketahanan air"
+        },
+        {
+          "key": "weightG",
+          "label": "Berat tanpa tali",
+          "unit": "g"
+        },
+        {
+          "key": "warrantyMonths",
+          "label": "Garansi contoh",
+          "unit": "bulan"
+        }
+      ]
+    },
+    {
+      "id": "blender-dapur",
+      "label": "Blender dapur",
+      "symbol": "plant",
+      "category": "Rumah",
+      "segment": "Blender meja · Rp400–700 ribu",
+      "description": "Sesuaikan kapasitas, daya listrik, dan material jar dengan dapurmu.",
+      "fields": [
+        {
+          "key": "capacityL",
+          "label": "Kapasitas jar",
+          "unit": "liter"
+        },
+        {
+          "key": "powerW",
+          "label": "Daya listrik",
+          "unit": "watt"
+        },
+        {
+          "key": "jarMaterial",
+          "label": "Material jar"
+        },
+        {
+          "key": "speeds",
+          "label": "Pilihan kecepatan"
+        },
+        {
+          "key": "pulse",
+          "label": "Mode pulse",
+          "type": "boolean"
+        },
+        {
+          "key": "grinder",
+          "label": "Gelas penggiling",
+          "type": "boolean"
+        },
+        {
+          "key": "weightKg",
+          "label": "Berat",
+          "unit": "kg"
+        },
+        {
+          "key": "warrantyMonths",
+          "label": "Garansi contoh",
+          "unit": "bulan"
+        }
+      ]
+    },
+    {
+      "id": "sepatu-lari",
+      "label": "Sepatu lari harian",
+      "symbol": "shoe",
+      "category": "Olahraga",
+      "segment": "Jalan & lari santai · Rp300–450 ribu",
+      "description": "Bandingkan bobot, bantalan, material, dan pilihan ukuran.",
+      "fields": [
+        {
+          "key": "upper",
+          "label": "Material upper"
+        },
+        {
+          "key": "midsole",
+          "label": "Bantalan midsole"
+        },
+        {
+          "key": "outsole",
+          "label": "Material outsole"
+        },
+        {
+          "key": "weightG",
+          "label": "Berat per sepatu",
+          "unit": "g"
+        },
+        {
+          "key": "dropMm",
+          "label": "Heel drop",
+          "unit": "mm"
+        },
+        {
+          "key": "sizes",
+          "label": "Rentang ukuran"
+        },
+        {
+          "key": "reflective",
+          "label": "Detail reflektif",
+          "type": "boolean"
+        },
+        {
+          "key": "fit",
+          "label": "Bentuk fit"
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "id": "headphones",
+      "name": "Studio Wireless Headphones",
+      "brand": "SOUNDROOM",
+      "category": "Elektronik",
+      "price": 429000,
+      "oldPrice": 699000,
+      "rating": 4.9,
+      "stock": 18,
+      "specs": [
+        "Koneksi: Bluetooth 5.3",
+        "Ukuran driver: 40 mm",
+        "Baterai hingga: 30 jam"
+      ],
+      "keywords": "headphone headset audio musik suara",
+      "description": "Teman untuk lagu favorit, sesi fokus, dan perjalananmu. Headphone dengan bantalan empuk, suara seimbang, serta koneksi wireless yang praktis.",
+      "knowledge": {
+        "summary": "Teman untuk lagu favorit, sesi fokus, dan perjalananmu. Headphone dengan bantalan empuk, suara seimbang, serta koneksi wireless yang praktis.",
+        "useCase": "Kerja dari rumah & musik",
+        "specifications": [
+          {
+            "key": "connection",
+            "label": "Koneksi",
+            "value": "Bluetooth 5.3"
+          },
+          {
+            "key": "driverMm",
+            "label": "Ukuran driver",
+            "unit": "mm",
+            "value": 40
+          },
+          {
+            "key": "batteryHours",
+            "label": "Baterai hingga",
+            "unit": "jam",
+            "value": 30
+          },
+          {
+            "key": "anc",
+            "label": "Active noise cancelling",
+            "type": "boolean",
+            "value": false
+          },
+          {
+            "key": "multipoint",
+            "label": "Dua perangkat sekaligus",
+            "type": "boolean",
+            "value": true
+          },
+          {
+            "key": "weightG",
+            "label": "Berat",
+            "unit": "g",
+            "value": 220
+          },
+          {
+            "key": "wired",
+            "label": "Mode kabel audio",
+            "type": "boolean",
+            "value": true
+          },
+          {
+            "key": "warrantyMonths",
+            "label": "Garansi contoh",
+            "unit": "bulan",
+            "value": 12
+          }
+        ],
+        "strengths": [
+          "Bisa terhubung ke laptop dan HP sekaligus",
+          "Tetap bisa dipakai lewat kabel audio"
+        ],
+        "tradeoffs": [
+          "Belum punya ANC untuk meredam suara sekitar"
+        ],
+        "unknowns": [
+          "Fitur yang tidak tercantum pada profil, kompatibilitas perangkat tertentu, dan hasil pengujian"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "fictional-comparison-profile",
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/headphones.jpg",
+      "demo": true,
+      "comparison": {
+        "group": "headphone-wireless",
+        "positioning": "Seimbang buat sehari-hari",
+        "useCase": "Kerja dari rumah & musik",
+        "attributes": {
+          "connection": "Bluetooth 5.3",
+          "driverMm": 40,
+          "batteryHours": 30,
+          "anc": false,
+          "multipoint": true,
+          "weightG": 220,
+          "wired": true,
+          "warrantyMonths": 12
+        },
+        "strengths": [
+          "Bisa terhubung ke laptop dan HP sekaligus",
+          "Tetap bisa dipakai lewat kabel audio"
+        ],
+        "tradeoffs": [
+          "Belum punya ANC untuk meredam suara sekitar"
+        ],
+        "source": {
+          "type": "demo",
+          "note": "Spesifikasi dan kelebihan merupakan skenario ilustrasi, bukan hasil pengujian."
+        }
+      }
+    },
+    {
+      "id": "watch",
+      "name": "Everyday Minimal Watch",
+      "brand": "WAKTU",
+      "category": "Fashion",
+      "price": 279000,
+      "oldPrice": 399000,
+      "rating": 4.8,
+      "stock": 24,
+      "specs": [
+        "Diameter 38 mm",
+        "Tali silikon",
+        "Unisex"
+      ],
+      "keywords": "jam tangan arloji",
+      "description": "Jam tangan dengan desain sederhana yang gampang dipadukan dengan gaya harian. Ringan, nyaman, dan siap menemani setiap momen.",
+      "knowledge": {
+        "summary": "Jam tangan dengan desain sederhana yang gampang dipadukan dengan gaya harian. Ringan, nyaman, dan siap menemani setiap momen.",
+        "useCase": "Jam tangan harian.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Diameter 38 mm"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Tali silikon"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Unisex"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Ketahanan air dan jenis mesin"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "demo-catalog-entry",
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/watch.jpg",
+      "demo": true
+    },
+    {
+      "id": "bag",
+      "name": "City Everyday Shoulder Bag",
+      "brand": "SORA STUDIO",
+      "category": "Fashion",
+      "price": 189000,
+      "oldPrice": 299000,
+      "rating": 4.9,
+      "stock": 12,
+      "specs": [
+        "Kulit sintetis",
+        "Tali adjustable",
+        "Kompartemen dalam"
+      ],
+      "keywords": "tas wanita bahu",
+      "description": "Satu tas untuk banyak rencana. Ukuran yang pas buat barang penting, dengan bentuk klasik dan warna yang mudah masuk ke outfit pilihanmu.",
+      "knowledge": {
+        "summary": "Satu tas untuk banyak rencana. Ukuran yang pas buat barang penting, dengan bentuk klasik dan warna yang mudah masuk ke outfit pilihanmu.",
+        "useCase": "Membawa barang penting untuk kegiatan harian.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Kulit sintetis"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Tali adjustable"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Kompartemen dalam"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Dimensi dan kapasitas"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "demo-catalog-entry",
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/bag.jpg",
+      "demo": true
+    },
+    {
+      "id": "camera",
+      "name": "Instant Camera — Retro Edition",
+      "brand": "MEMORI",
+      "category": "Hobi",
+      "price": 1299000,
+      "oldPrice": 1599000,
+      "rating": 4.8,
+      "stock": 8,
+      "specs": [
+        "Desain retro",
+        "Foto instan",
+        "Untuk koleksi"
+      ],
+      "keywords": "kamera foto instan fotografi",
+      "description": "Untuk kamu yang suka menyimpan cerita dengan cara yang berbeda. Sebuah pilihan bergaya retro untuk melengkapi koleksi dan sudut kreatifmu.",
+      "knowledge": {
+        "summary": "Untuk kamu yang suka menyimpan cerita dengan cara yang berbeda. Sebuah pilihan bergaya retro untuk melengkapi koleksi dan sudut kreatifmu.",
+        "useCase": "Foto instan dan koleksi bergaya retro.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Desain retro"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Foto instan"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Untuk koleksi"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Jenis film, ukuran cetakan, dan isi paket"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "demo-catalog-entry",
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/camera.jpg",
+      "demo": true
+    },
+    {
+      "id": "sneakers",
+      "name": "Move Everyday Sneakers",
+      "brand": "LANGKAH",
+      "category": "Olahraga",
+      "price": 349000,
+      "oldPrice": 499000,
+      "rating": 4.9,
+      "stock": 28,
+      "specs": [
+        "Material upper: Mesh breathable",
+        "Bantalan midsole: EVA",
+        "Material outsole: Karet"
+      ],
+      "keywords": "sepatu lari olahraga",
+      "description": "Siap buat langkah santai sampai jadwal yang padat. Sneakers dengan tampilan berani dan sol ringan, untuk menemani hari yang aktif.",
+      "knowledge": {
+        "summary": "Siap buat langkah santai sampai jadwal yang padat. Sneakers dengan tampilan berani dan sol ringan, untuk menemani hari yang aktif.",
+        "useCase": "Jalan & lari santai",
+        "specifications": [
+          {
+            "key": "upper",
+            "label": "Material upper",
+            "value": "Mesh breathable"
+          },
+          {
+            "key": "midsole",
+            "label": "Bantalan midsole",
+            "value": "EVA"
+          },
+          {
+            "key": "outsole",
+            "label": "Material outsole",
+            "value": "Karet"
+          },
+          {
+            "key": "weightG",
+            "label": "Berat per sepatu",
+            "unit": "g",
+            "value": 250
+          },
+          {
+            "key": "dropMm",
+            "label": "Heel drop",
+            "unit": "mm",
+            "value": 8
+          },
+          {
+            "key": "sizes",
+            "label": "Rentang ukuran",
+            "value": "36–44"
+          },
+          {
+            "key": "reflective",
+            "label": "Detail reflektif",
+            "type": "boolean",
+            "value": false
+          },
+          {
+            "key": "fit",
+            "label": "Bentuk fit",
+            "value": "Regular"
+          }
+        ],
+        "strengths": [
+          "Rentang ukuran mulai dari 36",
+          "Upper mesh untuk aktivitas harian"
+        ],
+        "tradeoffs": [
+          "Belum punya detail reflektif"
+        ],
+        "unknowns": [
+          "Fitur yang tidak tercantum pada profil, kompatibilitas perangkat tertentu, dan hasil pengujian"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "fictional-comparison-profile",
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/sneakers.jpg",
+      "demo": true,
+      "comparison": {
+        "group": "sepatu-lari",
+        "positioning": "Serba bisa tiap hari",
+        "useCase": "Jalan & lari santai",
+        "attributes": {
+          "upper": "Mesh breathable",
+          "midsole": "EVA",
+          "outsole": "Karet",
+          "weightG": 250,
+          "dropMm": 8,
+          "sizes": "36–44",
+          "reflective": false,
+          "fit": "Regular"
+        },
+        "strengths": [
+          "Rentang ukuran mulai dari 36",
+          "Upper mesh untuk aktivitas harian"
+        ],
+        "tradeoffs": [
+          "Belum punya detail reflektif"
+        ],
+        "source": {
+          "type": "demo",
+          "note": "Spesifikasi dan kelebihan merupakan skenario ilustrasi, bukan hasil pengujian."
+        }
+      }
+    },
+    {
+      "id": "perfume",
+      "name": "Daily Eau de Parfum — 50 ml",
+      "brand": "AROMA LAB",
+      "category": "Kecantikan",
+      "price": 159000,
+      "oldPrice": 229000,
+      "rating": 4.7,
+      "stock": 29,
+      "specs": [
+        "50 ml",
+        "Floral & woody",
+        "Eau de parfum"
+      ],
+      "keywords": "parfum wangi aroma",
+      "description": "Aroma hangat dengan sentuhan floral yang lembut. Sebuah detail kecil untuk memulai hari dengan perasaan yang lebih baik.",
+      "knowledge": {
+        "summary": "Aroma hangat dengan sentuhan floral yang lembut. Sebuah detail kecil untuk memulai hari dengan perasaan yang lebih baik.",
+        "useCase": "Parfum harian dengan aroma floral dan woody.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "50 ml"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Floral & woody"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Eau de parfum"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Ketahanan aroma dan komposisi lengkap"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "demo-catalog-entry",
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/perfume.jpg",
+      "demo": true
+    },
+    {
+      "id": "lamp",
+      "name": "Warm Table Lamp",
+      "brand": "RUMAH RASA",
+      "category": "Rumah",
+      "price": 249000,
+      "oldPrice": 329000,
+      "rating": 4.8,
+      "stock": 30,
+      "specs": [
+        "Cahaya hangat",
+        "Desain minimal",
+        "Untuk meja & kamar"
+      ],
+      "keywords": "lampu meja kamar",
+      "description": "Ciptakan sudut nyaman untuk membaca, bekerja, atau sekadar menikmati malam. Lampu meja dengan siluet sederhana dan karakter yang hangat.",
+      "knowledge": {
+        "summary": "Ciptakan sudut nyaman untuk membaca, bekerja, atau sekadar menikmati malam. Lampu meja dengan siluet sederhana dan karakter yang hangat.",
+        "useCase": "Pencahayaan meja dan kamar.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Cahaya hangat"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Desain minimal"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Untuk meja & kamar"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Daya watt, suhu warna, dan dimmer"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "demo-catalog-entry",
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/lamp.jpg",
+      "demo": true
+    },
+    {
+      "id": "sunglasses",
+      "name": "Classic Everyday Sunglasses",
+      "brand": "SORA STUDIO",
+      "category": "Fashion",
+      "price": 129000,
+      "oldPrice": 179000,
+      "rating": 4.8,
+      "stock": 31,
+      "specs": [
+        "Frame ringan",
+        "Unisex",
+        "Pouch included"
+      ],
+      "keywords": "kacamata hitam",
+      "description": "Bentuk klasik untuk gaya yang effortless. Ringan dipakai dan gampang dibawa, dari perjalanan pagi sampai akhir pekan yang panjang.",
+      "knowledge": {
+        "summary": "Bentuk klasik untuk gaya yang effortless. Ringan dipakai dan gampang dibawa, dari perjalanan pagi sampai akhir pekan yang panjang.",
+        "useCase": "Aksesori kacamata untuk gaya harian.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Frame ringan"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Unisex"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Pouch included"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Perlindungan UV dan polarisasi"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "demo-catalog-entry",
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/sunglasses.jpg",
+      "demo": true
+    },
+    {
+      "id": "chair",
+      "name": "Nordic Lounge Chair",
+      "brand": "RUMAH RASA",
+      "category": "Rumah",
+      "price": 899000,
+      "oldPrice": 1199000,
+      "rating": 4.9,
+      "stock": 32,
+      "specs": [
+        "Gaya Scandinavian",
+        "Rangka kayu",
+        "Untuk ruang santai"
+      ],
+      "keywords": "kursi sofa duduk",
+      "description": "Satu tempat untuk duduk lebih lama dan menikmati momen pelan. Kursi dengan garis bersih yang menghidupkan ruang favoritmu.",
+      "knowledge": {
+        "summary": "Satu tempat untuk duduk lebih lama dan menikmati momen pelan. Kursi dengan garis bersih yang menghidupkan ruang favoritmu.",
+        "useCase": "Duduk di ruang santai.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Gaya Scandinavian"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Rangka kayu"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Untuk ruang santai"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Dimensi dan batas beban"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "demo-catalog-entry",
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/chair.jpg",
+      "demo": true
+    },
+    {
+      "id": "coffee",
+      "name": "Morning Ritual Coffee Set",
+      "brand": "SEDARI",
+      "category": "Rumah",
+      "price": 169000,
+      "oldPrice": 219000,
+      "rating": 4.8,
+      "stock": 33,
+      "specs": [
+        "Set cangkir",
+        "Keramik",
+        "Untuk ritual pagi"
+      ],
+      "keywords": "kopi cangkir gelas",
+      "description": "Karena pagi yang bagus sering dimulai dari hal sederhana. Set kopi untuk menikmati minuman favorit dengan lebih santai.",
+      "knowledge": {
+        "summary": "Karena pagi yang bagus sering dimulai dari hal sederhana. Set kopi untuk menikmati minuman favorit dengan lebih santai.",
+        "useCase": "Menyajikan minuman dengan cangkir keramik.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Set cangkir"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Keramik"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Untuk ritual pagi"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Jumlah cangkir dan kapasitas"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "demo-catalog-entry",
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/coffee.jpg",
+      "demo": true
+    },
+    {
+      "id": "smartwatch",
+      "name": "Active Everyday Smartwatch",
+      "brand": "SOUNDROOM",
+      "category": "Elektronik",
+      "price": 549000,
+      "oldPrice": 749000,
+      "rating": 4.7,
+      "stock": 34,
+      "specs": [
+        "Jenis layar: IPS",
+        "Ukuran layar: 1,69 inci",
+        "Baterai hingga: 7 hari"
+      ],
+      "keywords": "jam pintar tangan arloji",
+      "description": "Bantu kamu mengikuti ritme harian dengan cara yang simpel. Smartwatch ringkas untuk menemani aktivitas dan menjaga hal penting tetap dekat.",
+      "knowledge": {
+        "summary": "Bantu kamu mengikuti ritme harian dengan cara yang simpel. Smartwatch ringkas untuk menemani aktivitas dan menjaga hal penting tetap dekat.",
+        "useCase": "Notifikasi & aktivitas harian",
+        "specifications": [
+          {
+            "key": "screenType",
+            "label": "Jenis layar",
+            "value": "IPS"
+          },
+          {
+            "key": "screenInches",
+            "label": "Ukuran layar",
+            "unit": "inci",
+            "value": 1.69
+          },
+          {
+            "key": "batteryDays",
+            "label": "Baterai hingga",
+            "unit": "hari",
+            "value": 7
+          },
+          {
+            "key": "gps",
+            "label": "GPS bawaan",
+            "type": "boolean",
+            "value": false
+          },
+          {
+            "key": "calls",
+            "label": "Panggilan Bluetooth",
+            "type": "boolean",
+            "value": true
+          },
+          {
+            "key": "waterResistance",
+            "label": "Ketahanan air",
+            "value": "IP68"
+          },
+          {
+            "key": "weightG",
+            "label": "Berat tanpa tali",
+            "unit": "g",
+            "value": 31
+          },
+          {
+            "key": "warrantyMonths",
+            "label": "Garansi contoh",
+            "unit": "bulan",
+            "value": 12
+          }
+        ],
+        "strengths": [
+          "Bisa menerima panggilan Bluetooth",
+          "Baterai contoh hingga tujuh hari"
+        ],
+        "tradeoffs": [
+          "GPS membutuhkan koneksi ke HP"
+        ],
+        "unknowns": [
+          "Fitur yang tidak tercantum pada profil, kompatibilitas perangkat tertentu, dan hasil pengujian"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "fictional-comparison-profile",
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/smartwatch.jpg",
+      "demo": true,
+      "comparison": {
+        "group": "smartwatch-harian",
+        "positioning": "Teman rutinitas aktif",
+        "useCase": "Notifikasi & aktivitas harian",
+        "attributes": {
+          "screenType": "IPS",
+          "screenInches": 1.69,
+          "batteryDays": 7,
+          "gps": false,
+          "calls": true,
+          "waterResistance": "IP68",
+          "weightG": 31,
+          "warrantyMonths": 12
+        },
+        "strengths": [
+          "Bisa menerima panggilan Bluetooth",
+          "Baterai contoh hingga tujuh hari"
+        ],
+        "tradeoffs": [
+          "GPS membutuhkan koneksi ke HP"
+        ],
+        "source": {
+          "type": "demo",
+          "note": "Spesifikasi dan kelebihan merupakan skenario ilustrasi, bukan hasil pengujian."
+        }
+      }
+    },
+    {
+      "id": "backpack",
+      "name": "Weekend Adventure Backpack",
+      "brand": "LANGKAH",
+      "category": "Olahraga",
+      "price": 299000,
+      "oldPrice": 399000,
+      "rating": 4.8,
+      "stock": 35,
+      "specs": [
+        "20 liter",
+        "Kompartemen laptop",
+        "Tali empuk"
+      ],
+      "keywords": "tas ransel punggung laptop",
+      "description": "Bawa rencana besarmu dalam satu tas. Ruang yang cukup, detail yang praktis, dan tampilan yang pas untuk kegiatan sehari-hari.",
+      "knowledge": {
+        "summary": "Bawa rencana besarmu dalam satu tas. Ruang yang cukup, detail yang praktis, dan tampilan yang pas untuk kegiatan sehari-hari.",
+        "useCase": "Membawa barang harian dan laptop.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "20 liter"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Kompartemen laptop"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Tali empuk"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Ukuran laptop yang muat dan ketahanan air"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "demo-catalog-entry",
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/backpack.jpg",
+      "demo": true
+    },
+    {
+      "id": "apple-macbook-pro-14-inch-space-grey",
+      "name": "Apple MacBook Pro 14 Inch Space Grey",
+      "brand": "Apple",
+      "category": "Elektronik",
+      "price": 28000000,
+      "oldPrice": 31112000,
+      "rating": 3.7,
+      "stock": 24,
+      "specs": [
+        "Laptop",
+        "Layar 14 inci",
+        "Space Grey"
+      ],
+      "keywords": "elektronik laptop komputer notebook  laptops apple laptop notebook macbook",
+      "description": "Laptop Apple MacBook Pro dengan layar 14 inci dan warna Space Grey.",
+      "knowledge": {
+        "summary": "Laptop Apple MacBook Pro dengan layar 14 inci dan warna Space Grey.",
+        "useCase": "Kerja dan hiburan dengan laptop Apple.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Laptop"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Layar 14 inci"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Space Grey"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Generasi chip, RAM, storage, port, dan durasi baterai"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 78,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/apple-macbook-pro-14-inch-space-grey-1.webp",
+      "demo": true
+    },
+    {
+      "id": "lenovo-yoga-920",
+      "name": "Lenovo Yoga 920",
+      "brand": "Lenovo",
+      "category": "Elektronik",
+      "price": 15400000,
+      "oldPrice": 17112000,
+      "rating": 2.9,
+      "stock": 40,
+      "specs": [
+        "Laptop 2-in-1",
+        "Layar sentuh",
+        "Engsel putar"
+      ],
+      "keywords": "elektronik laptop komputer notebook  laptops laptop notebook tablet touchscreen convertible",
+      "description": "Lenovo Yoga 920 adalah laptop 2-in-1 dengan layar sentuh yang bisa diputar untuk penggunaan sebagai tablet.",
+      "knowledge": {
+        "summary": "Lenovo Yoga 920 adalah laptop 2-in-1 dengan layar sentuh yang bisa diputar untuk penggunaan sebagai tablet.",
+        "useCase": "Kerja dan penggunaan bergantian sebagai laptop atau tablet.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Laptop 2-in-1"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Layar sentuh"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Engsel putar"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Varian prosesor, RAM, storage, dan durasi baterai"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 81,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/lenovo-yoga-920-1.webp",
+      "demo": true
+    },
+    {
+      "id": "new-dell-xps-13-9300-laptop",
+      "name": "New DELL XPS 13 9300 Laptop",
+      "brand": "Dell",
+      "category": "Elektronik",
+      "price": 21000000,
+      "oldPrice": 23864000,
+      "rating": 2.7,
+      "stock": 74,
+      "specs": [
+        "Laptop",
+        "Layar InfinityEdge",
+        "Desain ringkas"
+      ],
+      "keywords": "elektronik laptop komputer notebook  laptops laptop notebook ultrabook",
+      "description": "Dell XPS 13 9300 adalah laptop ringkas dengan layar InfinityEdge yang memiliki bezel tipis.",
+      "knowledge": {
+        "summary": "Dell XPS 13 9300 adalah laptop ringkas dengan layar InfinityEdge yang memiliki bezel tipis.",
+        "useCase": "Kerja dengan laptop ringkas.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Laptop"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Layar InfinityEdge"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Desain ringkas"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Varian prosesor, RAM, storage, dan resolusi layar"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 82,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/new-dell-xps-13-9300-laptop-1.webp",
+      "demo": true
+    },
+    {
+      "id": "amazon-echo-plus",
+      "name": "Amazon Echo Plus",
+      "brand": "Amazon",
+      "category": "Elektronik",
+      "price": 1400000,
+      "oldPrice": 1591000,
+      "rating": 5,
+      "stock": 61,
+      "specs": [
+        "Speaker pintar",
+        "Alexa",
+        "Hub smart home"
+      ],
+      "keywords": "elektronik  speaker audio suara electronics smart speakers speaker pintar smart home alexa",
+      "description": "Amazon Echo Plus adalah speaker pintar dengan kontrol suara Alexa dan fungsi hub perangkat smart home.",
+      "knowledge": {
+        "summary": "Amazon Echo Plus adalah speaker pintar dengan kontrol suara Alexa dan fungsi hub perangkat smart home.",
+        "useCase": "Audio dan kontrol perangkat rumah pintar.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Speaker pintar"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Alexa"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Hub smart home"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Generasi, protokol smart home, dan kompatibilitas perangkat tertentu"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 99,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/amazon-echo-plus-1.webp",
+      "demo": true
+    },
+    {
+      "id": "apple-airpods",
+      "name": "Apple Airpods",
+      "brand": "Apple",
+      "category": "Elektronik",
+      "price": 1820000,
+      "oldPrice": 2167000,
+      "rating": 4.2,
+      "stock": 67,
+      "specs": [
+        "Earphone wireless",
+        "Pairing",
+        "Integrasi Siri"
+      ],
+      "keywords": "elektronik  earphone audio musik electronics wireless earphones earphone earbuds wireless audio siri",
+      "description": "Apple Airpods adalah earphone wireless dengan pairing praktis dan integrasi Siri dalam data contoh.",
+      "knowledge": {
+        "summary": "Apple Airpods adalah earphone wireless dengan pairing praktis dan integrasi Siri dalam data contoh.",
+        "useCase": "Mendengarkan audio saat bepergian.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Earphone wireless"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Pairing"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Integrasi Siri"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Generasi AirPods, ANC, codec, dan durasi baterai"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 100,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/apple-airpods-1.webp",
+      "demo": true
+    },
+    {
+      "id": "apple-airpower-wireless-charger",
+      "name": "Apple Airpower Wireless Charger",
+      "brand": "Apple",
+      "category": "Elektronik",
+      "price": 1120000,
+      "oldPrice": 1245000,
+      "rating": 3.7,
+      "stock": 5,
+      "specs": [
+        "Alas pengisian nirkabel",
+        "Listing contoh"
+      ],
+      "keywords": "elektronik  charger pengisi daya nirkabel electronics wireless chargers charger wireless pengisi daya nirkabel",
+      "description": "Apple Airpower Wireless Charger adalah contoh listing alas pengisian daya nirkabel untuk perangkat Apple yang kompatibel.",
+      "knowledge": {
+        "summary": "Apple Airpower Wireless Charger adalah contoh listing alas pengisian daya nirkabel untuk perangkat Apple yang kompatibel.",
+        "useCase": "Mencoba pilihan aksesori pengisian daya pada katalog demo.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Alas pengisian nirkabel"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Listing contoh"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Produk ini tidak membuktikan ketersediaan ritel; watt dan model perangkat yang didukung tidak tersedia"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 102,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/apple-airpower-wireless-charger-1.webp",
+      "demo": true
+    },
+    {
+      "id": "apple-homepod-mini-cosmic-grey",
+      "name": "Apple HomePod Mini Cosmic Grey",
+      "brand": "Apple",
+      "category": "Elektronik",
+      "price": 1400000,
+      "oldPrice": 1708000,
+      "rating": 4.6,
+      "stock": 27,
+      "specs": [
+        "Speaker pintar",
+        "Desain ringkas",
+        "Cosmic Grey"
+      ],
+      "keywords": "elektronik  speaker audio suara electronics smart speakers speaker pintar smart home homepod",
+      "description": "Apple HomePod Mini Cosmic Grey adalah speaker pintar ringkas untuk ekosistem Apple.",
+      "knowledge": {
+        "summary": "Apple HomePod Mini Cosmic Grey adalah speaker pintar ringkas untuk ekosistem Apple.",
+        "useCase": "Audio dan penggunaan rumah pintar dalam ekosistem Apple.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Speaker pintar"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Desain ringkas"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Cosmic Grey"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Versi, protokol koneksi, dan kompatibilitas perangkat tertentu"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 103,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/apple-homepod-mini-cosmic-grey-1.webp",
+      "demo": true
+    },
+    {
+      "id": "apple-iphone-charger",
+      "name": "Apple iPhone Charger",
+      "brand": "Apple",
+      "category": "Elektronik",
+      "price": 280000,
+      "oldPrice": 346000,
+      "rating": 4.2,
+      "stock": 31,
+      "specs": [
+        "Pengisi daya iPhone"
+      ],
+      "keywords": "elektronik  charger pengisi daya electronics chargers charger pengisi daya iphone",
+      "description": "Apple iPhone Charger adalah aksesori pengisian daya untuk iPhone dalam katalog contoh.",
+      "knowledge": {
+        "summary": "Apple iPhone Charger adalah aksesori pengisian daya untuk iPhone dalam katalog contoh.",
+        "useCase": "Mengisi daya iPhone dengan aksesori yang kompatibel.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Pengisi daya iPhone"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Watt, jenis port, kabel dalam paket, dan model iPhone yang kompatibel"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 104,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/apple-iphone-charger-1.webp",
+      "demo": true
+    },
+    {
+      "id": "beats-flex-wireless-earphones",
+      "name": "Beats Flex Wireless Earphones",
+      "brand": "Beats",
+      "category": "Elektronik",
+      "price": 700000,
+      "oldPrice": 778000,
+      "rating": 4.2,
+      "stock": 50,
+      "specs": [
+        "Earphone wireless",
+        "Earbud magnetik",
+        "Baterai hingga 12 jam"
+      ],
+      "keywords": "elektronik  earphone audio musik electronics wireless earphones earphone wireless audio magnetik baterai",
+      "description": "Beats Flex Wireless Earphones memiliki earbud magnetik dan baterai hingga 12 jam menurut deskripsi sumber demo.",
+      "knowledge": {
+        "summary": "Beats Flex Wireless Earphones memiliki earbud magnetik dan baterai hingga 12 jam menurut deskripsi sumber demo.",
+        "useCase": "Audio wireless untuk penggunaan harian.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Earphone wireless"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Earbud magnetik"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Baterai hingga 12 jam"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "ANC, codec, dan ketahanan air"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 107,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/beats-flex-wireless-earphones-1.webp",
+      "demo": true
+    },
+    {
+      "id": "iphone-13-pro",
+      "name": "iPhone 13 Pro",
+      "brand": "Apple",
+      "category": "Elektronik",
+      "price": 15400000,
+      "oldPrice": 17112000,
+      "rating": 4.1,
+      "stock": 56,
+      "specs": [
+        "Smartphone Apple",
+        "Seri iPhone 13 Pro"
+      ],
+      "keywords": "elektronik handphone hp ponsel smartphone  smartphones apple hp ponsel smartphone iphone kamera",
+      "description": "iPhone 13 Pro adalah smartphone Apple; deskripsi sumber menyebut kamera, chip, dan layar tanpa rincian varian.",
+      "knowledge": {
+        "summary": "iPhone 13 Pro adalah smartphone Apple; deskripsi sumber menyebut kamera, chip, dan layar tanpa rincian varian.",
+        "useCase": "Komunikasi, foto, dan penggunaan smartphone harian.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Smartphone Apple"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Seri iPhone 13 Pro"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Storage, RAM, kondisi unit, kesehatan baterai, dan garansi"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 123,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/iphone-13-pro-1.webp",
+      "demo": true
+    },
+    {
+      "id": "oppo-a57",
+      "name": "Oppo A57",
+      "brand": "Oppo",
+      "category": "Elektronik",
+      "price": 3500000,
+      "oldPrice": 3889000,
+      "rating": 3.9,
+      "stock": 19,
+      "specs": [
+        "Smartphone Oppo",
+        "Seri A57"
+      ],
+      "keywords": "elektronik handphone hp ponsel smartphone  smartphones oppo hp ponsel smartphone oppo",
+      "description": "Oppo A57 adalah smartphone kelas menengah dalam deskripsi sumber demo.",
+      "knowledge": {
+        "summary": "Oppo A57 adalah smartphone kelas menengah dalam deskripsi sumber demo.",
+        "useCase": "Komunikasi dan penggunaan smartphone harian.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Smartphone Oppo"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Seri A57"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Versi atau tahun, RAM, storage, chipset, dan kapasitas baterai"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 125,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/oppo-a57-1.webp",
+      "demo": true
+    },
+    {
+      "id": "realme-c35",
+      "name": "Realme C35",
+      "brand": "Realme",
+      "category": "Elektronik",
+      "price": 2100000,
+      "oldPrice": 2471000,
+      "rating": 4.2,
+      "stock": 48,
+      "specs": [
+        "Smartphone Realme",
+        "Seri C35"
+      ],
+      "keywords": "elektronik handphone hp ponsel smartphone  smartphones realme hp ponsel smartphone realme",
+      "description": "Realme C35 adalah smartphone untuk kebutuhan dasar sehari-hari dengan posisi harga terjangkau dalam katalog demo.",
+      "knowledge": {
+        "summary": "Realme C35 adalah smartphone untuk kebutuhan dasar sehari-hari dengan posisi harga terjangkau dalam katalog demo.",
+        "useCase": "Komunikasi dan penggunaan smartphone dasar.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Smartphone Realme"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Seri C35"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "RAM, storage, chipset, kamera, dan kapasitas baterai"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 128,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/realme-c35-1.webp",
+      "demo": true
+    },
+    {
+      "id": "blue-black-check-shirt",
+      "name": "Kemeja Kotak Biru & Hitam",
+      "brand": "Fashion Trends",
+      "category": "Fashion",
+      "price": 420000,
+      "oldPrice": 495000,
+      "rating": 3.6,
+      "stock": 38,
+      "specs": [
+        "Motif kotak",
+        "Biru dan hitam",
+        "Kemeja pria"
+      ],
+      "keywords": "fashion kemeja baju pakaian pria  clothing men's shirts kemeja pria kotak kasual kantor",
+      "description": "Kemeja pria dengan motif kotak biru dan hitam untuk gaya kasual atau semi-formal.",
+      "knowledge": {
+        "summary": "Kemeja pria dengan motif kotak biru dan hitam untuk gaya kasual atau semi-formal.",
+        "useCase": "Outfit kasual dan semi-formal.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Motif kotak"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Biru dan hitam"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Kemeja pria"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Komposisi kain, ukuran, dan potongan fit"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 83,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/blue-black-check-shirt-1.webp",
+      "demo": true
+    },
+    {
+      "id": "man-plaid-shirt",
+      "name": "Kemeja Plaid Pria",
+      "brand": "Classic Wear",
+      "category": "Fashion",
+      "price": 490000,
+      "oldPrice": 613000,
+      "rating": 3.5,
+      "stock": 82,
+      "specs": [
+        "Motif plaid",
+        "Kemeja pria"
+      ],
+      "keywords": "fashion kemeja baju pakaian pria  clothing men's shirts kemeja pria kotak plaid kasual",
+      "description": "Kemeja pria bermotif plaid dengan gaya kasual.",
+      "knowledge": {
+        "summary": "Kemeja pria bermotif plaid dengan gaya kasual.",
+        "useCase": "Outfit kasual sehari-hari.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Motif plaid"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Kemeja pria"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Komposisi kain, ukuran, dan potongan fit"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 85,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/man-plaid-shirt-1.webp",
+      "demo": true
+    },
+    {
+      "id": "man-short-sleeve-shirt",
+      "name": "Kemeja Lengan Pendek",
+      "brand": "Casual Comfort",
+      "category": "Fashion",
+      "price": 280000,
+      "oldPrice": 312000,
+      "rating": 2.9,
+      "stock": 5,
+      "specs": [
+        "Lengan pendek",
+        "Gaya kasual"
+      ],
+      "keywords": "fashion kemeja baju pakaian pria  clothing men's shirts kemeja lengan pendek santai",
+      "description": "Kemeja berlengan pendek untuk gaya santai pada cuaca hangat.",
+      "knowledge": {
+        "summary": "Kemeja berlengan pendek untuk gaya santai pada cuaca hangat.",
+        "useCase": "Outfit santai dan cuaca hangat.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Lengan pendek"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Gaya kasual"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Komposisi kain, ukuran, dan potongan fit"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 86,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/man-short-sleeve-shirt-1.webp",
+      "demo": true
+    },
+    {
+      "id": "men-check-shirt",
+      "name": "Kemeja Check Pria",
+      "brand": "Urban Chic",
+      "category": "Fashion",
+      "price": 392000,
+      "oldPrice": 441000,
+      "rating": 2.7,
+      "stock": 95,
+      "specs": [
+        "Motif check",
+        "Kemeja pria"
+      ],
+      "keywords": "fashion kemeja baju pakaian pria  clothing men's shirts kemeja pria kotak check",
+      "description": "Kemeja pria bermotif check yang mudah dipadukan untuk berbagai acara.",
+      "knowledge": {
+        "summary": "Kemeja pria bermotif check yang mudah dipadukan untuk berbagai acara.",
+        "useCase": "Outfit harian dengan motif kotak.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Motif check"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Kemeja pria"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Komposisi kain, ukuran, dan potongan fit"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 87,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/men-check-shirt-1.webp",
+      "demo": true
+    },
+    {
+      "id": "girl-summer-dress",
+      "name": "Summer Dress",
+      "brand": "SEDARI",
+      "category": "Fashion",
+      "price": 280000,
+      "oldPrice": 346000,
+      "rating": 4.8,
+      "stock": 43,
+      "specs": [
+        "Dress",
+        "Kain ringan",
+        "Motif playful"
+      ],
+      "keywords": "fashion dress gaun baju pakaian wanita  clothing girls' dresses dress gaun musim panas",
+      "description": "Dress musim panas dengan kain ringan dan motif playful menurut deskripsi contoh.",
+      "knowledge": {
+        "summary": "Dress musim panas dengan kain ringan dan motif playful menurut deskripsi contoh.",
+        "useCase": "Outfit untuk cuaca hangat.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Dress"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Kain ringan"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Motif playful"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Komposisi kain, ukuran, dan panjang dress"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 163,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/girl-summer-dress-1.webp",
+      "demo": true
+    },
+    {
+      "id": "gray-dress",
+      "name": "Gray Everyday Dress",
+      "brand": "RUMAH RASA",
+      "category": "Fashion",
+      "price": 490000,
+      "oldPrice": 570000,
+      "rating": 2.7,
+      "stock": 55,
+      "specs": [
+        "Dress",
+        "Abu-abu"
+      ],
+      "keywords": "fashion dress gaun baju pakaian wanita  clothing dresses dress gaun abu abu",
+      "description": "Dress berwarna abu-abu netral untuk gaya santai atau lebih rapi.",
+      "knowledge": {
+        "summary": "Dress berwarna abu-abu netral untuk gaya santai atau lebih rapi.",
+        "useCase": "Outfit dengan warna netral untuk berbagai acara.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Dress"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Abu-abu"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Komposisi kain, ukuran, dan panjang dress"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 164,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/gray-dress-1.webp",
+      "demo": true
+    },
+    {
+      "id": "blue-women-s-handbag",
+      "name": "Blue Everyday Handbag",
+      "brand": "Fashionista",
+      "category": "Fashion",
+      "price": 700000,
+      "oldPrice": 854000,
+      "rating": 2.9,
+      "stock": 76,
+      "specs": [
+        "Tas tangan",
+        "Biru",
+        "Beberapa kompartemen"
+      ],
+      "keywords": "fashion tas wanita  fashion accessories handbags tas tangan handbag biru kompartemen",
+      "description": "Tas tangan biru dengan beberapa kompartemen untuk penggunaan harian.",
+      "knowledge": {
+        "summary": "Tas tangan biru dengan beberapa kompartemen untuk penggunaan harian.",
+        "useCase": "Membawa barang harian dengan beberapa ruang penyimpanan.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Tas tangan"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Biru"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Beberapa kompartemen"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Material, dimensi, dan kapasitas"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 172,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/blue-women-s-handbag-1.webp",
+      "demo": true
+    },
+    {
+      "id": "heshe-women-s-leather-bag",
+      "name": "Heshe Leather Bag",
+      "brand": "Heshe",
+      "category": "Fashion",
+      "price": 1820000,
+      "oldPrice": 2023000,
+      "rating": 4.9,
+      "stock": 99,
+      "specs": [
+        "Tas tangan",
+        "Kulit menurut sumber demo",
+        "Desain klasik"
+      ],
+      "keywords": "fashion tas wanita  fashion accessories leather bags tas tangan kulit handbag leather",
+      "description": "Tas kulit Heshe dengan desain klasik menurut deskripsi sumber contoh.",
+      "knowledge": {
+        "summary": "Tas kulit Heshe dengan desain klasik menurut deskripsi sumber contoh.",
+        "useCase": "Tas tangan untuk melengkapi outfit.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Tas tangan"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Kulit menurut sumber demo"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Desain klasik"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Jenis kulit, dimensi, dan kapasitas"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 173,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/heshe-women-s-leather-bag-1.webp",
+      "demo": true
+    },
+    {
+      "id": "white-faux-leather-backpack",
+      "name": "White Faux Leather Backpack",
+      "brand": "Urban Chic",
+      "category": "Fashion",
+      "price": 560000,
+      "oldPrice": 659000,
+      "rating": 3.4,
+      "stock": 39,
+      "specs": [
+        "Ransel",
+        "Putih",
+        "Kulit sintetis"
+      ],
+      "keywords": "fashion tas wanita ransel punggung backpack fashion accessories backpacks tas ransel backpack putih kulit sintetis",
+      "description": "Ransel putih berbahan kulit sintetis dengan ruang penyimpanan untuk gaya harian.",
+      "knowledge": {
+        "summary": "Ransel putih berbahan kulit sintetis dengan ruang penyimpanan untuk gaya harian.",
+        "useCase": "Membawa barang harian dengan ransel.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Ransel"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Putih"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Kulit sintetis"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Kapasitas liter, dimensi, dan ukuran laptop yang muat"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 175,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/white-faux-leather-backpack-1.webp",
+      "demo": true
+    },
+    {
+      "id": "women-handbag-black",
+      "name": "Black Everyday Handbag",
+      "brand": "Elegance Collection",
+      "category": "Fashion",
+      "price": 840000,
+      "oldPrice": 955000,
+      "rating": 2.9,
+      "stock": 11,
+      "specs": [
+        "Tas tangan",
+        "Hitam",
+        "Desain klasik"
+      ],
+      "keywords": "fashion tas wanita  fashion accessories handbags tas tangan handbag hitam",
+      "description": "Tas tangan hitam dengan desain klasik untuk dipadukan dengan berbagai outfit.",
+      "knowledge": {
+        "summary": "Tas tangan hitam dengan desain klasik untuk dipadukan dengan berbagai outfit.",
+        "useCase": "Tas tangan harian dengan warna netral.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Tas tangan"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Hitam"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Desain klasik"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Material, dimensi, dan kapasitas"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 176,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/women-handbag-black-1.webp",
+      "demo": true
+    },
+    {
+      "id": "black-women-s-gown",
+      "name": "Black Evening Gown",
+      "brand": "SEDARI",
+      "category": "Fashion",
+      "price": 1820000,
+      "oldPrice": 2023000,
+      "rating": 3.6,
+      "stock": 25,
+      "specs": [
+        "Gaun malam",
+        "Hitam",
+        "Gaya formal"
+      ],
+      "keywords": "fashion gaun dress pakaian wanita  clothing gowns gaun dress formal malam",
+      "description": "Gaun malam hitam untuk acara formal dan momen khusus.",
+      "knowledge": {
+        "summary": "Gaun malam hitam untuk acara formal dan momen khusus.",
+        "useCase": "Outfit acara formal.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Gaun malam"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Hitam"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Gaya formal"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Komposisi kain, ukuran, dan panjang gaun"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 177,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/black-women-s-gown-1.webp",
+      "demo": true
+    },
+    {
+      "id": "bedside-table-african-cherry",
+      "name": "Meja Samping African Cherry",
+      "brand": "Furniture Co.",
+      "category": "Rumah",
+      "price": 4200000,
+      "oldPrice": 5186000,
+      "rating": 2.9,
+      "stock": 64,
+      "specs": [
+        "Meja samping",
+        "Ruang penyimpanan"
+      ],
+      "keywords": "rumah furnitur perabot meja  furniture bedside tables meja samping kamar tidur penyimpanan",
+      "description": "Meja samping African Cherry untuk penyimpanan di sisi tempat tidur.",
+      "knowledge": {
+        "summary": "Meja samping African Cherry untuk penyimpanan di sisi tempat tidur.",
+        "useCase": "Meletakkan dan menyimpan barang di samping tempat tidur.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Meja samping"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Ruang penyimpanan"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Material, dimensi, dan batas beban"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 13,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/bedside-table-african-cherry-1.webp",
+      "demo": true
+    },
+    {
+      "id": "family-tree-photo-frame",
+      "name": "Bingkai Foto Family Tree",
+      "brand": "KALA GOODS",
+      "category": "Rumah",
+      "price": 420000,
+      "oldPrice": 495000,
+      "rating": 4.5,
+      "stock": 77,
+      "specs": [
+        "Bingkai foto",
+        "Beberapa slot foto",
+        "Gaya pohon keluarga"
+      ],
+      "keywords": "rumah dekorasi rumah bingkai foto pajangan home decor photo frame bingkai foto keluarga pajangan",
+      "description": "Bingkai foto bergaya pohon keluarga dengan beberapa slot foto.",
+      "knowledge": {
+        "summary": "Bingkai foto bergaya pohon keluarga dengan beberapa slot foto.",
+        "useCase": "Memajang beberapa foto keluarga.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Bingkai foto"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Beberapa slot foto"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Gaya pohon keluarga"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Jumlah slot dan ukuran foto"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 44,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/family-tree-photo-frame-1.webp",
+      "demo": true
+    },
+    {
+      "id": "house-showpiece-plant",
+      "name": "Tanaman Dekorasi Rumah",
+      "brand": "SEDARI",
+      "category": "Rumah",
+      "price": 560000,
+      "oldPrice": 623000,
+      "rating": 4.7,
+      "stock": 28,
+      "specs": [
+        "Tanaman artifisial",
+        "Dekorasi"
+      ],
+      "keywords": "rumah dekorasi rumah tanaman hias pajangan home decor artificial plants tanaman hias artifisial palsu dekorasi",
+      "description": "Tanaman dekorasi artifisial untuk menghadirkan tampilan hijau tanpa perawatan tanaman hidup.",
+      "knowledge": {
+        "summary": "Tanaman dekorasi artifisial untuk menghadirkan tampilan hijau tanpa perawatan tanaman hidup.",
+        "useCase": "Dekorasi ruangan.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Tanaman artifisial"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Dekorasi"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Material, dimensi, dan isi paket"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 45,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/house-showpiece-plant-1.webp",
+      "demo": true
+    },
+    {
+      "id": "bamboo-spatula",
+      "name": "Spatula Bambu",
+      "brand": "RUMAH RASA",
+      "category": "Rumah",
+      "price": 112000,
+      "oldPrice": 125000,
+      "rating": 3.3,
+      "stock": 37,
+      "specs": [
+        "Bahan bambu",
+        "Spatula"
+      ],
+      "keywords": "rumah dapur spatula masak kitchen tools utensils spatula bambu masak mengaduk",
+      "description": "Spatula bambu untuk membalik, mengaduk, dan menyajikan masakan.",
+      "knowledge": {
+        "summary": "Spatula bambu untuk membalik, mengaduk, dan menyajikan masakan.",
+        "useCase": "Menyiapkan dan menyajikan masakan.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Bahan bambu"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Spatula"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Dimensi dan petunjuk perawatan"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 48,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/bamboo-spatula-1.webp",
+      "demo": true
+    },
+    {
+      "id": "boxed-blender",
+      "name": "Blender Dapur",
+      "brand": "KALA GOODS",
+      "category": "Rumah",
+      "price": 560000,
+      "oldPrice": 623000,
+      "rating": 4.6,
+      "stock": 9,
+      "specs": [
+        "Kapasitas jar: 1,5 liter",
+        "Daya listrik: 350 watt",
+        "Material jar: Plastik bebas BPA"
+      ],
+      "keywords": "rumah dapur blender jus kitchen appliances blenders blender jus smoothie bumbu",
+      "description": "Blender untuk jus, smoothies, dan persiapan bumbu; rincian demo tersedia pada profil perbandingan.",
+      "knowledge": {
+        "summary": "Blender untuk jus, smoothies, dan persiapan bumbu; rincian demo tersedia pada profil perbandingan.",
+        "useCase": "Jus & bumbu dapur",
+        "specifications": [
+          {
+            "key": "capacityL",
+            "label": "Kapasitas jar",
+            "unit": "liter",
+            "value": 1.5
+          },
+          {
+            "key": "powerW",
+            "label": "Daya listrik",
+            "unit": "watt",
+            "value": 350
+          },
+          {
+            "key": "jarMaterial",
+            "label": "Material jar",
+            "value": "Plastik bebas BPA"
+          },
+          {
+            "key": "speeds",
+            "label": "Pilihan kecepatan",
+            "value": 2
+          },
+          {
+            "key": "pulse",
+            "label": "Mode pulse",
+            "type": "boolean",
+            "value": true
+          },
+          {
+            "key": "grinder",
+            "label": "Gelas penggiling",
+            "type": "boolean",
+            "value": true
+          },
+          {
+            "key": "weightKg",
+            "label": "Berat",
+            "unit": "kg",
+            "value": 1.8
+          },
+          {
+            "key": "warrantyMonths",
+            "label": "Garansi contoh",
+            "unit": "bulan",
+            "value": 12
+          }
+        ],
+        "strengths": [
+          "Ada gelas penggiling untuk bumbu",
+          "Kapasitas menengah dengan daya 350 watt"
+        ],
+        "tradeoffs": [
+          "Pilihan kecepatan lebih sedikit dari Dapur Rasa Mix"
+        ],
+        "unknowns": [
+          "Kemampuan menghancurkan es dan petunjuk penggunaan"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "fictional-comparison-profile",
+          "provider": "DummyJSON",
+          "id": 51,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/boxed-blender-1.webp",
+      "demo": true,
+      "comparison": {
+        "group": "blender-dapur",
+        "positioning": "Ukuran pas buat harian",
+        "useCase": "Jus & bumbu dapur",
+        "attributes": {
+          "capacityL": 1.5,
+          "powerW": 350,
+          "jarMaterial": "Plastik bebas BPA",
+          "speeds": 2,
+          "pulse": true,
+          "grinder": true,
+          "weightKg": 1.8,
+          "warrantyMonths": 12
+        },
+        "strengths": [
+          "Ada gelas penggiling untuk bumbu",
+          "Kapasitas menengah dengan daya 350 watt"
+        ],
+        "tradeoffs": [
+          "Pilihan kecepatan lebih sedikit dari Dapur Rasa Mix"
+        ],
+        "source": {
+          "type": "demo",
+          "note": "Spesifikasi dan kelebihan merupakan skenario ilustrasi, bukan hasil pengujian."
+        }
+      }
+    },
+    {
+      "id": "carbon-steel-wok",
+      "name": "Wajan Carbon Steel",
+      "brand": "SEDARI",
+      "category": "Rumah",
+      "price": 420000,
+      "oldPrice": 467000,
+      "rating": 4.1,
+      "stock": 40,
+      "specs": [
+        "Carbon steel",
+        "Wajan"
+      ],
+      "keywords": "rumah dapur wajan masak cookware woks wajan tumis menggoreng carbon steel",
+      "description": "Wajan carbon steel untuk menumis dan menggoreng.",
+      "knowledge": {
+        "summary": "Wajan carbon steel untuk menumis dan menggoreng.",
+        "useCase": "Menumis dan menggoreng masakan.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Carbon steel"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Wajan"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Diameter, ketebalan, dan kompatibilitas kompor induksi"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 52,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/carbon-steel-wok-1.webp",
+      "demo": true
+    },
+    {
+      "id": "chopping-board",
+      "name": "Talenan Kayu",
+      "brand": "RUMAH RASA",
+      "category": "Rumah",
+      "price": 182000,
+      "oldPrice": 203000,
+      "rating": 3.7,
+      "stock": 14,
+      "specs": [
+        "Talenan",
+        "Kayu sesuai nama listing"
+      ],
+      "keywords": "rumah dapur talenan papan potong kitchen tools cutting boards talenan kayu papan potong",
+      "description": "Talenan kayu untuk memotong dan menyiapkan bahan makanan.",
+      "knowledge": {
+        "summary": "Talenan kayu untuk memotong dan menyiapkan bahan makanan.",
+        "useCase": "Persiapan bahan masakan.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Talenan"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Kayu sesuai nama listing"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Jenis kayu, dimensi, dan petunjuk perawatan"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 53,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/chopping-board-1.webp",
+      "demo": true
+    },
+    {
+      "id": "glass",
+      "name": "Gelas Bening",
+      "brand": "KALA GOODS",
+      "category": "Rumah",
+      "price": 70000,
+      "oldPrice": 78000,
+      "rating": 4,
+      "stock": 46,
+      "specs": [
+        "Gelas minum",
+        "Bening"
+      ],
+      "keywords": "rumah dapur gelas minum drinkware glasses gelas minum bening",
+      "description": "Gelas bening untuk berbagai minuman.",
+      "knowledge": {
+        "summary": "Gelas bening untuk berbagai minuman.",
+        "useCase": "Menyajikan minuman.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Gelas minum"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Bening"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Kapasitas ml, ketahanan panas, dan jumlah dalam paket"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 59,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/glass-1.webp",
+      "demo": true
+    },
+    {
+      "id": "lunch-box",
+      "name": "Kotak Makan Everyday",
+      "brand": "SEDARI",
+      "category": "Rumah",
+      "price": 182000,
+      "oldPrice": 203000,
+      "rating": 4.9,
+      "stock": 94,
+      "specs": [
+        "Kotak makan",
+        "Kompartemen makanan",
+        "Portabel"
+      ],
+      "keywords": "rumah dapur kotak bekal makan kitchen tools storage kotak makan bekal lunch box",
+      "description": "Kotak makan portabel dengan kompartemen untuk memisahkan makanan.",
+      "knowledge": {
+        "summary": "Kotak makan portabel dengan kompartemen untuk memisahkan makanan.",
+        "useCase": "Membawa bekal.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Kotak makan"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Kompartemen makanan"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Portabel"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Kapasitas, material, ketahanan bocor, dan keamanan microwave"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 65,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/lunch-box-1.webp",
+      "demo": true
+    },
+    {
+      "id": "microwave-oven",
+      "name": "Microwave Oven",
+      "brand": "RUMAH RASA",
+      "category": "Rumah",
+      "price": 1260000,
+      "oldPrice": 1432000,
+      "rating": 4.8,
+      "stock": 59,
+      "specs": [
+        "Microwave",
+        "Pemanasan makanan",
+        "Defrost"
+      ],
+      "keywords": "rumah dapur microwave oven masak kitchen appliances microwaves microwave oven memanaskan defrost",
+      "description": "Microwave oven untuk memanaskan makanan, memasak, dan defrost menurut deskripsi sumber demo.",
+      "knowledge": {
+        "summary": "Microwave oven untuk memanaskan makanan, memasak, dan defrost menurut deskripsi sumber demo.",
+        "useCase": "Memanaskan makanan dan defrost.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Microwave"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Pemanasan makanan"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Defrost"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Daya watt, kapasitas liter, dan mode khusus"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 66,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/microwave-oven-1.webp",
+      "demo": true
+    },
+    {
+      "id": "silver-pot-with-glass-cap",
+      "name": "Panci Stainless dengan Tutup Kaca",
+      "brand": "KALA GOODS",
+      "category": "Rumah",
+      "price": 560000,
+      "oldPrice": 623000,
+      "rating": 3.2,
+      "stock": 40,
+      "specs": [
+        "Panci",
+        "Tutup kaca"
+      ],
+      "keywords": "rumah dapur panci masak cookware pots panci rebus tutup kaca",
+      "description": "Panci dengan tutup kaca untuk merebus dan memasak perlahan; tutupnya membantu melihat isi panci.",
+      "knowledge": {
+        "summary": "Panci dengan tutup kaca untuk merebus dan memasak perlahan; tutupnya membantu melihat isi panci.",
+        "useCase": "Merebus dan memasak perlahan.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Panci"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Tutup kaca"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Kapasitas, diameter, dan kompatibilitas kompor induksi"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 71,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/silver-pot-with-glass-cap-1.webp",
+      "demo": true
+    },
+    {
+      "id": "spice-rack",
+      "name": "Rak Bumbu Dapur",
+      "brand": "SEDARI",
+      "category": "Rumah",
+      "price": 280000,
+      "oldPrice": 319000,
+      "rating": 4.9,
+      "stock": 79,
+      "specs": [
+        "Rak bumbu",
+        "Organizer dapur"
+      ],
+      "keywords": "rumah dapur rak bumbu kitchen tools organization rak bumbu organizer dapur",
+      "description": "Rak untuk merapikan bumbu dan menjaga bahan dapur mudah dijangkau.",
+      "knowledge": {
+        "summary": "Rak untuk merapikan bumbu dan menjaga bahan dapur mudah dijangkau.",
+        "useCase": "Menyimpan dan merapikan bumbu.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Rak bumbu"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Organizer dapur"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Material, dimensi, dan jumlah wadah"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 73,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/spice-rack-1.webp",
+      "demo": true
+    },
+    {
+      "id": "essence-mascara-lash-princess",
+      "name": "Essence Mascara Lash Princess",
+      "brand": "Essence",
+      "category": "Kecantikan",
+      "price": 140000,
+      "oldPrice": 156000,
+      "rating": 2.6,
+      "stock": 99,
+      "specs": [
+        "Maskara",
+        "Efek volume dan panjang dalam deskripsi demo"
+      ],
+      "keywords": "kecantikan  maskara rias kosmetik makeup beauty mascara maskara mascara bulu mata makeup",
+      "description": "Maskara untuk memberi tampilan bulu mata lebih bervolume dan panjang menurut deskripsi sumber contoh.",
+      "knowledge": {
+        "summary": "Maskara untuk memberi tampilan bulu mata lebih bervolume dan panjang menurut deskripsi sumber contoh.",
+        "useCase": "Riasan bulu mata.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Maskara"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Efek volume dan panjang dalam deskripsi demo"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Komposisi, ukuran, waterproof, dan izin edar"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 1,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/essence-mascara-lash-princess-1.webp",
+      "demo": true
+    },
+    {
+      "id": "eyeshadow-palette-with-mirror",
+      "name": "Eyeshadow Palette with Mirror",
+      "brand": "Glamour Beauty",
+      "category": "Kecantikan",
+      "price": 280000,
+      "oldPrice": 342000,
+      "rating": 2.9,
+      "stock": 34,
+      "specs": [
+        "Palet eyeshadow",
+        "Beberapa warna",
+        "Cermin bawaan"
+      ],
+      "keywords": "kecantikan  riasan mata kosmetik makeup beauty eyeshadow eyeshadow palet riasan mata cermin makeup",
+      "description": "Palet eyeshadow dengan beberapa warna dan cermin bawaan.",
+      "knowledge": {
+        "summary": "Palet eyeshadow dengan beberapa warna dan cermin bawaan.",
+        "useCase": "Riasan mata.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Palet eyeshadow"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Beberapa warna"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Cermin bawaan"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Jumlah shade, komposisi, dan izin edar"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 2,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/eyeshadow-palette-with-mirror-1.webp",
+      "demo": true
+    },
+    {
+      "id": "powder-canister",
+      "name": "Powder Canister",
+      "brand": "Velvet Touch",
+      "category": "Kecantikan",
+      "price": 210000,
+      "oldPrice": 234000,
+      "rating": 4.6,
+      "stock": 89,
+      "specs": [
+        "Setting powder",
+        "Translucent",
+        "Tampilan matte"
+      ],
+      "keywords": "kecantikan  bedak kosmetik makeup beauty face powder bedak setting powder matte makeup",
+      "description": "Setting powder bertekstur ringan dan translucent untuk merapikan hasil riasan dengan tampilan matte menurut deskripsi demo.",
+      "knowledge": {
+        "summary": "Setting powder bertekstur ringan dan translucent untuk merapikan hasil riasan dengan tampilan matte menurut deskripsi demo.",
+        "useCase": "Menyelesaikan riasan wajah.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Setting powder"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Translucent"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Tampilan matte"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Shade, berat, komposisi, dan izin edar"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 3,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/powder-canister-1.webp",
+      "demo": true
+    },
+    {
+      "id": "red-lipstick",
+      "name": "Red Lipstick",
+      "brand": "Chic Cosmetics",
+      "category": "Kecantikan",
+      "price": 182000,
+      "oldPrice": 207000,
+      "rating": 4.4,
+      "stock": 91,
+      "specs": [
+        "Lipstik",
+        "Merah",
+        "Tekstur creamy"
+      ],
+      "keywords": "kecantikan  lipstik bibir kosmetik makeup beauty lipstick lipstik lipstick bibir merah makeup",
+      "description": "Lipstik merah dengan tekstur creamy menurut deskripsi sumber contoh.",
+      "knowledge": {
+        "summary": "Lipstik merah dengan tekstur creamy menurut deskripsi sumber contoh.",
+        "useCase": "Riasan bibir merah.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Lipstik"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Merah"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Tekstur creamy"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Komposisi, ukuran, transferproof, dan izin edar"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 4,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/red-lipstick-1.webp",
+      "demo": true
+    },
+    {
+      "id": "red-nail-polish",
+      "name": "Red Nail Polish",
+      "brand": "Nail Couture",
+      "category": "Kecantikan",
+      "price": 126000,
+      "oldPrice": 142000,
+      "rating": 4.3,
+      "stock": 79,
+      "specs": [
+        "Cat kuku",
+        "Merah",
+        "Glossy"
+      ],
+      "keywords": "kecantikan  kuteks cat kuku kosmetik makeup beauty nail polish kuteks cat kuku nail polish merah",
+      "description": "Cat kuku merah dengan tampilan glossy menurut deskripsi sumber contoh.",
+      "knowledge": {
+        "summary": "Cat kuku merah dengan tampilan glossy menurut deskripsi sumber contoh.",
+        "useCase": "Pewarna kuku.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Cat kuku"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Merah"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Glossy"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Komposisi, volume, dan waktu kering terukur"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 5,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/red-nail-polish-1.webp",
+      "demo": true
+    },
+    {
+      "id": "calvin-klein-ck-one",
+      "name": "Calvin Klein CK One",
+      "brand": "Calvin Klein",
+      "category": "Kecantikan",
+      "price": 700000,
+      "oldPrice": 778000,
+      "rating": 4.4,
+      "stock": 29,
+      "specs": [
+        "Parfum",
+        "Unisex",
+        "Segar dan bersih"
+      ],
+      "keywords": "kecantikan parfum wangi aroma  fragrances perfumes parfum wangi segar unisex",
+      "description": "Calvin Klein CK One adalah parfum unisex dengan karakter aroma segar dan bersih dalam deskripsi sumber contoh.",
+      "knowledge": {
+        "summary": "Calvin Klein CK One adalah parfum unisex dengan karakter aroma segar dan bersih dalam deskripsi sumber contoh.",
+        "useCase": "Parfum harian dengan karakter aroma segar.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Parfum"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Unisex"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Segar dan bersih"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Volume botol, konsentrasi, ketahanan aroma, dan autentikasi produk"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 6,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/calvin-klein-ck-one-1.webp",
+      "demo": true
+    },
+    {
+      "id": "dior-j-adore",
+      "name": "Dior J'adore",
+      "brand": "Dior",
+      "category": "Kecantikan",
+      "price": 1260000,
+      "oldPrice": 1483000,
+      "rating": 3.8,
+      "stock": 98,
+      "specs": [
+        "Parfum floral",
+        "Ylang-ylang, mawar, jasmine"
+      ],
+      "keywords": "kecantikan parfum wangi aroma  fragrances perfumes parfum wangi floral bunga",
+      "description": "Dior J’adore adalah parfum floral; deskripsi sumber menyebut ylang-ylang, mawar, dan jasmine.",
+      "knowledge": {
+        "summary": "Dior J’adore adalah parfum floral; deskripsi sumber menyebut ylang-ylang, mawar, dan jasmine.",
+        "useCase": "Parfum dengan karakter floral.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Parfum floral"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Ylang-ylang, mawar, jasmine"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Volume botol, konsentrasi, ketahanan aroma, dan autentikasi produk"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 8,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/dior-j-adore-1.webp",
+      "demo": true
+    },
+    {
+      "id": "attitude-super-leaves-hand-soap",
+      "name": "Attitude Super Leaves Hand Soap",
+      "brand": "Attitude",
+      "category": "Kecantikan",
+      "price": 126000,
+      "oldPrice": 154000,
+      "rating": 3.2,
+      "stock": 94,
+      "specs": [
+        "Sabun tangan",
+        "Seri Super Leaves"
+      ],
+      "keywords": "kecantikan perawatan tubuh skincare sabun tangan personal care hand soap sabun tangan hand soap",
+      "description": "Sabun tangan Attitude Super Leaves untuk membersihkan tangan menurut deskripsi sumber contoh.",
+      "knowledge": {
+        "summary": "Sabun tangan Attitude Super Leaves untuk membersihkan tangan menurut deskripsi sumber contoh.",
+        "useCase": "Membersihkan tangan.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Sabun tangan"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Seri Super Leaves"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Komposisi lengkap, volume, dan izin edar"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 118,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/attitude-super-leaves-hand-soap-1.webp",
+      "demo": true
+    },
+    {
+      "id": "olay-ultra-moisture-shea-butter-body-wash",
+      "name": "Olay Ultra Moisture Shea Butter Body Wash",
+      "brand": "Olay",
+      "category": "Kecantikan",
+      "price": 182000,
+      "oldPrice": 217000,
+      "rating": 4.5,
+      "stock": 34,
+      "specs": [
+        "Sabun mandi",
+        "Shea butter dalam deskripsi demo"
+      ],
+      "keywords": "kecantikan perawatan tubuh skincare sabun mandi personal care body wash sabun mandi body wash shea butter",
+      "description": "Body wash Olay Ultra Moisture dengan shea butter dalam deskripsi sumber contoh.",
+      "knowledge": {
+        "summary": "Body wash Olay Ultra Moisture dengan shea butter dalam deskripsi sumber contoh.",
+        "useCase": "Membersihkan tubuh saat mandi.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Sabun mandi"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Shea butter dalam deskripsi demo"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Komposisi lengkap, volume, dan izin edar"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 119,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/olay-ultra-moisture-shea-butter-body-wash-1.webp",
+      "demo": true
+    },
+    {
+      "id": "vaseline-men-body-and-face-lotion",
+      "name": "Vaseline Men Body and Face Lotion",
+      "brand": "Vaseline",
+      "category": "Kecantikan",
+      "price": 140000,
+      "oldPrice": 161000,
+      "rating": 3.2,
+      "stock": 95,
+      "specs": [
+        "Losion",
+        "Untuk tubuh dan wajah"
+      ],
+      "keywords": "kecantikan perawatan tubuh skincare losion lotion pelembap personal care body lotion losion lotion pelembap tubuh wajah",
+      "description": "Losion Vaseline Men untuk tubuh dan wajah menurut nama serta deskripsi sumber contoh.",
+      "knowledge": {
+        "summary": "Losion Vaseline Men untuk tubuh dan wajah menurut nama serta deskripsi sumber contoh.",
+        "useCase": "Perawatan kelembapan tubuh dan wajah.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Losion"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Untuk tubuh dan wajah"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Komposisi lengkap, volume, SPF, dan izin edar"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 120,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/vaseline-men-body-and-face-lotion-1.webp",
+      "demo": true
+    },
+    {
+      "id": "puma-future-rider-trainers",
+      "name": "Puma Future Rider Trainers",
+      "brand": "Puma",
+      "category": "Olahraga",
+      "price": 1260000,
+      "oldPrice": 1400000,
+      "rating": 4.9,
+      "stock": 90,
+      "specs": [
+        "Trainers",
+        "Gaya retro",
+        "Penggunaan kasual"
+      ],
+      "keywords": "olahraga sepatu sneakers olahraga  footwear casual shoes sepatu sneakers trainers kasual retro",
+      "description": "Puma Future Rider Trainers memadukan gaya retro dengan penggunaan kasual sehari-hari.",
+      "knowledge": {
+        "summary": "Puma Future Rider Trainers memadukan gaya retro dengan penggunaan kasual sehari-hari.",
+        "useCase": "Sepatu kasual harian.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Trainers"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Gaya retro"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Penggunaan kasual"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Ukuran, material, bobot, dan spesifikasi untuk lari"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 90,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/puma-future-rider-trainers-1.webp",
+      "demo": true
+    },
+    {
+      "id": "basketball",
+      "name": "Bola Basket",
+      "brand": "SEDARI",
+      "category": "Olahraga",
+      "price": 210000,
+      "oldPrice": 234000,
+      "rating": 4.7,
+      "stock": 75,
+      "specs": [
+        "Bola basket",
+        "Indoor dan outdoor menurut sumber demo"
+      ],
+      "keywords": "olahraga  bola basket sports equipment basketball bola basket basketball",
+      "description": "Bola basket untuk dribbling, shooting, dan passing; sumber contoh menyebut penggunaan indoor dan outdoor.",
+      "knowledge": {
+        "summary": "Bola basket untuk dribbling, shooting, dan passing; sumber contoh menyebut penggunaan indoor dan outdoor.",
+        "useCase": "Bermain dan latihan basket.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Bola basket"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Indoor dan outdoor menurut sumber demo"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Ukuran nomor bola, material, dan tekanan angin"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 140,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/basketball-1.webp",
+      "demo": true
+    },
+    {
+      "id": "feather-shuttlecock",
+      "name": "Shuttlecock Feather",
+      "brand": "RUMAH RASA",
+      "category": "Olahraga",
+      "price": 84000,
+      "oldPrice": 94000,
+      "rating": 2.9,
+      "stock": 95,
+      "specs": [
+        "Shuttlecock",
+        "Bulu alami menurut sumber demo"
+      ],
+      "keywords": "olahraga  kok bulutangkis badminton sports equipment badminton kok bulutangkis badminton shuttlecock",
+      "description": "Shuttlecock dengan bulu alami menurut deskripsi sumber contoh untuk permainan badminton.",
+      "knowledge": {
+        "summary": "Shuttlecock dengan bulu alami menurut deskripsi sumber contoh untuk permainan badminton.",
+        "useCase": "Bermain bulutangkis.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Shuttlecock"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Bulu alami menurut sumber demo"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Speed, jumlah dalam tabung, dan standar turnamen"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 146,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/feather-shuttlecock-1.webp",
+      "demo": true
+    },
+    {
+      "id": "football",
+      "name": "Bola Sepak",
+      "brand": "KALA GOODS",
+      "category": "Olahraga",
+      "price": 252000,
+      "oldPrice": 280000,
+      "rating": 3.3,
+      "stock": 96,
+      "specs": [
+        "Bola sepak"
+      ],
+      "keywords": "olahraga  bola sepak sports equipment football bola sepak football soccer",
+      "description": "Bola sepak untuk menendang dan mengoper dalam permainan sepak bola.",
+      "knowledge": {
+        "summary": "Bola sepak untuk menendang dan mengoper dalam permainan sepak bola.",
+        "useCase": "Bermain dan latihan sepak bola.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Bola sepak"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Ukuran nomor bola, material, dan standar turnamen"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 147,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/football-1.webp",
+      "demo": true
+    },
+    {
+      "id": "tennis-ball",
+      "name": "Bola Tenis",
+      "brand": "SEDARI",
+      "category": "Olahraga",
+      "price": 98000,
+      "oldPrice": 112000,
+      "rating": 4.1,
+      "stock": 28,
+      "specs": [
+        "Bola tenis"
+      ],
+      "keywords": "olahraga  bola tenis sports equipment tennis bola tenis tennis",
+      "description": "Bola tenis untuk latihan atau permainan dengan raket tenis.",
+      "knowledge": {
+        "summary": "Bola tenis untuk latihan atau permainan dengan raket tenis.",
+        "useCase": "Bermain dan latihan tenis.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Bola tenis"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Jumlah dalam paket, jenis tekanan, dan standar turnamen"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 151,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/tennis-ball-1.webp",
+      "demo": true
+    },
+    {
+      "id": "tennis-racket",
+      "name": "Raket Tenis",
+      "brand": "RUMAH RASA",
+      "category": "Olahraga",
+      "price": 700000,
+      "oldPrice": 875000,
+      "rating": 4,
+      "stock": 6,
+      "specs": [
+        "Raket tenis",
+        "Frame, senar, dan grip"
+      ],
+      "keywords": "olahraga  raket tenis sports equipment tennis raket tenis tennis racket",
+      "description": "Raket tenis dengan frame, senar, dan grip dalam deskripsi sumber contoh.",
+      "knowledge": {
+        "summary": "Raket tenis dengan frame, senar, dan grip dalam deskripsi sumber contoh.",
+        "useCase": "Bermain tenis.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Raket tenis"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Frame, senar, dan grip"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Bobot, ukuran kepala, ukuran grip, dan tension"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 152,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/tennis-racket-1.webp",
+      "demo": true
+    },
+    {
+      "id": "volleyball",
+      "name": "Bola Voli",
+      "brand": "KALA GOODS",
+      "category": "Olahraga",
+      "price": 168000,
+      "oldPrice": 191000,
+      "rating": 3.8,
+      "stock": 5,
+      "specs": [
+        "Bola voli"
+      ],
+      "keywords": "olahraga  bola voli sports equipment volleyball bola voli volleyball",
+      "description": "Bola voli untuk passing, setting, dan spike.",
+      "knowledge": {
+        "summary": "Bola voli untuk passing, setting, dan spike.",
+        "useCase": "Bermain dan latihan voli.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Bola voli"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Ukuran, material, dan standar turnamen"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 153,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/volleyball-1.webp",
+      "demo": true
+    },
+    {
+      "id": "honey-jar",
+      "name": "Madu dalam Jar",
+      "brand": "SEDARI",
+      "category": "Makanan",
+      "price": 98000,
+      "oldPrice": 114000,
+      "rating": 4,
+      "stock": 34,
+      "specs": [
+        "Madu",
+        "Kemasan jar"
+      ],
+      "keywords": "makanan  madu condiments madu honey pemanis",
+      "description": "Madu dalam jar untuk pemanis minuman atau pelengkap makanan.",
+      "knowledge": {
+        "summary": "Madu dalam jar untuk pemanis minuman atau pelengkap makanan.",
+        "useCase": "Menambahkan rasa manis pada makanan dan minuman.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Madu"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Kemasan jar"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Berat bersih, komposisi, sertifikasi, dan kedaluwarsa"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 27,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/honey-jar-1.webp",
+      "demo": true
+    },
+    {
+      "id": "juice",
+      "name": "Jus Buah",
+      "brand": "RUMAH RASA",
+      "category": "Makanan",
+      "price": 56000,
+      "oldPrice": 64000,
+      "rating": 3.9,
+      "stock": 50,
+      "specs": [
+        "Jus buah"
+      ],
+      "keywords": "makanan  jus minuman beverages jus buah juice minuman",
+      "description": "Jus buah sebagai pilihan minuman dalam katalog contoh.",
+      "knowledge": {
+        "summary": "Jus buah sebagai pilihan minuman dalam katalog contoh.",
+        "useCase": "Minuman buah.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Jus buah"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Jenis buah, volume, gula, komposisi, dan kedaluwarsa"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 29,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/juice-1.webp",
+      "demo": true
+    },
+    {
+      "id": "milk",
+      "name": "Susu Harian",
+      "brand": "KALA GOODS",
+      "category": "Makanan",
+      "price": 49000,
+      "oldPrice": 57000,
+      "rating": 2.6,
+      "stock": 27,
+      "specs": [
+        "Susu"
+      ],
+      "keywords": "makanan  susu minuman dairy susu milk minuman",
+      "description": "Susu untuk diminum atau digunakan dalam resep harian.",
+      "knowledge": {
+        "summary": "Susu untuk diminum atau digunakan dalam resep harian.",
+        "useCase": "Minuman dan bahan resep.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Susu"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Volume, jenis susu, alergen, informasi gizi, dan kedaluwarsa"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 32,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/milk-1.webp",
+      "demo": true
+    },
+    {
+      "id": "nescafe-coffee",
+      "name": "Nescafe Coffee",
+      "brand": "SEDARI",
+      "category": "Makanan",
+      "price": 112000,
+      "oldPrice": 125000,
+      "rating": 4.8,
+      "stock": 57,
+      "specs": [
+        "Kopi",
+        "Nama listing Nescafe"
+      ],
+      "keywords": "makanan  kopi minuman beverages coffee kopi coffee nescafe minuman",
+      "description": "Kopi Nescafe untuk pilihan minuman kopi harian dalam katalog contoh.",
+      "knowledge": {
+        "summary": "Kopi Nescafe untuk pilihan minuman kopi harian dalam katalog contoh.",
+        "useCase": "Membuat minuman kopi.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Kopi"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Nama listing Nescafe"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Varian, berat, komposisi, dan kedaluwarsa"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 34,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/nescafe-coffee-1.webp",
+      "demo": true
+    },
+    {
+      "id": "rice",
+      "name": "Beras Pilihan",
+      "brand": "RUMAH RASA",
+      "category": "Makanan",
+      "price": 84000,
+      "oldPrice": 94000,
+      "rating": 3.2,
+      "stock": 59,
+      "specs": [
+        "Beras"
+      ],
+      "keywords": "makanan  beras grains beras rice nasi",
+      "description": "Beras untuk bahan nasi dan berbagai masakan harian.",
+      "knowledge": {
+        "summary": "Beras untuk bahan nasi dan berbagai masakan harian.",
+        "useCase": "Bahan makanan pokok.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Beras"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Jenis beras, berat, asal, dan informasi kemasan"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 38,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/rice-1.webp",
+      "demo": true
+    },
+    {
+      "id": "monopod",
+      "name": "Monopod Kamera",
+      "brand": "TechGear",
+      "category": "Hobi",
+      "price": 280000,
+      "oldPrice": 312000,
+      "rating": 4.4,
+      "stock": 48,
+      "specs": [
+        "Monopod",
+        "Posisi dapat diatur"
+      ],
+      "keywords": "hobi  kamera foto video tripod monopod electronics camera accessories monopod kamera foto video penyangga",
+      "description": "Monopod kamera untuk menopang pengambilan foto dan video dengan posisi yang dapat diatur menurut sumber demo.",
+      "knowledge": {
+        "summary": "Monopod kamera untuk menopang pengambilan foto dan video dengan posisi yang dapat diatur menurut sumber demo.",
+        "useCase": "Mendukung pengambilan foto dan video.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Monopod"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Posisi dapat diatur"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Batas beban, tinggi, dudukan, dan kompatibilitas kamera"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 109,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/monopod-1.webp",
+      "demo": true
+    },
+    {
+      "id": "selfie-lamp-with-iphone",
+      "name": "Selfie Ring Light",
+      "brand": "GadgetMaster",
+      "category": "Hobi",
+      "price": 210000,
+      "oldPrice": 260000,
+      "rating": 3.6,
+      "stock": 58,
+      "specs": [
+        "Lampu LED",
+        "Portabel",
+        "Dapat diatur"
+      ],
+      "keywords": "hobi  lampu foto video konten electronics selfie accessories lampu led ring light selfie video call",
+      "description": "Lampu LED selfie portabel yang dapat diatur untuk foto dan video call menurut sumber demo.",
+      "knowledge": {
+        "summary": "Lampu LED selfie portabel yang dapat diatur untuk foto dan video call menurut sumber demo.",
+        "useCase": "Pencahayaan selfie dan video call.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Lampu LED"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Portabel"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Dapat diatur"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Daya, suhu warna, brightness, dan kompatibilitas dudukan HP"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 110,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/selfie-lamp-with-iphone-1.webp",
+      "demo": true
+    },
+    {
+      "id": "selfie-stick-monopod",
+      "name": "Selfie Stick Monopod",
+      "brand": "SnapTech",
+      "category": "Hobi",
+      "price": 182000,
+      "oldPrice": 225000,
+      "rating": 3.9,
+      "stock": 11,
+      "specs": [
+        "Tongkat selfie",
+        "Dapat diperpanjang",
+        "Dapat dilipat"
+      ],
+      "keywords": "hobi  tongkat selfie foto video electronics selfie accessories tongkat selfie monopod foto grup",
+      "description": "Selfie stick monopod yang dapat diperpanjang dan dilipat untuk foto selfie atau grup.",
+      "knowledge": {
+        "summary": "Selfie stick monopod yang dapat diperpanjang dan dilipat untuk foto selfie atau grup.",
+        "useCase": "Foto selfie dan grup.",
+        "specifications": [
+          {
+            "label": "Informasi katalog",
+            "value": "Tongkat selfie"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Dapat diperpanjang"
+          },
+          {
+            "label": "Informasi katalog",
+            "value": "Dapat dilipat"
+          }
+        ],
+        "strengths": [],
+        "tradeoffs": [],
+        "unknowns": [
+          "Panjang, batas beban, dan kompatibilitas dudukan perangkat"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "curated-source-description",
+          "provider": "DummyJSON",
+          "id": 111,
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/products/selfie-stick-monopod-1.webp",
+      "demo": true
+    },
+    {
+      "id": "audia-focus-one",
+      "name": "Focus One ANC Headphones",
+      "brand": "AUDIA",
+      "category": "Elektronik",
+      "price": 529000,
+      "oldPrice": 699000,
+      "rating": 4.7,
+      "stock": 24,
+      "specs": [
+        "Koneksi: Bluetooth 5.3",
+        "Ukuran driver: 40 mm",
+        "Baterai hingga: 40 jam"
+      ],
+      "keywords": "headphone headset audio wireless musik anc",
+      "description": "Headphone over-ear dalam skenario demo untuk fokus saat perjalanan, dengan ANC, multipoint, dan baterai hingga 40 jam.",
+      "knowledge": {
+        "summary": "Headphone over-ear dalam skenario demo untuk fokus saat perjalanan, dengan ANC, multipoint, dan baterai hingga 40 jam.",
+        "useCase": "Komuter & ruang ramai",
+        "specifications": [
+          {
+            "key": "connection",
+            "label": "Koneksi",
+            "value": "Bluetooth 5.3"
+          },
+          {
+            "key": "driverMm",
+            "label": "Ukuran driver",
+            "unit": "mm",
+            "value": 40
+          },
+          {
+            "key": "batteryHours",
+            "label": "Baterai hingga",
+            "unit": "jam",
+            "value": 40
+          },
+          {
+            "key": "anc",
+            "label": "Active noise cancelling",
+            "type": "boolean",
+            "value": true
+          },
+          {
+            "key": "multipoint",
+            "label": "Dua perangkat sekaligus",
+            "type": "boolean",
+            "value": true
+          },
+          {
+            "key": "weightG",
+            "label": "Berat",
+            "unit": "g",
+            "value": 265
+          },
+          {
+            "key": "wired",
+            "label": "Mode kabel audio",
+            "type": "boolean",
+            "value": true
+          },
+          {
+            "key": "warrantyMonths",
+            "label": "Garansi contoh",
+            "unit": "bulan",
+            "value": 12
+          }
+        ],
+        "strengths": [
+          "ANC tersedia untuk meredam suara sekitar",
+          "Baterai paling lama dalam kelompok demo ini"
+        ],
+        "tradeoffs": [
+          "Harga dan bobot lebih tinggi dibanding dua alternatif"
+        ],
+        "unknowns": [
+          "Fitur yang tidak tercantum pada profil, kompatibilitas perangkat tertentu, dan hasil pengujian"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "fictional-comparison-profile",
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/competitors/audia-focus-one.svg",
+      "demo": true,
+      "comparison": {
+        "group": "headphone-wireless",
+        "positioning": "Fokus di perjalanan",
+        "useCase": "Komuter & ruang ramai",
+        "attributes": {
+          "connection": "Bluetooth 5.3",
+          "driverMm": 40,
+          "batteryHours": 40,
+          "anc": true,
+          "multipoint": true,
+          "weightG": 265,
+          "wired": true,
+          "warrantyMonths": 12
+        },
+        "strengths": [
+          "ANC tersedia untuk meredam suara sekitar",
+          "Baterai paling lama dalam kelompok demo ini"
+        ],
+        "tradeoffs": [
+          "Harga dan bobot lebih tinggi dibanding dua alternatif"
+        ],
+        "source": {
+          "type": "demo",
+          "note": "Spesifikasi dan kelebihan merupakan skenario ilustrasi, bukan hasil pengujian."
+        }
+      }
+    },
+    {
+      "id": "ritme-lite",
+      "name": "Lite Wireless Headphones",
+      "brand": "RITME",
+      "category": "Elektronik",
+      "price": 359000,
+      "oldPrice": 459000,
+      "rating": 4.5,
+      "stock": 24,
+      "specs": [
+        "Koneksi: Bluetooth 5.3",
+        "Ukuran driver: 40 mm",
+        "Baterai hingga: 24 jam"
+      ],
+      "keywords": "headphone headset audio wireless musik",
+      "description": "Pilihan headphone demo dengan bobot ringan dan harga lebih terjangkau. Cocok untuk menjelajahi kompromi fitur dalam perbandingan.",
+      "knowledge": {
+        "summary": "Pilihan headphone demo dengan bobot ringan dan harga lebih terjangkau. Cocok untuk menjelajahi kompromi fitur dalam perbandingan.",
+        "useCase": "Musik & pemakaian santai",
+        "specifications": [
+          {
+            "key": "connection",
+            "label": "Koneksi",
+            "value": "Bluetooth 5.3"
+          },
+          {
+            "key": "driverMm",
+            "label": "Ukuran driver",
+            "unit": "mm",
+            "value": 40
+          },
+          {
+            "key": "batteryHours",
+            "label": "Baterai hingga",
+            "unit": "jam",
+            "value": 24
+          },
+          {
+            "key": "anc",
+            "label": "Active noise cancelling",
+            "type": "boolean",
+            "value": false
+          },
+          {
+            "key": "multipoint",
+            "label": "Dua perangkat sekaligus",
+            "type": "boolean",
+            "value": false
+          },
+          {
+            "key": "weightG",
+            "label": "Berat",
+            "unit": "g",
+            "value": 185
+          },
+          {
+            "key": "wired",
+            "label": "Mode kabel audio",
+            "type": "boolean",
+            "value": false
+          },
+          {
+            "key": "warrantyMonths",
+            "label": "Garansi contoh",
+            "unit": "bulan",
+            "value": 6
+          }
+        ],
+        "strengths": [
+          "Harga paling rendah dalam kelompok demo ini",
+          "Bobot paling ringan dari tiga pilihan"
+        ],
+        "tradeoffs": [
+          "Tidak ada ANC, multipoint, atau mode kabel"
+        ],
+        "unknowns": [
+          "Fitur yang tidak tercantum pada profil, kompatibilitas perangkat tertentu, dan hasil pengujian"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "fictional-comparison-profile",
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/competitors/ritme-lite.svg",
+      "demo": true,
+      "comparison": {
+        "group": "headphone-wireless",
+        "positioning": "Ringan di budget",
+        "useCase": "Musik & pemakaian santai",
+        "attributes": {
+          "connection": "Bluetooth 5.3",
+          "driverMm": 40,
+          "batteryHours": 24,
+          "anc": false,
+          "multipoint": false,
+          "weightG": 185,
+          "wired": false,
+          "warrantyMonths": 6
+        },
+        "strengths": [
+          "Harga paling rendah dalam kelompok demo ini",
+          "Bobot paling ringan dari tiga pilihan"
+        ],
+        "tradeoffs": [
+          "Tidak ada ANC, multipoint, atau mode kabel"
+        ],
+        "source": {
+          "type": "demo",
+          "note": "Spesifikasi dan kelebihan merupakan skenario ilustrasi, bukan hasil pengujian."
+        }
+      }
+    },
+    {
+      "id": "fitra-pulse",
+      "name": "Pulse AMOLED Smartwatch",
+      "brand": "FITRA",
+      "category": "Elektronik",
+      "price": 699000,
+      "oldPrice": 849000,
+      "rating": 4.7,
+      "stock": 24,
+      "specs": [
+        "Jenis layar: AMOLED",
+        "Ukuran layar: 1,78 inci",
+        "Baterai hingga: 5 hari"
+      ],
+      "keywords": "jam pintar tangan arloji smartwatch gps",
+      "description": "Smartwatch konsep dengan layar AMOLED, GPS bawaan, dan panggilan Bluetooth. Spesifikasi disiapkan untuk demo perbandingan.",
+      "knowledge": {
+        "summary": "Smartwatch konsep dengan layar AMOLED, GPS bawaan, dan panggilan Bluetooth. Spesifikasi disiapkan untuk demo perbandingan.",
+        "useCase": "Aktivitas luar ruang",
+        "specifications": [
+          {
+            "key": "screenType",
+            "label": "Jenis layar",
+            "value": "AMOLED"
+          },
+          {
+            "key": "screenInches",
+            "label": "Ukuran layar",
+            "unit": "inci",
+            "value": 1.78
+          },
+          {
+            "key": "batteryDays",
+            "label": "Baterai hingga",
+            "unit": "hari",
+            "value": 5
+          },
+          {
+            "key": "gps",
+            "label": "GPS bawaan",
+            "type": "boolean",
+            "value": true
+          },
+          {
+            "key": "calls",
+            "label": "Panggilan Bluetooth",
+            "type": "boolean",
+            "value": true
+          },
+          {
+            "key": "waterResistance",
+            "label": "Ketahanan air",
+            "value": "5 ATM"
+          },
+          {
+            "key": "weightG",
+            "label": "Berat tanpa tali",
+            "unit": "g",
+            "value": 35
+          },
+          {
+            "key": "warrantyMonths",
+            "label": "Garansi contoh",
+            "unit": "bulan",
+            "value": 12
+          }
+        ],
+        "strengths": [
+          "GPS bawaan tanpa mengandalkan GPS HP",
+          "Layar AMOLED tersedia"
+        ],
+        "tradeoffs": [
+          "Baterai lebih singkat dan harga lebih tinggi"
+        ],
+        "unknowns": [
+          "Fitur yang tidak tercantum pada profil, kompatibilitas perangkat tertentu, dan hasil pengujian"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "fictional-comparison-profile",
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/competitors/fitra-pulse.svg",
+      "demo": true,
+      "comparison": {
+        "group": "smartwatch-harian",
+        "positioning": "Layar & tracking lebih lengkap",
+        "useCase": "Aktivitas luar ruang",
+        "attributes": {
+          "screenType": "AMOLED",
+          "screenInches": 1.78,
+          "batteryDays": 5,
+          "gps": true,
+          "calls": true,
+          "waterResistance": "5 ATM",
+          "weightG": 35,
+          "warrantyMonths": 12
+        },
+        "strengths": [
+          "GPS bawaan tanpa mengandalkan GPS HP",
+          "Layar AMOLED tersedia"
+        ],
+        "tradeoffs": [
+          "Baterai lebih singkat dan harga lebih tinggi"
+        ],
+        "source": {
+          "type": "demo",
+          "note": "Spesifikasi dan kelebihan merupakan skenario ilustrasi, bukan hasil pengujian."
+        }
+      }
+    },
+    {
+      "id": "nadi-endure",
+      "name": "Endure Everyday Smartwatch",
+      "brand": "NADI",
+      "category": "Elektronik",
+      "price": 459000,
+      "oldPrice": 599000,
+      "rating": 4.6,
+      "stock": 24,
+      "specs": [
+        "Jenis layar: IPS",
+        "Ukuran layar: 1,83 inci",
+        "Baterai hingga: 10 hari"
+      ],
+      "keywords": "jam pintar tangan arloji smartwatch baterai",
+      "description": "Smartwatch konsep yang memprioritaskan baterai panjang, layar besar, dan fitur aktivitas sederhana dengan harga lebih rendah.",
+      "knowledge": {
+        "summary": "Smartwatch konsep yang memprioritaskan baterai panjang, layar besar, dan fitur aktivitas sederhana dengan harga lebih rendah.",
+        "useCase": "Tracking sederhana & baterai",
+        "specifications": [
+          {
+            "key": "screenType",
+            "label": "Jenis layar",
+            "value": "IPS"
+          },
+          {
+            "key": "screenInches",
+            "label": "Ukuran layar",
+            "unit": "inci",
+            "value": 1.83
+          },
+          {
+            "key": "batteryDays",
+            "label": "Baterai hingga",
+            "unit": "hari",
+            "value": 10
+          },
+          {
+            "key": "gps",
+            "label": "GPS bawaan",
+            "type": "boolean",
+            "value": false
+          },
+          {
+            "key": "calls",
+            "label": "Panggilan Bluetooth",
+            "type": "boolean",
+            "value": false
+          },
+          {
+            "key": "waterResistance",
+            "label": "Ketahanan air",
+            "value": "IP68"
+          },
+          {
+            "key": "weightG",
+            "label": "Berat tanpa tali",
+            "unit": "g",
+            "value": 28
+          },
+          {
+            "key": "warrantyMonths",
+            "label": "Garansi contoh",
+            "unit": "bulan",
+            "value": 6
+          }
+        ],
+        "strengths": [
+          "Baterai paling lama dalam kelompok demo ini",
+          "Harga lebih rendah dan layar lebih besar"
+        ],
+        "tradeoffs": [
+          "Tidak ada GPS bawaan atau panggilan Bluetooth"
+        ],
+        "unknowns": [
+          "Fitur yang tidak tercantum pada profil, kompatibilitas perangkat tertentu, dan hasil pengujian"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "fictional-comparison-profile",
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/competitors/nadi-endure.svg",
+      "demo": true,
+      "comparison": {
+        "group": "smartwatch-harian",
+        "positioning": "Jarang isi ulang",
+        "useCase": "Tracking sederhana & baterai",
+        "attributes": {
+          "screenType": "IPS",
+          "screenInches": 1.83,
+          "batteryDays": 10,
+          "gps": false,
+          "calls": false,
+          "waterResistance": "IP68",
+          "weightG": 28,
+          "warrantyMonths": 6
+        },
+        "strengths": [
+          "Baterai paling lama dalam kelompok demo ini",
+          "Harga lebih rendah dan layar lebih besar"
+        ],
+        "tradeoffs": [
+          "Tidak ada GPS bawaan atau panggilan Bluetooth"
+        ],
+        "source": {
+          "type": "demo",
+          "note": "Spesifikasi dan kelebihan merupakan skenario ilustrasi, bukan hasil pengujian."
+        }
+      }
+    },
+    {
+      "id": "dapur-rasa-mix",
+      "name": "Mix Glass Blender 2L",
+      "brand": "DAPUR RASA",
+      "category": "Rumah",
+      "price": 699000,
+      "oldPrice": 849000,
+      "rating": 4.8,
+      "stock": 24,
+      "specs": [
+        "Kapasitas jar: 2 liter",
+        "Daya listrik: 500 watt",
+        "Material jar: Kaca"
+      ],
+      "keywords": "blender dapur jus masak kaca",
+      "description": "Blender konsep untuk porsi keluarga dengan jar kaca dua liter, lima kecepatan, dan gelas penggiling. Data untuk demo.",
+      "knowledge": {
+        "summary": "Blender konsep untuk porsi keluarga dengan jar kaca dua liter, lima kecepatan, dan gelas penggiling. Data untuk demo.",
+        "useCase": "Persiapan minuman keluarga",
+        "specifications": [
+          {
+            "key": "capacityL",
+            "label": "Kapasitas jar",
+            "unit": "liter",
+            "value": 2
+          },
+          {
+            "key": "powerW",
+            "label": "Daya listrik",
+            "unit": "watt",
+            "value": 500
+          },
+          {
+            "key": "jarMaterial",
+            "label": "Material jar",
+            "value": "Kaca"
+          },
+          {
+            "key": "speeds",
+            "label": "Pilihan kecepatan",
+            "value": 5
+          },
+          {
+            "key": "pulse",
+            "label": "Mode pulse",
+            "type": "boolean",
+            "value": true
+          },
+          {
+            "key": "grinder",
+            "label": "Gelas penggiling",
+            "type": "boolean",
+            "value": true
+          },
+          {
+            "key": "weightKg",
+            "label": "Berat",
+            "unit": "kg",
+            "value": 3.2
+          },
+          {
+            "key": "warrantyMonths",
+            "label": "Garansi contoh",
+            "unit": "bulan",
+            "value": 24
+          }
+        ],
+        "strengths": [
+          "Jar dua liter dan lima pilihan kecepatan",
+          "Garansi contoh paling panjang dalam kelompok ini"
+        ],
+        "tradeoffs": [
+          "Daya, harga, dan bobot paling tinggi"
+        ],
+        "unknowns": [
+          "Fitur yang tidak tercantum pada profil, kompatibilitas perangkat tertentu, dan hasil pengujian"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "fictional-comparison-profile",
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/competitors/dapur-rasa-mix.svg",
+      "demo": true,
+      "comparison": {
+        "group": "blender-dapur",
+        "positioning": "Porsi lebih besar",
+        "useCase": "Persiapan minuman keluarga",
+        "attributes": {
+          "capacityL": 2,
+          "powerW": 500,
+          "jarMaterial": "Kaca",
+          "speeds": 5,
+          "pulse": true,
+          "grinder": true,
+          "weightKg": 3.2,
+          "warrantyMonths": 24
+        },
+        "strengths": [
+          "Jar dua liter dan lima pilihan kecepatan",
+          "Garansi contoh paling panjang dalam kelompok ini"
+        ],
+        "tradeoffs": [
+          "Daya, harga, dan bobot paling tinggi"
+        ],
+        "source": {
+          "type": "demo",
+          "note": "Spesifikasi dan kelebihan merupakan skenario ilustrasi, bukan hasil pengujian."
+        }
+      }
+    },
+    {
+      "id": "sedari-blend-mini",
+      "name": "Blend Mini Blender 1.2L",
+      "brand": "SEDARI",
+      "category": "Rumah",
+      "price": 429000,
+      "oldPrice": 549000,
+      "rating": 4.5,
+      "stock": 24,
+      "specs": [
+        "Kapasitas jar: 1,2 liter",
+        "Daya listrik: 300 watt",
+        "Material jar: Plastik bebas BPA"
+      ],
+      "keywords": "blender dapur jus mini",
+      "description": "Blender konsep yang ringkas untuk porsi kecil, dengan konsumsi daya dan bobot lebih rendah. Data untuk demo.",
+      "knowledge": {
+        "summary": "Blender konsep yang ringkas untuk porsi kecil, dengan konsumsi daya dan bobot lebih rendah. Data untuk demo.",
+        "useCase": "Porsi satu sampai dua orang",
+        "specifications": [
+          {
+            "key": "capacityL",
+            "label": "Kapasitas jar",
+            "unit": "liter",
+            "value": 1.2
+          },
+          {
+            "key": "powerW",
+            "label": "Daya listrik",
+            "unit": "watt",
+            "value": 300
+          },
+          {
+            "key": "jarMaterial",
+            "label": "Material jar",
+            "value": "Plastik bebas BPA"
+          },
+          {
+            "key": "speeds",
+            "label": "Pilihan kecepatan",
+            "value": 2
+          },
+          {
+            "key": "pulse",
+            "label": "Mode pulse",
+            "type": "boolean",
+            "value": true
+          },
+          {
+            "key": "grinder",
+            "label": "Gelas penggiling",
+            "type": "boolean",
+            "value": false
+          },
+          {
+            "key": "weightKg",
+            "label": "Berat",
+            "unit": "kg",
+            "value": 1.3
+          },
+          {
+            "key": "warrantyMonths",
+            "label": "Garansi contoh",
+            "unit": "bulan",
+            "value": 12
+          }
+        ],
+        "strengths": [
+          "Bobot ringan dan daya listrik lebih rendah",
+          "Harga paling rendah dalam kelompok demo ini"
+        ],
+        "tradeoffs": [
+          "Jar lebih kecil dan tanpa gelas penggiling"
+        ],
+        "unknowns": [
+          "Fitur yang tidak tercantum pada profil, kompatibilitas perangkat tertentu, dan hasil pengujian"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "fictional-comparison-profile",
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/competitors/sedari-blend-mini.svg",
+      "demo": true,
+      "comparison": {
+        "group": "blender-dapur",
+        "positioning": "Ringkas untuk dapur kecil",
+        "useCase": "Porsi satu sampai dua orang",
+        "attributes": {
+          "capacityL": 1.2,
+          "powerW": 300,
+          "jarMaterial": "Plastik bebas BPA",
+          "speeds": 2,
+          "pulse": true,
+          "grinder": false,
+          "weightKg": 1.3,
+          "warrantyMonths": 12
+        },
+        "strengths": [
+          "Bobot ringan dan daya listrik lebih rendah",
+          "Harga paling rendah dalam kelompok demo ini"
+        ],
+        "tradeoffs": [
+          "Jar lebih kecil dan tanpa gelas penggiling"
+        ],
+        "source": {
+          "type": "demo",
+          "note": "Spesifikasi dan kelebihan merupakan skenario ilustrasi, bukan hasil pengujian."
+        }
+      }
+    },
+    {
+      "id": "pace-daily-run",
+      "name": "Daily Run Mesh Sneakers",
+      "brand": "PACE",
+      "category": "Olahraga",
+      "price": 429000,
+      "oldPrice": 549000,
+      "rating": 4.8,
+      "stock": 24,
+      "specs": [
+        "Material upper: Engineered mesh",
+        "Bantalan midsole: EVA ringan",
+        "Material outsole: Karet"
+      ],
+      "keywords": "sepatu lari olahraga sneakers running",
+      "description": "Sepatu konsep untuk lari santai dengan upper mesh, bantalan ringan, dan detail reflektif. Ukuran dan bobot merupakan contoh.",
+      "knowledge": {
+        "summary": "Sepatu konsep untuk lari santai dengan upper mesh, bantalan ringan, dan detail reflektif. Ukuran dan bobot merupakan contoh.",
+        "useCase": "Lari santai & jalan sore",
+        "specifications": [
+          {
+            "key": "upper",
+            "label": "Material upper",
+            "value": "Engineered mesh"
+          },
+          {
+            "key": "midsole",
+            "label": "Bantalan midsole",
+            "value": "EVA ringan"
+          },
+          {
+            "key": "outsole",
+            "label": "Material outsole",
+            "value": "Karet"
+          },
+          {
+            "key": "weightG",
+            "label": "Berat per sepatu",
+            "unit": "g",
+            "value": 225
+          },
+          {
+            "key": "dropMm",
+            "label": "Heel drop",
+            "unit": "mm",
+            "value": 6
+          },
+          {
+            "key": "sizes",
+            "label": "Rentang ukuran",
+            "value": "38–45"
+          },
+          {
+            "key": "reflective",
+            "label": "Detail reflektif",
+            "type": "boolean",
+            "value": true
+          },
+          {
+            "key": "fit",
+            "label": "Bentuk fit",
+            "value": "Regular"
+          }
+        ],
+        "strengths": [
+          "Bobot paling ringan dalam kelompok demo ini",
+          "Ada detail reflektif"
+        ],
+        "tradeoffs": [
+          "Harga lebih tinggi dan ukuran dimulai dari 38"
+        ],
+        "unknowns": [
+          "Fitur yang tidak tercantum pada profil, kompatibilitas perangkat tertentu, dan hasil pengujian"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "fictional-comparison-profile",
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/competitors/pace-daily-run.svg",
+      "demo": true,
+      "comparison": {
+        "group": "sepatu-lari",
+        "positioning": "Ringan untuk bergerak",
+        "useCase": "Lari santai & jalan sore",
+        "attributes": {
+          "upper": "Engineered mesh",
+          "midsole": "EVA ringan",
+          "outsole": "Karet",
+          "weightG": 225,
+          "dropMm": 6,
+          "sizes": "38–45",
+          "reflective": true,
+          "fit": "Regular"
+        },
+        "strengths": [
+          "Bobot paling ringan dalam kelompok demo ini",
+          "Ada detail reflektif"
+        ],
+        "tradeoffs": [
+          "Harga lebih tinggi dan ukuran dimulai dari 38"
+        ],
+        "source": {
+          "type": "demo",
+          "note": "Spesifikasi dan kelebihan merupakan skenario ilustrasi, bukan hasil pengujian."
+        }
+      }
+    },
+    {
+      "id": "tapak-flex-run",
+      "name": "Flex Run Wide Sneakers",
+      "brand": "TAPAK",
+      "category": "Olahraga",
+      "price": 319000,
+      "oldPrice": 429000,
+      "rating": 4.6,
+      "stock": 24,
+      "specs": [
+        "Material upper: Knit",
+        "Bantalan midsole: EVA",
+        "Material outsole: Karet"
+      ],
+      "keywords": "sepatu lari olahraga sneakers running lebar",
+      "description": "Sepatu konsep dengan fit lebar dan upper knit, untuk mencoba perbandingan berdasarkan bentuk kaki dan budget.",
+      "knowledge": {
+        "summary": "Sepatu konsep dengan fit lebar dan upper knit, untuk mencoba perbandingan berdasarkan bentuk kaki dan budget.",
+        "useCase": "Kaki lebar & jalan harian",
+        "specifications": [
+          {
+            "key": "upper",
+            "label": "Material upper",
+            "value": "Knit"
+          },
+          {
+            "key": "midsole",
+            "label": "Bantalan midsole",
+            "value": "EVA"
+          },
+          {
+            "key": "outsole",
+            "label": "Material outsole",
+            "value": "Karet"
+          },
+          {
+            "key": "weightG",
+            "label": "Berat per sepatu",
+            "unit": "g",
+            "value": 275
+          },
+          {
+            "key": "dropMm",
+            "label": "Heel drop",
+            "unit": "mm",
+            "value": 8
+          },
+          {
+            "key": "sizes",
+            "label": "Rentang ukuran",
+            "value": "37–44"
+          },
+          {
+            "key": "reflective",
+            "label": "Detail reflektif",
+            "type": "boolean",
+            "value": false
+          },
+          {
+            "key": "fit",
+            "label": "Bentuk fit",
+            "value": "Wide"
+          }
+        ],
+        "strengths": [
+          "Pilihan fit lebih lebar",
+          "Harga paling rendah dalam kelompok demo ini"
+        ],
+        "tradeoffs": [
+          "Bobot paling tinggi dan tidak ada detail reflektif"
+        ],
+        "unknowns": [
+          "Fitur yang tidak tercantum pada profil, kompatibilitas perangkat tertentu, dan hasil pengujian"
+        ],
+        "source": {
+          "type": "demo",
+          "origin": "fictional-comparison-profile",
+          "note": "Informasi katalog contoh; bukan spesifikasi pabrikan terverifikasi atau hasil uji."
+        }
+      },
+      "image": "/assets/competitors/tapak-flex-run.svg",
+      "demo": true,
+      "comparison": {
+        "group": "sepatu-lari",
+        "positioning": "Fit lebih lega",
+        "useCase": "Kaki lebar & jalan harian",
+        "attributes": {
+          "upper": "Knit",
+          "midsole": "EVA",
+          "outsole": "Karet",
+          "weightG": 275,
+          "dropMm": 8,
+          "sizes": "37–44",
+          "reflective": false,
+          "fit": "Wide"
+        },
+        "strengths": [
+          "Pilihan fit lebih lebar",
+          "Harga paling rendah dalam kelompok demo ini"
+        ],
+        "tradeoffs": [
+          "Bobot paling tinggi dan tidak ada detail reflektif"
+        ],
+        "source": {
+          "type": "demo",
+          "note": "Spesifikasi dan kelebihan merupakan skenario ilustrasi, bukan hasil pengujian."
+        }
+      }
+    }
+  ]
+}

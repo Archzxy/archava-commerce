@@ -1,0 +1,75 @@
+{
+  "projectId": "kala-archava",
+  "brand": {
+    "name": "KALA",
+    "hostName": "Archava",
+    "defaultLanguage": "Bahasa Indonesia",
+    "tagline": "Teman ngobrol buat pilihan belanjamu.",
+    "heroBody": "Tanya soal produk atau minta Archava membandingkan pilihanmu di KALA.",
+    "businessDescription": "Asisten belanja dan penjualan untuk membantu pembeli memilih produk dan melanjutkan keranjang demo KALA.",
+    "contactUrl": ""
+  },
+  "assets": {
+    "hero": "/assets/archava_hero_clean.webp",
+    "heroMobile": "/assets/archava_hero_mobile.webp",
+    "portraitOne": "/assets/archava_cyan_clean.webp",
+    "portraitTwo": "/assets/archava_pink_clean.webp",
+    "workflow": "/assets/chrome_circle.jpg"
+  },
+  "sections": [
+    {
+      "id": "top",
+      "label": "Home",
+      "description": "Header dan navigasi marketplace KALA."
+    },
+    {
+      "id": "catalog-section",
+      "label": "The avatar",
+      "description": "Konten halaman aktif: katalog, detail produk, atau tabel perbandingan. Konteks produk dikirim lewat protokol marketplace terpisah."
+    },
+    {
+      "id": "protocol-section",
+      "label": "How it works",
+      "description": "Panduan singkat belanja dan status transaksi demo."
+    },
+    {
+      "id": "business-section",
+      "label": "For business",
+      "description": "Footer, kategori, dan tautan pusat bantuan KALA."
+    }
+  ],
+  "knowledge": {
+    "overview": {
+      "status": "verified",
+      "text": "KALA adalah website marketplace demo dengan 80 produk dan 7 kategori. Archava adalah penasihat belanja dan asisten penjualan berbahasa Indonesia untuk katalog ini. Perannya melayani pembeli, memahami kebutuhan dan budget, menjelaskan manfaat serta kompromi, dan mengajak pembeli yang siap ke langkah belanja berikutnya."
+    },
+    "catalog": {
+      "status": "verified",
+      "text": "Setiap produk dalam katalog demo memiliki knowledge produk: ringkasan khusus item, kegunaan, fakta atau spesifikasi yang tercatat, dan rincian yang belum diketahui. Indeks seluruh 80 produk tersedia dalam konteks Archava; detail lengkap, harga, kelebihan, kompromi, dan alternatif sejenis diambil dari tool katalog. Data deskripsi tambahan dikurasi dari snapshot DummyJSON lokal; profil perbandingan adalah skenario fiktif. Nama merek atau model tidak membuktikan spesifikasi, keaslian, atau ketersediaan ritel. Harga, stok, dan rating adalah contoh. Saat halaman produk berubah, worker menyertakan knowledge lengkap produk yang dikenali lewat ID publik ke konteks percakapan tanpa membaca teks halaman atau form pribadi; revisi terbaru menentukan halaman aktif."
+    },
+    "comparison": {
+      "status": "verified",
+      "text": "Katalog memiliki 12 profil dalam empat kelompok: headphone wireless, smartwatch harian, blender dapur, dan sepatu lari. Perbandingan mendukung 2–3 produk sejenis. Spesifikasi, kelebihan, dan kompromi adalah skenario demo yang belum diuji sebagai informasi pabrikan. Tool menerapkan budget sebelum merangking prioritas baterai, bobot, atau harga. Kandidat di atas budget tidak boleh direkomendasikan tanpa izin pengguna menaikkan budget."
+    },
+    "shopping": {
+      "status": "verified",
+      "text": "Website menyediakan pencarian, filter, favorit, keranjang, dan pratinjau checkout. Favorit dan keranjang disimpan di browser. Archava membaca katalog, menerima kebutuhan belanja terstruktur, meminta filter/navigasi/highlight produk, dan menampilkan shortlist. Penambahan keranjang demo memerlukan preview dan konfirmasi baru lewat suara atau tombol. Undo hanya diterapkan jika jumlah item tidak berubah setelah penambahan. Archava tidak membaca form penerima, mengubah favorit, atau membuat pesanan."
+    },
+    "integration": {
+      "status": "unavailable",
+      "text": "Pembayaran, pengiriman, pesanan nyata, akun pelanggan, CRM, dan pelacakan order tidak aktif. Jangan menjanjikan transaksi atau stok nyata."
+    },
+    "business": {
+      "status": "planned",
+      "text": "Integrasi produk dan inventori toko nyata dapat ditambahkan kemudian; saat ini data tetap demo."
+    },
+    "assistant": {
+      "status": "verified",
+      "text": "Widget memiliki ringkasan kebutuhan yang dapat dikoreksi, filter katalog melalui tool, highlight kartu/harga/atribut yang dikenal, kartu rekomendasi dari katalog, preview dan konfirmasi keranjang demo dengan undo, serta ringkasan kebutuhan/shortlist setelah sesi. Ringkasan tersimpan di sessionStorage pada tab yang sama maksimal 24 jam, tanpa transkrip, token, atau data form checkout. Receipt browser dan konteks terbaru menentukan keberhasilan tindakan. Fitur ini diimplementasikan untuk pengujian lokal; keberhasilan percakapan model live dan hosting publik perlu diverifikasi terpisah. Tampilan default berupa avatar ringkas. Tombol Tanya Ava langsung memulai percakapan tanpa tombol mulai kedua. Wajah disiapkan dan frame pertama diverifikasi sebelum sesi suara dibuat; panel pemuatan belum menandakan percakapan aktif. Kontrol mikrofon, Chat dan Disconnect tersedia di bawah avatar. Chat membuka percakapan teks, kebutuhan, pilihan dan ringkasan; menutup detail atau meminimalkan widget tidak mengakhiri panggilan suara. Hasil rekomendasi atau preview keranjang membuka detail ketika diperlukan. Tombol Tanya Ava tersembunyi saat panel terbuka dan muncul kembali setelah diminimalkan atau Disconnect. Disconnect mengakhiri panggilan dan menutup Ava, termasuk membatalkan startup yang masih berjalan. Riwayat percakapan hanya selama sesi aktif dan tidak ikut ringkasan sessionStorage."
+    },
+    "store_service": {
+      "status": "verified",
+      "text": "Manfaat pengalaman demo KALA yang boleh dijelaskan kepada pembeli: katalog dapat dicari dan difilter; 12 produk sekelas dalam empat kelompok dapat dibandingkan; detail, harga, dan kompromi berasal dari katalog yang sama; pengunjung dapat berpindah halaman sambil percakapan berjalan; kebutuhan dan shortlist tampil di panel dan ringkasannya tersimpan di tab yang sama maksimal 24 jam; keranjang demo memiliki preview, konfirmasi dan undo. Ini manfaat fitur yang diimplementasikan untuk demo lokal, bukan bukti toko ritel aktif, harga terendah pasar, ulasan pelanggan asli, keaslian barang, garansi nyata, diskon riil, ongkir gratis, atau kebijakan retur. Kebijakan komersial dan integrasi inventori/fulfillment nyata belum tersedia."
+    }
+  }
+}

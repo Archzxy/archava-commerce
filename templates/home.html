@@ -1,0 +1,52 @@
+
+      <div class="container">
+        <section class="hero" aria-labelledby="heroTitle">
+          <div class="hero-copy">
+            <div class="eyebrow"><span class="eyebrow-line"></span> SELAMAT DATANG DI KALA</div>
+            <h1 id="heroTitle">Temukan yang<br/>terasa <em>lebih kamu.</em></h1>
+            <p>Dari hal kecil yang bikin hari cerah sampai barang impian yang lama kamu cari. Semuanya ada di sini, dipilih dengan hati.</p>
+            <div class="hero-buttons"><a class="button button-primary" href="/produk">Mulai Jelajah <svg class="icon"><use href="#i-arrow"/></svg></a><a class="button button-text" href="/kategori">Lihat kategori <svg class="icon"><use href="#i-arrow"/></svg></a></div>
+            <div class="hero-social-proof"><div class="avatar-stack"><span>RA</span><span>DI</span><span>NA</span><span>+K</span></div><div><div class="social-stars">★★★★★</div><small>Tempat belanja yang bikin betah</small></div></div>
+          </div>
+          <div class="hero-art" aria-label="Koleksi pilihan KALA">
+            <div class="hero-photo hero-photo-main"><img src="/assets/hero-room.jpg" alt="Ruang hangat dengan furnitur pilihan" fetchpriority="high" /></div>
+            <div class="hero-photo hero-photo-small"><img src="/assets/watch.jpg" alt="Jam tangan pilihan" /></div>
+            <div class="hero-sticker"><span>NEW<br/>FINDS</span><svg class="icon"><use href="#i-sparkle"/></svg></div>
+            <div class="hero-float"><span class="float-icon">✦</span><div><strong>Barang pilihan</strong><small>Yang pas buat setiap momen</small></div></div>
+          </div>
+        </section>
+
+        <section class="benefits" aria-label="Keunggulan KALA">
+          <div class="benefit"><span class="benefit-icon mint"><svg class="icon"><use href="#i-truck"/></svg></span><div><strong>Gratis Ongkir*</strong><small>Biar belanja makin ringan</small></div></div>
+          <div class="benefit"><span class="benefit-icon peach"><svg class="icon"><use href="#i-shield"/></svg></span><div><strong>Belanja Nyaman</strong><small>Produk dipilih dengan cermat</small></div></div>
+          <div class="benefit"><span class="benefit-icon lilac"><svg class="icon"><use href="#i-sparkle"/></svg></span><div><strong>Selalu Ada Temuan</strong><small>Pilihan baru untukmu</small></div></div>
+          <div class="benefit"><span class="benefit-icon yellow">♡</span><div><strong>Favoritmu, Tersimpan</strong><small>Gampang ditemukan lagi</small></div></div>
+        </section>
+
+        <section class="section categories-section" id="categories">
+          <div class="section-header"><div><span class="section-kicker">BUAT SETIAP SISI DIRIMU</span><h2>Mau cari apa hari ini?</h2></div><a class="section-link" href="/produk">Lihat semua produk <svg class="icon"><use href="#i-arrow"/></svg></a></div>
+          <div class="category-grid" id="categoryGrid">{{CATEGORIES}}</div>
+        </section>
+
+        <section class="promo-grid" aria-label="Promo pilihan">
+          <article class="promo-card promo-card-green"><div class="promo-text"><span>WEEKEND PICKS</span><h2>Waktunya kasih ruang<br/>buat yang baru.</h2><p>Temukan inspirasi kecil untuk rumah yang lebih nyaman.</p><a class="promo-link" href="/kategori/rumah">Jelajahi sekarang <svg class="icon"><use href="#i-arrow"/></svg></a></div><img src="/assets/promo-home.jpg" alt="Dekorasi rumah" loading="lazy" /></article>
+          <article class="promo-card promo-card-pink"><div class="promo-text"><span>STYLE NOTES</span><h2>Gaya harian,<br/>versi terbaikmu.</h2><p>Barang favorit untuk menemanimu ke mana saja.</p><a class="promo-link" href="/kategori/fashion">Lihat pilihan <svg class="icon"><use href="#i-arrow"/></svg></a></div><img src="/assets/bag.jpg" alt="Tas fashion" loading="lazy" /></article>
+        </section>
+
+        <section class="section flash-section" id="flash-sale">
+          <div class="section-header flash-header"><div><span class="section-kicker">JANGAN SAMPAI LEWAT</span><h2>Promo kilat <span class="flash-glyph">✳</span></h2></div><div class="flash-right"><a class="section-link flash-all-link" href="/promo">Semua promo <svg class="icon"><use href="#i-arrow"/></svg></a><span>Berakhir dalam</span><div class="countdown" id="countdown"><b>08</b><i>:</i><b>30</b><i>:</i><b>00</b></div></div></div>
+          <div class="product-grid flash-grid" id="flashProducts">{{FLASH_PRODUCTS}}</div>
+        </section>
+
+        <section class="editorial-banner"><div><span class="section-kicker">KALA EDIT</span><h2>Hal bagus selalu<br/>punya cerita.</h2><p>Barang yang kamu pilih bisa mengubah hari biasa jadi lebih berkesan.</p><a class="button button-light" href="/produk">Cari ceritamu <svg class="icon"><use href="#i-arrow"/></svg></a></div><div class="editorial-image"><img src="/assets/editorial-style.jpg" alt="Pilihan gaya hidup" loading="lazy" /></div><span class="editorial-scribble">good things<br/>are found here ✦</span></section>
+
+        <section class="section products-section" id="products">
+          <div class="section-header"><div><span class="section-kicker">DIPILIH BUAT KAMU</span><h2>Temukan favorit baru.</h2><p class="section-subtitle">Pilihan yang seru untuk dijelajahi, satu per satu.</p></div><a class="section-link" href="/produk">Lihat {{PRODUCT_COUNT}} produk <svg class="icon"><use href="#i-arrow"/></svg></a></div>
+          <div class="product-grid catalog-grid" id="productGrid">{{HOME_PRODUCTS}}</div>
+          <div class="load-more-wrap"><a class="button button-outline" href="/produk">Jelajahi semua produk <svg class="icon"><use href="#i-arrow"/></svg></a></div>
+        </section>
+
+        <section class="section home-comparison"><div class="section-header"><div><span class="section-kicker">SAMA KEBUTUHANNYA, BEDA PILIHANNYA</span><h2>Bagus. Tapi mana yang pas?</h2><p class="section-subtitle">Lihat tiga alternatif sekelas, lengkap dengan spesifikasi dan komprominya.</p></div><a class="section-link" href="/bandingkan">Bandingkan produk <svg class="icon"><use href="#i-arrow"/></svg></a></div><div class="home-comparison-grid">{{COMPARE_GROUPS}}</div></section>
+
+        <section class="newsletter"><div class="newsletter-icon">✦</div><div><span class="section-kicker">KABAR BAIK BUATMU</span><h2>Temuan baru, langsung ke inbox.</h2><p>Daftar untuk dapat inspirasi dan pilihan produk terbaru dari KALA.</p></div><form id="newsletterForm"><label class="sr-only" for="emailInput">Alamat email</label><input id="emailInput" type="email" placeholder="Alamat email kamu" required/><button type="submit">Daftar <svg class="icon"><use href="#i-arrow"/></svg></button></form></section>
+      </div>

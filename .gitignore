@@ -1,0 +1,17 @@
+node_modules/
+.env
+.env.*
+!.env.example
+!.env.client.example
+.venv/
+__pycache__/
+*.pyc
+*.tsbuildinfo
+.logs/
+*.log
+.DS_Store
+.vercel/
+.railway/
+coverage/
+archava/dist/
+archava/exports/

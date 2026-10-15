@@ -1,0 +1,15 @@
+{
+  "name": "kala-marketplace",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "start": "node scripts/dev.mjs",
+    "dev:web": "node --watch server.mjs",
+    "build": "node scripts/sync-archava-catalog.mjs && npm run build --prefix archava",
+    "test": "node --test scripts/catalog-knowledge.test.mjs && npm test --prefix archava",
+    "test:browser": "node scripts/assistant-browser.mjs",
+    "test:avatar": "node scripts/avatar-browser.mjs"
+  }
+}
