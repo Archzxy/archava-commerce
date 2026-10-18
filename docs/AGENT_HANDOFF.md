@@ -1,5 +1,45 @@
 # DOPAMINE — current project and hackathon handoff
 
+**Latest repository checkpoint, October 19: latest source pushed and repository made public.**
+The user explicitly requested pushing to the existing Archzxy repository,
+making it public and replacing its old snapshot with the latest local overhaul.
+Commit **`015f123d837ff708e321425702ff60a17c0788e7`** updates `main` in
+**[Archzxy/archava-commerce](https://github.com/Archzxy/archava-commerce)**:
+141 changed files, with 365 source files in the index. It includes the current
+DOPAMINE storefront, standalone assistant, task-completion sessions, checkout/
+receipt email, coordinated service upgrade, cloud packaging, docs, CI and
+editable launch-video source. The initial KALA commit/history is preserved;
+no force push or repo replacement occurred. README and repository metadata now
+identify **Archava Commerse** as the product and **DOPAMINE** as its demo store,
+with the live prototype as the repository homepage. This is documentation/
+metadata alignment, not a code/framework/storefront rebrand.
+
+The existing owner credential was scoped to the publishing commands; neither
+stored GitHub account was removed, the active login was not switched, and the
+existing Git author identity was retained. Fresh anonymous GitHub API reads
+return 200 for both repository and `commits/main`, report **public**, and match
+the pushed commit. GitHub Actions **Repository checks passed**, run
+**`39152730006`**, on that source commit: clean dependency installation,
+Node/Python/SDK tests, production build, npm advisory check and export all passed.
+
+Fresh local verification: **3 catalog + 112 module Node, 45 Python unit and
+20 offline SDK cases pass**, production build and standalone export pass,
+**zero npm audit findings**. All three official action commit pins resolve.
+Redacted Gitleaks candidate/index/reachable-history scans found no leaks;
+in-memory comparison against nine private runtime fields found zero matches
+in publishable source or history. Runtime env, keys, logs, encrypted mail state,
+exports, build output, browser state and final submission/video artifacts remain
+ignored. Public launch stills were visually checked for private data. Imported
+font-license whitespace and one workflow/document EOF were normalized without
+changing license text; staged whitespace checks pass. Evidence stays ignored at
+`.logs/github-publish-20261019/`.
+
+No provider conversation, payment, email, Cloud Run rollout or submission was
+performed in this publishing task. Existing cloud/live-voice limitations below
+remain. The generated pitch PDF/PPTX still contain their earlier private-access
+wording; making the repository public does not regenerate those artifacts.
+Earlier statements below about private/unpushed source are historical.
+
 **Latest recording support, October 19: desktop recording shortcut repaired.**
 The user reported damaged video/audio and desktop lag when recording with
 `SUPER+R`. The Hyprland Lua bindings were present with no config errors. The old

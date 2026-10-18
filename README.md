@@ -35,7 +35,8 @@ checkout-preview tests pass; the synthetic voice filter test did not pass. See t
 [service upgrade review](archava/docs/SERVICE_UPGRADE.md).
 
 The pre-push audit's dependency/export safeguards are included in this image.
-CI is prepared locally and has not run on GitHub. See the [repository audit](docs/REPO_AUDIT.md),
+[Repository checks](https://github.com/Archzxy/archava-commerce/actions/workflows/checks.yml)
+now run on GitHub; the published source passed the workflow. See the [repository audit](docs/REPO_AUDIT.md),
 [latency audit](archava/docs/LATENCY.md) and [checkout evidence](docs/CHECKOUT_SANDBOX.md).
 The deployed [receipt email workflow](archava/docs/CHECKOUT_EMAIL.md)
 adds a confirmed recipient and background SMTP delivery without putting contact

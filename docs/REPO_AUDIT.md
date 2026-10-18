@@ -1,5 +1,15 @@
 # Repository audit before GitHub push
 
+**October 19 publication update:** the latest source is now pushed to
+[Archzxy/archava-commerce](https://github.com/Archzxy/archava-commerce), and
+anonymous repository/commit reads confirm public access. Fresh checks pass:
+3 catalog + 112 module Node, 45 Python unit, 20 offline SDK cases, production
+build/export and zero npm audit findings. Candidate/index/history scans and
+comparison with private runtime values found no credentials. GitHub Repository
+checks passed on source commit `015f123`:
+[Actions run](https://github.com/Archzxy/archava-commerce/actions/runs/39152730006).
+The October 18 audit below records its own historical checkpoint and limits.
+
 Date: **October 18, 2026**. Scope: current working tree, locally reachable Git
 history, build/install configuration, core session/cart/checkout boundaries,
 documentation, automated checks and selected browser journeys. This is a source

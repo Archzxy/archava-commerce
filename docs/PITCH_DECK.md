@@ -1,5 +1,13 @@
 # DOPAMINE pitch PDF — updated October 19, 2026
 
+**Later repository update, October 19:**
+[Archzxy/archava-commerce](https://github.com/Archzxy/archava-commerce) is now
+PUBLIC with the latest source pushed; anonymous repository and commit reads
+pass. The already generated PDF/PPTX retain their earlier private-access label.
+They and the dated generator copy were not regenerated in the GitHub publishing
+task. The earlier private-repository checks below describe the artifact's
+pre-publication checkpoint.
+
 **October 19 form follow-up:** the user supplied the exact demo folder URL after
 an ambiguous screenshot. Slide 12 now links to that
 [Drive folder](https://drive.google.com/drive/folders/1ZFEBzCy2zcdvwWMdTqUovlTCvuU9ODZp?usp=sharing).
@@ -74,8 +82,10 @@ timeout remains unresolved. No Firebase/Firestore or Vertex use is claimed.
 
 Current delivery checks, October 19:
 
-1. `Archzxy/archava-commerce` was read via GitHub CLI and is **PRIVATE**. Its real
-   URL is included, with access pending. No visibility change or push occurred.
+1. `Archzxy/archava-commerce` is now **PUBLIC**, with the latest source pushed
+   and anonymous access verified. The existing PDF/PPTX still label access as
+   pending until a separate artifact update; the GitHub publishing task did not
+   regenerate them.
 2. The exact Drive demo folder supplied by the user is linked in slide 12 and
    anonymously accessible. Video playback, duration and language/caption review
    remain unverified. This check does not claim to have watched the recording.

@@ -1,5 +1,13 @@
 # Prototype submission preparation
 
+**Repository update, October 19:** the latest source is pushed to
+[Archzxy/archava-commerce](https://github.com/Archzxy/archava-commerce), now
+**PUBLIC** and verified through anonymous repository and commit API reads.
+GitHub Repository checks passed on the source commit. The generated PDF/PPTX
+still contain their earlier access-pending wording; artifact regeneration and
+portal submission remain separate. The private-repo statements in earlier
+preparation checkpoints below are historical.
+
 **Form update, October 19:** the user supplied a screenshot with the actual Cloud
 Run URL, repository URL and a Drive folder in the demo-video field, then supplied
 the exact URL as text. Slide 12 now links to that folder; an anonymous request
@@ -37,7 +45,7 @@ from the final deliverable only where the template permits it.
 | --- | --- |
 | Deployed GCP / Cloud Run prototype link | Existing deployment is available. Local audit fixes are not deployed; review/push and roll out the intended final revision, then verify the selected demo flow. |
 | Deck following the prescribed template | Populate the actual sections below; export to PDF, at most 5 MB according to the supplied form. |
-| Public GitHub repository | Current source changes are uncommitted/unpushed. Review/stage/push, check CI, and deliberately configure judge access/public visibility when authorized. |
+| Public GitHub repository | Latest source is pushed to `Archzxy/archava-commerce`; PUBLIC access is verified without sign-in. GitHub Repository checks passed on the source commit. |
 | Working demonstration video | Record actual deployed functionality. Motion graphics may explain the concept/architecture; a motion-only mockup would not demonstrate the requested working functionality. No explicit manual-recording/facecam requirement was found in the inspected material. |
 | Brief description | English draft below is within the form's 1024-character limit. Review current functionality against the final deployed revision. |
 | Continued access | Portal says links, app, APIs and integrations must remain accessible throughout evaluation. Check links without sign-in and monitor provider credit/quota and worker availability. |
