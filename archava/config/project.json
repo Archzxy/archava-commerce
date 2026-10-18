@@ -1,12 +1,12 @@
 {
   "projectId": "kala-archava",
   "brand": {
-    "name": "KALA",
-    "hostName": "Archava",
+    "name": "DOPAMINE",
+    "hostName": "Ava",
     "defaultLanguage": "Bahasa Indonesia",
-    "tagline": "Teman ngobrol buat pilihan belanjamu.",
-    "heroBody": "Tanya soal produk atau minta Archava membandingkan pilihanmu di KALA.",
-    "businessDescription": "Asisten belanja dan penjualan untuk membantu pembeli memilih produk dan melanjutkan keranjang demo KALA.",
+    "tagline": "Good things. Happier you.",
+    "heroBody": "Temukan barang yang kamu suka. Ava bantu pilih yang pas dengan kebutuhan dan budgetmu.",
+    "businessDescription": "Asisten belanja dan penjualan untuk membantu pembeli memilih produk dan melanjutkan keranjang demo DOPAMINE.",
     "contactUrl": ""
   },
   "assets": {
@@ -20,7 +20,7 @@
     {
       "id": "top",
       "label": "Home",
-      "description": "Header dan navigasi marketplace KALA."
+      "description": "Header dan navigasi marketplace DOPAMINE."
     },
     {
       "id": "catalog-section",
@@ -35,17 +35,17 @@
     {
       "id": "business-section",
       "label": "For business",
-      "description": "Footer, kategori, dan tautan pusat bantuan KALA."
+      "description": "Footer, kategori, dan tautan pusat bantuan DOPAMINE."
     }
   ],
   "knowledge": {
     "overview": {
       "status": "verified",
-      "text": "KALA adalah website marketplace demo dengan 80 produk dan 7 kategori. Archava adalah penasihat belanja dan asisten penjualan berbahasa Indonesia untuk katalog ini. Perannya melayani pembeli, memahami kebutuhan dan budget, menjelaskan manfaat serta kompromi, dan mengajak pembeli yang siap ke langkah belanja berikutnya."
+      "text": "DOPAMINE adalah website marketplace demo dengan 80 produk dan 7 kategori. Ava adalah penasihat belanja dan asisten penjualan berbahasa Indonesia untuk katalog ini. Perannya melayani pembeli, memahami kebutuhan dan budget, menjelaskan manfaat serta kompromi, dan mengajak pembeli yang siap ke langkah belanja berikutnya. Identitas toko adalah DOPAMINE, dengan tagline Good things. Happier you.; nama asistennya Ava. Nama brand bukan klaim bahwa produk meningkatkan dopamine atau menjamin perubahan suasana hati."
     },
     "catalog": {
       "status": "verified",
-      "text": "Setiap produk dalam katalog demo memiliki knowledge produk: ringkasan khusus item, kegunaan, fakta atau spesifikasi yang tercatat, dan rincian yang belum diketahui. Indeks seluruh 80 produk tersedia dalam konteks Archava; detail lengkap, harga, kelebihan, kompromi, dan alternatif sejenis diambil dari tool katalog. Data deskripsi tambahan dikurasi dari snapshot DummyJSON lokal; profil perbandingan adalah skenario fiktif. Nama merek atau model tidak membuktikan spesifikasi, keaslian, atau ketersediaan ritel. Harga, stok, dan rating adalah contoh. Saat halaman produk berubah, worker menyertakan knowledge lengkap produk yang dikenali lewat ID publik ke konteks percakapan tanpa membaca teks halaman atau form pribadi; revisi terbaru menentukan halaman aktif."
+      "text": "Setiap produk dalam katalog demo memiliki knowledge produk: ringkasan khusus item, kegunaan, fakta atau spesifikasi yang tercatat, dan rincian yang belum diketahui. Indeks seluruh 80 produk tersedia dalam konteks Ava; detail lengkap, harga, kelebihan, kompromi, dan alternatif sejenis diambil dari tool katalog. Data deskripsi tambahan dikurasi dari snapshot DummyJSON lokal; profil perbandingan adalah skenario fiktif. Nama merek atau model tidak membuktikan spesifikasi, keaslian, atau ketersediaan ritel. Harga, stok, dan rating adalah contoh. Saat halaman produk berubah, worker menyertakan knowledge lengkap produk yang dikenali lewat ID publik ke konteks percakapan tanpa membaca teks halaman atau form pribadi; revisi terbaru menentukan halaman aktif."
     },
     "comparison": {
       "status": "verified",
@@ -53,7 +53,7 @@
     },
     "shopping": {
       "status": "verified",
-      "text": "Website menyediakan pencarian, filter, favorit, keranjang, dan pratinjau checkout. Favorit dan keranjang disimpan di browser. Archava membaca katalog, menerima kebutuhan belanja terstruktur, meminta filter/navigasi/highlight produk, dan menampilkan shortlist. Penambahan keranjang demo memerlukan preview dan konfirmasi baru lewat suara atau tombol. Undo hanya diterapkan jika jumlah item tidak berubah setelah penambahan. Archava tidak membaca form penerima, mengubah favorit, atau membuat pesanan."
+      "text": "Website menyediakan pencarian, filter, favorit, keranjang, dan pratinjau checkout. Favorit dan keranjang disimpan di browser. Ava membaca katalog, menerima kebutuhan belanja terstruktur, meminta filter/navigasi/highlight produk, dan menampilkan shortlist. Penambahan keranjang demo memerlukan preview dan konfirmasi baru lewat suara atau tombol. Undo hanya diterapkan jika jumlah item tidak berubah setelah penambahan. Ava tidak membaca form penerima, mengubah favorit, atau membuat pesanan."
     },
     "integration": {
       "status": "unavailable",
@@ -65,11 +65,15 @@
     },
     "assistant": {
       "status": "verified",
-      "text": "Widget memiliki ringkasan kebutuhan yang dapat dikoreksi, filter katalog melalui tool, highlight kartu/harga/atribut yang dikenal, kartu rekomendasi dari katalog, preview dan konfirmasi keranjang demo dengan undo, serta ringkasan kebutuhan/shortlist setelah sesi. Ringkasan tersimpan di sessionStorage pada tab yang sama maksimal 24 jam, tanpa transkrip, token, atau data form checkout. Receipt browser dan konteks terbaru menentukan keberhasilan tindakan. Fitur ini diimplementasikan untuk pengujian lokal; keberhasilan percakapan model live dan hosting publik perlu diverifikasi terpisah. Tampilan default berupa avatar ringkas. Tombol Tanya Ava langsung memulai percakapan tanpa tombol mulai kedua. Wajah disiapkan dan frame pertama diverifikasi sebelum sesi suara dibuat; panel pemuatan belum menandakan percakapan aktif. Kontrol mikrofon, Chat dan Disconnect tersedia di bawah avatar. Chat membuka percakapan teks, kebutuhan, pilihan dan ringkasan; menutup detail atau meminimalkan widget tidak mengakhiri panggilan suara. Hasil rekomendasi atau preview keranjang membuka detail ketika diperlukan. Tombol Tanya Ava tersembunyi saat panel terbuka dan muncul kembali setelah diminimalkan atau Disconnect. Disconnect mengakhiri panggilan dan menutup Ava, termasuk membatalkan startup yang masih berjalan. Riwayat percakapan hanya selama sesi aktif dan tidak ikut ringkasan sessionStorage."
+      "text": "Widget memiliki ringkasan kebutuhan yang dapat dikoreksi, filter katalog melalui tool, highlight kartu/harga/atribut yang dikenal, kartu rekomendasi dari katalog, preview dan konfirmasi keranjang demo dengan undo, serta ringkasan kebutuhan/shortlist setelah sesi. Ringkasan tersimpan di sessionStorage pada tab yang sama maksimal 24 jam, tanpa transkrip, token, atau data form checkout. Receipt browser dan konteks terbaru menentukan keberhasilan tindakan. Fitur ini diimplementasikan untuk pengujian lokal; keberhasilan percakapan model live dan hosting publik perlu diverifikasi terpisah. Tampilan default berupa avatar ringkas. Tombol Tanya Ava langsung memulai percakapan tanpa tombol mulai kedua. Wajah disiapkan dan frame pertama diverifikasi sebelum sesi suara dibuat; panel pemuatan belum menandakan percakapan aktif. Kontrol mikrofon, Chat dan Disconnect tersedia di bawah avatar. Chat membuka percakapan teks, kebutuhan, pilihan dan ringkasan; menutup detail atau meminimalkan widget tidak mengakhiri panggilan suara. Hasil rekomendasi atau preview keranjang membuka detail ketika diperlukan. Tombol Tanya Ava tersembunyi saat panel terbuka dan muncul kembali setelah diminimalkan atau Disconnect. Disconnect mengakhiri panggilan dan menutup Ava, termasuk membatalkan startup yang masih berjalan. Riwayat percakapan hanya selama sesi aktif dan tidak ikut ringkasan sessionStorage. Default sumber SESSION_SECONDS=0 tidak memakai countdown panggilan; Ava dapat memanggil end_call setelah kebutuhan selesai dan pengunjung menyatakan tidak perlu bantuan lagi atau meminta berhenti. Tool mengucapkan pamit lalu menutup sesi dan room. Rekomendasi, keranjang bertambah, QR dibuat, diam, dan minimize bukan alasan menutup panggilan. Status pembayaran/email tetap mengikuti receipt. Konfigurasi aktif dan kepatuhan model live harus diverifikasi terpisah."
     },
     "store_service": {
       "status": "verified",
-      "text": "Manfaat pengalaman demo KALA yang boleh dijelaskan kepada pembeli: katalog dapat dicari dan difilter; 12 produk sekelas dalam empat kelompok dapat dibandingkan; detail, harga, dan kompromi berasal dari katalog yang sama; pengunjung dapat berpindah halaman sambil percakapan berjalan; kebutuhan dan shortlist tampil di panel dan ringkasannya tersimpan di tab yang sama maksimal 24 jam; keranjang demo memiliki preview, konfirmasi dan undo. Ini manfaat fitur yang diimplementasikan untuk demo lokal, bukan bukti toko ritel aktif, harga terendah pasar, ulasan pelanggan asli, keaslian barang, garansi nyata, diskon riil, ongkir gratis, atau kebijakan retur. Kebijakan komersial dan integrasi inventori/fulfillment nyata belum tersedia."
+      "text": "Manfaat pengalaman demo DOPAMINE yang boleh dijelaskan kepada pembeli: katalog dapat dicari dan difilter; 12 produk sekelas dalam empat kelompok dapat dibandingkan; detail, harga, dan kompromi berasal dari katalog yang sama; pengunjung dapat berpindah halaman sambil percakapan berjalan; kebutuhan dan shortlist tampil di panel dan ringkasannya tersimpan di tab yang sama maksimal 24 jam; keranjang demo memiliki preview, konfirmasi dan undo. Ini manfaat fitur yang diimplementasikan untuk demo lokal, bukan bukti toko ritel aktif, harga terendah pasar, ulasan pelanggan asli, keaslian barang, garansi nyata, diskon riil, ongkir gratis, atau kebijakan retur. Kebijakan komersial dan integrasi inventori/fulfillment nyata belum tersedia."
+    },
+    "sandbox_checkout": {
+      "status": "verified",
+      "text": "Tool prepare_checkout menampilkan ringkasan keranjang berharga dari server; confirm_checkout memerlukan konfirmasi pengguna baru setelah preview. Kartu terpisah dari Chat memuat total, QR, kedaluwarsa dan status sandbox. Pembuatan QR hanya tersedia jika Midtrans sandbox dikonfigurasi; tanpa key, receipt unavailable berarti QR/pembayaran belum dibuat. Pengujian provider pada 18 Oktober 2026 memverifikasi QR sandbox dan settlement melalui simulator resmi; ini bukti pengujian historis, bukan bukti bahwa order saat ini sudah dibayar. Checkout lewat suara manusia dan pengumuman sukses otomatis belum terverifikasi penuh. get_checkout_status membaca status dari backend; worker hanya menerima receipt bertanda tangan server yang masih baru. Paid berarti settlement SIMULASI, tidak membuat pesanan, pengiriman atau transaksi nyata. Uji hanya melalui simulator resmi Midtrans; jangan scan QR sandbox dengan aplikasi bank/dompet sungguhan. Tidak ada form pribadi atau private draft token di konteks Ava. Retry memeriksa order ID yang sama, tidak membuat pembayaran baru otomatis. Bukti pembayaran simulasi dapat dikirim lewat email sebagai fitur opsional setelah settlement terverifikasi, jika integrasi diaktifkan. Pengguna mengisi dan mengonfirmasi alamat melalui kartu checkout; alamat tidak diberikan ke Ava atau Midtrans. Email memakai pengirim SMTP milik toko dan status tahan restart; server email menerima bukan jaminan masuk inbox. Gunakan emailStatus pada receipt terbaru untuk menentukan ketersediaan dan hasil pengiriman order saat ini. Status unavailable berarti jangan meminta alamat atau menjanjikan email; not_requested berarti pengguna boleh mengisi alamat di kartu checkout. Hasil accepted hanya berarti server email menerima pesan, bukan bukti masuk Inbox. Tidak ada faktur pajak atau pembelian nyata."
     }
   }
 }

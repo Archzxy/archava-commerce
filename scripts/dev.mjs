@@ -39,6 +39,6 @@ async function switchAPI(ready) {
 start('web', process.execPath, ['server.mjs'], { cwd: root, env: { ...process.env, ARCHAVA_API_PORT: runtime.PORT || '5180' } });
 await switchAPI(false);
 start('worker', python, ['backend/agent.py', 'dev'], { env: runtime });
-console.log(`KALA + Archava: http://localhost:${process.env.PORT || 5173}`);
+console.log(`DOPAMINE + Archava: http://localhost:${process.env.PORT || 5173}`);
 function shutdown() { if (stopping) return; stopping = true; for (const child of children) child.kill('SIGTERM'); setTimeout(() => { for (const child of children) child.kill('SIGKILL'); process.exit(); }, 10_000).unref(); }
 process.on('SIGINT', shutdown); process.on('SIGTERM', shutdown);

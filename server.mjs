@@ -6,6 +6,7 @@ import { renderPage } from './pages.mjs';
 
 const root = fileURLToPath(new URL('.', import.meta.url)).replace(/\/$/, '');
 const port = Number(process.env.PORT || 5173);
+const host = process.env.HOST || '127.0.0.1';
 const types = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
@@ -36,6 +37,11 @@ createServer(async (request, response) => {
   try {
     const url = new URL(request.url, `http://${request.headers.host}`);
     const pathname = decodeURIComponent(url.pathname);
+    if (pathname === '/healthz' && ['GET', 'HEAD'].includes(request.method)) {
+      response.writeHead(200, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' });
+      response.end(request.method === 'HEAD' ? undefined : JSON.stringify({ ok: true }));
+      return;
+    }
     if (pathname.startsWith('/api/')) { proxyAPI(request, response); return; }
     if (!['GET', 'HEAD'].includes(request.method)) {
       response.writeHead(405, { Allow: 'GET, HEAD' }).end('Method not allowed');
@@ -70,6 +76,6 @@ createServer(async (request, response) => {
   } catch {
     response.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' }).end('Not found');
   }
-}).listen(port, '127.0.0.1', () => {
-  console.log(`KALA is running at http://localhost:${port}`);
+}).listen(port, host, () => {
+  console.log(`DOPAMINE is running at http://localhost:${port}`);
 });

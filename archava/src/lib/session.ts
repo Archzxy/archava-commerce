@@ -13,7 +13,7 @@ export interface AppConfig {
 export interface AvatarSession {
   serverUrl: string;
   token: string;
-  endsAt: number;
+  endsAt: number | null;
   ticket: string;
   avatarProvider: AvatarProvider;
   spatiusAppId?: string;

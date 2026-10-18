@@ -1,4 +1,5 @@
-FROM node:22-bookworm-slim AS web
+FROM node:22.23.3-bookworm-slim AS web
+RUN npm install --global npm@12.2.0
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
@@ -16,7 +17,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 COPY --from=web /usr/local/bin/node /usr/local/bin/node
 WORKDIR /app
-COPY backend/requirements.txt ./backend/requirements.txt
+COPY backend/requirements.txt backend/constraints.txt ./backend/
 RUN pip install --no-cache-dir -r backend/requirements.txt
 COPY --from=web /app/node_modules ./node_modules
 COPY --from=web /app/dist ./dist

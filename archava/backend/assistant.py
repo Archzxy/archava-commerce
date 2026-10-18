@@ -124,15 +124,16 @@ class AssistantContext:
 
 class CartConsent:
     """A fresh user confirmation after the assistant's proposal, never model args."""
-    def __init__(self):
+    def __init__(self, affirmations=None):
         self.turns = []
         self.proposed_at = 0
         self.baseline_user = None
         self.request_id = None
+        self.affirmations = affirmations
 
     def observe(self, message):
         role, content = getattr(message, 'role', None), getattr(message, 'text_content', None)
-        if role not in {'user', 'assistant'} or not isinstance(content, str) or content.startswith(('APPROVED SHOPPING CONTEXT:', 'APPROVED SHOPPING STATE:')):
+        if role not in {'user', 'assistant'} or not isinstance(content, str) or content.startswith(('APPROVED SHOPPING CONTEXT:', 'APPROVED SHOPPING STATE:', 'APPROVED CHECKOUT STATE:')):
             return
         item = {'id': message.id, 'role': role, 'text': content, 'at': message.created_at}
         existing = next((turn for turn in self.turns if turn['id'] == item['id']), None)
@@ -161,6 +162,6 @@ class CartConsent:
             return False
         phrase = re.sub(r'[^\w\s]', '', user['text'].casefold()).strip()
         phrase = re.sub(r'\s+', ' ', phrase)
-        return phrase in {'ya', 'iya', 'yes', 'ok', 'oke', 'setuju', 'confirm', 'ya tambahkan', 'iya tambahkan',
+        return phrase in (self.affirmations if self.affirmations is not None else {'ya', 'iya', 'yes', 'ok', 'oke', 'setuju', 'confirm', 'ya tambahkan', 'iya tambahkan',
                           'ya masukin', 'iya masukin', 'oke tambahkan', 'oke masukin', 'tambahkan', 'masukin',
-                          'ya masukkan', 'iya masukkan', 'yes add it', 'yes please', 'confirm add', 'ya lanjut', 'iya lanjut'}
+                          'ya masukkan', 'iya masukkan', 'yes add it', 'yes please', 'confirm add', 'ya lanjut', 'iya lanjut'})

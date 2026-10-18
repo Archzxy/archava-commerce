@@ -9,7 +9,7 @@ Agent memakai tiga sumber yang berbeda tanggung jawabnya:
 `backend/instructions.py` menggabungkan ketiganya. `npm run prompt` memperlihatkan contoh hasil render tanpa membuka room. Perintah ini memakai environment shell; `.env` tidak otomatis dibaca untuk preview prompt. Contoh:
 
 ```bash
-AVATAR_PROVIDER=voice SESSION_SECONDS=120 npm run prompt
+AVATAR_PROVIDER=voice SESSION_SECONDS=0 npm run prompt
 ```
 
 Untuk bisnis baru, mulai dengan mengganti nama brand/host/bahasa dan seluruh fakta produk. Jangan hanya mengganti nama lalu menganggap knowledge bawaan sudah sesuai. Contoh:

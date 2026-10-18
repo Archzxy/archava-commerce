@@ -40,22 +40,23 @@ def sales_examples() -> str:
     return '\n\n'.join(examples)
 
 
-def make_instructions(*, provider: str = "voice", seconds: int = 120) -> str:
+def make_instructions(*, provider: str = "voice", seconds: int = 0) -> str:
     rendering = {
         "spatius": "Spatius renders the live avatar.",
         "tavus": "Tavus renders the live avatar.",
         "voice": "This is a voice-only session; there is no live avatar video.",
     }[provider]
+    duration = "There is no fixed conversation countdown; help until the visitor's task is finished." if seconds == 0 else f"Its configured time window is {seconds} seconds."
     return Template((ROOT / "prompts/system.md").read_text(encoding="utf-8")).substitute(
         host_name=BRAND["hostName"], brand_name=BRAND["name"],
         default_language=BRAND["defaultLanguage"], topics=", ".join(FACTS),
         section_ids=", ".join(SECTIONS), knowledge=product_knowledge(),
         catalog=catalog_briefing(),
         shopping_examples=sales_examples(),
-        session_context=f"This conversation is already active. Its configured time window is {seconds} seconds. {rendering} The website issues public guest sessions without sign-in. Never request an account or payment during this call.",
+        session_context=f"This conversation is already active. {duration} {rendering} The website issues public guest sessions without sign-in. Never request a private account, real payment or personal payment details. Sandbox checkout uses only the official simulator after explicit confirmation.",
     )
 
 
 if __name__ == "__main__":
     import os
-    print(make_instructions(provider=os.getenv("AVATAR_PROVIDER", "spatius"), seconds=int(os.getenv("SESSION_SECONDS", "120"))))
+    print(make_instructions(provider=os.getenv("AVATAR_PROVIDER", "spatius"), seconds=int(os.getenv("SESSION_SECONDS", "0"))))

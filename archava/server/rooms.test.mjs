@@ -2,10 +2,10 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { createRoomProvider, removeAutomaticAgents } from "./livekit-rooms.mjs";
 
-function fixture() {
+function fixture(overrides = {}) {
   const created = [], deleted = [], dispatched = [], evicted = [];
   let listed = [];
-  const config = { projectId: "unit-project", agentName: "unit-project-host", seconds: 120, avatarProvider: "voice" };
+  const config = { projectId: "unit-project", agentName: "unit-project-host", seconds: 120, avatarProvider: "voice", ...overrides };
   const rooms = {
     async createRoom(options) { created.push(options); },
     async deleteRoom(name) { deleted.push(name); },
@@ -40,6 +40,38 @@ test("guest tokens grant only room join, microphone, data and subscribe; metadat
   assert.equal(metadata.product, "archava-template");
   assert.deepEqual(f.dispatched, ["auto", "unit-project-host"]);
   assert.deepEqual(f.evicted, ["agent-auto-job"]);
+});
+
+test("completion-mode rooms keep short guest grants without a conversation deadline", async () => {
+  const f = fixture({ seconds: 0 });
+  const opened = await f.provider.open({ endsAt: null });
+  const claims = JSON.parse(Buffer.from(opened.token.split('.')[1], 'base64url'));
+  const meta = JSON.parse(f.created[0].metadata);
+  assert.equal(meta.endsAt, null);
+  assert.equal(meta.sessionSeconds, 0);
+  assert.ok(claims.exp - claims.nbf <= 300);
+  assert.equal(claims.video.room, opened.roomName);
+  assert.deepEqual(claims.video.canPublishSources, ['microphone']);
+});
+
+test("restart recovery keeps active calls and closes only abandoned owned rooms after join grace", async () => {
+  const f = fixture({ seconds: 0 });
+  const now = Math.floor(Date.now() / 1000);
+  const meta = { product: 'archava-template', projectId: 'unit-project', guestIdentity: 'guest-owned', sessionSeconds: 0, endsAt: null };
+  f.setListed([
+    { name: 'active', creationTime: now - 3600, metadata: JSON.stringify(meta) },
+    { name: 'abandoned', creationTime: now - 61, metadata: JSON.stringify(meta) },
+    { name: 'joining', creationTime: now - 10, metadata: JSON.stringify(meta) },
+    { name: 'other-project', creationTime: now - 3600, metadata: JSON.stringify({ ...meta, projectId: 'other' }) },
+  ]);
+  const inspected = [];
+  f.rooms.listParticipants = async name => {
+    inspected.push(name);
+    return [{ identity: name === 'active' ? 'guest-owned' : 'guest-foreign' }, { identity: 'agent-host' }];
+  };
+  assert.deepEqual(await f.provider.sweep(), new Set(['active', 'joining']));
+  assert.deepEqual(inspected, ['active', 'abandoned']);
+  assert.deepEqual(f.deleted, ['abandoned']);
 });
 
 test("failed dispatch rolls back the room", async () => {

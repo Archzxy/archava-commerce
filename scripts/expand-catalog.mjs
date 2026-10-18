@@ -58,13 +58,13 @@ const productKeywords = {
   175: 'ransel punggung backpack',
 };
 const categories = [
-  { name: 'Elektronik', slug: 'elektronik', label: 'Elektronik', symbol: 'headphones', color: '#edf0e7', subtitle: 'Teman keseharian', description: 'Gadget dan perangkat untuk kerja, hiburan, dan semua yang ada di antaranya.' },
-  { name: 'Fashion', slug: 'fashion', label: 'Fashion', symbol: 'bag', color: '#f8eee7', subtitle: 'Gaya versi kamu', description: 'Dari outfit harian sampai detail kecil yang bikin gayamu terasa personal.' },
-  { name: 'Rumah', slug: 'rumah', label: 'Rumah & Living', symbol: 'plant', color: '#edf1e4', subtitle: 'Sudut paling nyaman', description: 'Lengkapi rumah dengan barang yang praktis, hangat, dan enak dilihat.' },
-  { name: 'Kecantikan', slug: 'kecantikan', label: 'Kecantikan', symbol: 'bottle', color: '#f5edf0', subtitle: 'Rawat diri sendiri', description: 'Pilihan beauty dan perawatan untuk menemani ritual harianmu.' },
-  { name: 'Olahraga', slug: 'olahraga', label: 'Olahraga', symbol: 'shoe', color: '#edf0f5', subtitle: 'Terus bergerak', description: 'Temukan perlengkapan untuk langkah aktif, latihan, dan permainan favoritmu.' },
-  { name: 'Hobi', slug: 'hobi', label: 'Hobi & Kreatif', symbol: 'camera', color: '#f4efe3', subtitle: 'Ikuti rasa ingin tahu', description: 'Perlengkapan untuk bereksperimen, membuat konten, dan menyimpan cerita.' },
-  { name: 'Makanan', slug: 'makanan', label: 'Makanan & Minuman', symbol: 'coffee', color: '#f3ebdf', subtitle: 'Isi ulang favoritmu', description: 'Kebutuhan dapur dan teman sarapan, untuk stok kecil yang bikin hari lebih baik.' },
+  { name: 'Elektronik', slug: 'elektronik', label: 'Elektronik', symbol: 'headphones', color: '#E8D8FF', subtitle: 'Teman keseharian', description: 'Gadget dan perangkat untuk kerja, hiburan, dan semua yang ada di antaranya.' },
+  { name: 'Fashion', slug: 'fashion', label: 'Fashion', symbol: 'bag', color: '#FFD8F0', subtitle: 'Gaya versi kamu', description: 'Dari outfit harian sampai detail kecil yang bikin gayamu terasa personal.' },
+  { name: 'Rumah', slug: 'rumah', label: 'Rumah & Living', symbol: 'plant', color: '#EEFFC0', subtitle: 'Sudut paling nyaman', description: 'Lengkapi rumah dengan barang yang praktis, hangat, dan enak dilihat.' },
+  { name: 'Kecantikan', slug: 'kecantikan', label: 'Kecantikan', symbol: 'bottle', color: '#FAD9ED', subtitle: 'Rawat diri sendiri', description: 'Pilihan beauty dan perawatan untuk menemani ritual harianmu.' },
+  { name: 'Olahraga', slug: 'olahraga', label: 'Olahraga', symbol: 'shoe', color: '#E8DDFF', subtitle: 'Terus bergerak', description: 'Temukan perlengkapan untuk langkah aktif, latihan, dan permainan favoritmu.' },
+  { name: 'Hobi', slug: 'hobi', label: 'Hobi & Kreatif', symbol: 'camera', color: '#F1FFC9', subtitle: 'Ikuti rasa ingin tahu', description: 'Perlengkapan untuk bereksperimen, membuat konten, dan menyimpan cerita.' },
+  { name: 'Makanan', slug: 'makanan', label: 'Makanan & Minuman', symbol: 'coffee', color: '#FFE2F2', subtitle: 'Isi ulang favoritmu', description: 'Kebutuhan dapur dan teman sarapan, untuk stok kecil yang bikin hari lebih baik.' },
 ];
 
 const products = original.map((product, index) => ({
@@ -93,12 +93,12 @@ for (const group of groups) {
     const price = Math.ceil(item.price * 14000 / 1000) * 1000;
     const discount = Math.max(10, Math.round(item.discountPercentage));
     products.push({
-      id: slug, name: names[id] || item.title, brand: item.brand || ['KALA GOODS', 'SEDARI', 'RUMAH RASA'][index % 3],
+      id: slug, name: names[id] || item.title, brand: item.brand || ['DOPAMINE GOODS', 'SEDARI', 'RUMAH RASA'][index % 3],
       category: group.category, price, oldPrice: Math.ceil(price / (1 - discount / 100) / 1000) * 1000,
       rating: Math.round(item.rating * 10) / 10, sold: 80 + ((id * 47) % 2340), stock: Math.max(5, item.stock),
-      image: images[0], images, contain: true, badge: index % 5 === 0 ? 'NEW FIND' : index % 7 === 0 ? 'PILIHAN KALA' : '',
+      image: images[0], images, contain: true, badge: index % 5 === 0 ? 'NEW FIND' : index % 7 === 0 ? 'PILIHAN DOPAMINE' : '',
       specs: group.specs, description: group.copy, keywords: `${group.category.toLowerCase()} ${categoryKeywords[item.category] || ''} ${productKeywords[id] || ''} ${item.tags.join(' ')}`,
-      location: ['Jakarta Selatan', 'Bandung', 'Surabaya', 'Tangerang'][index % 4], merchant: `${item.brand || 'KALA GOODS'} Store`,
+      location: ['Jakarta Selatan', 'Bandung', 'Surabaya', 'Tangerang'][index % 4], merchant: `${item.brand || 'DOPAMINE GOODS'} Store`,
       created: 120 + index, demo: true, source: { provider: 'DummyJSON', id: item.id },
     });
     index++;

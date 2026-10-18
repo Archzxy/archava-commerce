@@ -7,7 +7,7 @@ export const categories = [
     "slug": "elektronik",
     "label": "Elektronik",
     "symbol": "headphones",
-    "color": "#edf0e7",
+    "color": "#E8D8FF",
     "subtitle": "Teman keseharian",
     "description": "Gadget dan perangkat untuk kerja, hiburan, dan semua yang ada di antaranya."
   },
@@ -16,7 +16,7 @@ export const categories = [
     "slug": "fashion",
     "label": "Fashion",
     "symbol": "bag",
-    "color": "#f8eee7",
+    "color": "#FFD8F0",
     "subtitle": "Gaya versi kamu",
     "description": "Dari outfit harian sampai detail kecil yang bikin gayamu terasa personal."
   },
@@ -25,7 +25,7 @@ export const categories = [
     "slug": "rumah",
     "label": "Rumah & Living",
     "symbol": "plant",
-    "color": "#edf1e4",
+    "color": "#EEFFC0",
     "subtitle": "Sudut paling nyaman",
     "description": "Lengkapi rumah dengan barang yang praktis, hangat, dan enak dilihat."
   },
@@ -34,7 +34,7 @@ export const categories = [
     "slug": "kecantikan",
     "label": "Kecantikan",
     "symbol": "bottle",
-    "color": "#f5edf0",
+    "color": "#FAD9ED",
     "subtitle": "Rawat diri sendiri",
     "description": "Pilihan beauty dan perawatan untuk menemani ritual harianmu."
   },
@@ -43,7 +43,7 @@ export const categories = [
     "slug": "olahraga",
     "label": "Olahraga",
     "symbol": "shoe",
-    "color": "#edf0f5",
+    "color": "#E8DDFF",
     "subtitle": "Terus bergerak",
     "description": "Temukan perlengkapan untuk langkah aktif, latihan, dan permainan favoritmu."
   },
@@ -52,7 +52,7 @@ export const categories = [
     "slug": "hobi",
     "label": "Hobi & Kreatif",
     "symbol": "camera",
-    "color": "#f4efe3",
+    "color": "#F1FFC9",
     "subtitle": "Ikuti rasa ingin tahu",
     "description": "Perlengkapan untuk bereksperimen, membuat konten, dan menyimpan cerita."
   },
@@ -61,7 +61,7 @@ export const categories = [
     "slug": "makanan",
     "label": "Makanan & Minuman",
     "symbol": "coffee",
-    "color": "#f3ebdf",
+    "color": "#FFE2F2",
     "subtitle": "Isi ulang favoritmu",
     "description": "Kebutuhan dapur dan teman sarapan, untuk stok kecil yang bikin hari lebih baik."
   }
@@ -108,7 +108,7 @@ const baseProducts = [
     "sold": 860,
     "image": "/assets/watch.jpg",
     "photo": "1523275335684-37898b6baf30",
-    "badge": "PILIHAN KALA",
+    "badge": "PILIHAN DOPAMINE",
     "stock": 24,
     "progress": 61,
     "specs": [
@@ -251,7 +251,7 @@ const baseProducts = [
     "sold": 610,
     "image": "/assets/lamp.jpg",
     "photo": "1507473885765-e6ed057f782c",
-    "badge": "PILIHAN KALA",
+    "badge": "PILIHAN DOPAMINE",
     "specs": [
       "Cahaya hangat",
       "Desain minimal",
@@ -653,7 +653,7 @@ const baseProducts = [
       "/assets/products/apple-iphone-charger-2.webp"
     ],
     "contain": true,
-    "badge": "PILIHAN KALA",
+    "badge": "PILIHAN DOPAMINE",
     "specs": [
       "Pilihan gadget",
       "Untuk keseharian",
@@ -889,7 +889,7 @@ const baseProducts = [
       "/assets/products/man-short-sleeve-shirt-3.webp"
     ],
     "contain": true,
-    "badge": "PILIHAN KALA",
+    "badge": "PILIHAN DOPAMINE",
     "specs": [
       "Gaya harian",
       "Mudah dipadukan",
@@ -966,7 +966,7 @@ const baseProducts = [
     "description": "Detail yang membuat gaya harian terasa lebih personal. Padukan dengan koleksi favoritmu untuk kerja, jalan santai, atau momen spesial.",
     "keywords": "fashion dress gaun baju pakaian wanita  clothing girls' dresses",
     "location": "Jakarta Selatan",
-    "merchant": "KALA GOODS Store",
+    "merchant": "DOPAMINE GOODS Store",
     "created": 136,
     "demo": true,
     "source": {
@@ -1000,7 +1000,7 @@ const baseProducts = [
     "description": "Detail yang membuat gaya harian terasa lebih personal. Padukan dengan koleksi favoritmu untuk kerja, jalan santai, atau momen spesial.",
     "keywords": "fashion dress gaun baju pakaian wanita  clothing dresses",
     "location": "Bandung",
-    "merchant": "KALA GOODS Store",
+    "merchant": "DOPAMINE GOODS Store",
     "created": 137,
     "demo": true,
     "source": {
@@ -1127,7 +1127,7 @@ const baseProducts = [
       "/assets/products/women-handbag-black-3.webp"
     ],
     "contain": true,
-    "badge": "PILIHAN KALA",
+    "badge": "PILIHAN DOPAMINE",
     "specs": [
       "Gaya harian",
       "Mudah dipadukan",
@@ -1170,7 +1170,7 @@ const baseProducts = [
     "description": "Detail yang membuat gaya harian terasa lebih personal. Padukan dengan koleksi favoritmu untuk kerja, jalan santai, atau momen spesial.",
     "keywords": "fashion gaun dress pakaian wanita  clothing gowns",
     "location": "Surabaya",
-    "merchant": "KALA GOODS Store",
+    "merchant": "DOPAMINE GOODS Store",
     "created": 142,
     "demo": true,
     "source": {
@@ -1215,7 +1215,7 @@ const baseProducts = [
   {
     "id": "family-tree-photo-frame",
     "name": "Bingkai Foto Family Tree",
-    "brand": "KALA GOODS",
+    "brand": "DOPAMINE GOODS",
     "category": "Rumah",
     "price": 420000,
     "oldPrice": 495000,
@@ -1236,7 +1236,7 @@ const baseProducts = [
     "description": "Beri ruang buat keseharian yang lebih nyaman. Barang pilihan untuk melengkapi sudut rumah, merapikan rutinitas, dan menikmati waktu di rumah.",
     "keywords": "rumah dekorasi rumah bingkai foto pajangan home decor photo frame",
     "location": "Jakarta Selatan",
-    "merchant": "KALA GOODS Store",
+    "merchant": "DOPAMINE GOODS Store",
     "created": 144,
     "demo": true,
     "source": {
@@ -1270,7 +1270,7 @@ const baseProducts = [
     "description": "Beri ruang buat keseharian yang lebih nyaman. Barang pilihan untuk melengkapi sudut rumah, merapikan rutinitas, dan menikmati waktu di rumah.",
     "keywords": "rumah dekorasi rumah tanaman hias pajangan home decor artificial plants",
     "location": "Bandung",
-    "merchant": "KALA GOODS Store",
+    "merchant": "DOPAMINE GOODS Store",
     "created": 145,
     "demo": true,
     "source": {
@@ -1302,7 +1302,7 @@ const baseProducts = [
     "description": "Beri ruang buat keseharian yang lebih nyaman. Barang pilihan untuk melengkapi sudut rumah, merapikan rutinitas, dan menikmati waktu di rumah.",
     "keywords": "rumah dapur spatula masak kitchen tools utensils",
     "location": "Surabaya",
-    "merchant": "KALA GOODS Store",
+    "merchant": "DOPAMINE GOODS Store",
     "created": 146,
     "demo": true,
     "source": {
@@ -1313,7 +1313,7 @@ const baseProducts = [
   {
     "id": "boxed-blender",
     "name": "Blender Dapur",
-    "brand": "KALA GOODS",
+    "brand": "DOPAMINE GOODS",
     "category": "Rumah",
     "price": 560000,
     "oldPrice": 623000,
@@ -1336,7 +1336,7 @@ const baseProducts = [
     "description": "Beri ruang buat keseharian yang lebih nyaman. Barang pilihan untuk melengkapi sudut rumah, merapikan rutinitas, dan menikmati waktu di rumah.",
     "keywords": "rumah dapur blender jus kitchen appliances blenders",
     "location": "Tangerang",
-    "merchant": "KALA GOODS Store",
+    "merchant": "DOPAMINE GOODS Store",
     "created": 147,
     "demo": true,
     "source": {
@@ -1359,7 +1359,7 @@ const baseProducts = [
       "/assets/products/carbon-steel-wok-1.webp"
     ],
     "contain": true,
-    "badge": "PILIHAN KALA",
+    "badge": "PILIHAN DOPAMINE",
     "specs": [
       "Untuk rumah",
       "Praktis digunakan",
@@ -1368,7 +1368,7 @@ const baseProducts = [
     "description": "Beri ruang buat keseharian yang lebih nyaman. Barang pilihan untuk melengkapi sudut rumah, merapikan rutinitas, dan menikmati waktu di rumah.",
     "keywords": "rumah dapur wajan masak cookware woks",
     "location": "Jakarta Selatan",
-    "merchant": "KALA GOODS Store",
+    "merchant": "DOPAMINE GOODS Store",
     "created": 148,
     "demo": true,
     "source": {
@@ -1400,7 +1400,7 @@ const baseProducts = [
     "description": "Beri ruang buat keseharian yang lebih nyaman. Barang pilihan untuk melengkapi sudut rumah, merapikan rutinitas, dan menikmati waktu di rumah.",
     "keywords": "rumah dapur talenan papan potong kitchen tools cutting boards",
     "location": "Bandung",
-    "merchant": "KALA GOODS Store",
+    "merchant": "DOPAMINE GOODS Store",
     "created": 149,
     "demo": true,
     "source": {
@@ -1411,7 +1411,7 @@ const baseProducts = [
   {
     "id": "glass",
     "name": "Gelas Bening",
-    "brand": "KALA GOODS",
+    "brand": "DOPAMINE GOODS",
     "category": "Rumah",
     "price": 70000,
     "oldPrice": 78000,
@@ -1432,7 +1432,7 @@ const baseProducts = [
     "description": "Beri ruang buat keseharian yang lebih nyaman. Barang pilihan untuk melengkapi sudut rumah, merapikan rutinitas, dan menikmati waktu di rumah.",
     "keywords": "rumah dapur gelas minum drinkware glasses",
     "location": "Surabaya",
-    "merchant": "KALA GOODS Store",
+    "merchant": "DOPAMINE GOODS Store",
     "created": 150,
     "demo": true,
     "source": {
@@ -1464,7 +1464,7 @@ const baseProducts = [
     "description": "Beri ruang buat keseharian yang lebih nyaman. Barang pilihan untuk melengkapi sudut rumah, merapikan rutinitas, dan menikmati waktu di rumah.",
     "keywords": "rumah dapur kotak bekal makan kitchen tools storage",
     "location": "Tangerang",
-    "merchant": "KALA GOODS Store",
+    "merchant": "DOPAMINE GOODS Store",
     "created": 151,
     "demo": true,
     "source": {
@@ -1498,7 +1498,7 @@ const baseProducts = [
     "description": "Beri ruang buat keseharian yang lebih nyaman. Barang pilihan untuk melengkapi sudut rumah, merapikan rutinitas, dan menikmati waktu di rumah.",
     "keywords": "rumah dapur microwave oven masak kitchen appliances microwaves",
     "location": "Jakarta Selatan",
-    "merchant": "KALA GOODS Store",
+    "merchant": "DOPAMINE GOODS Store",
     "created": 152,
     "demo": true,
     "source": {
@@ -1509,7 +1509,7 @@ const baseProducts = [
   {
     "id": "silver-pot-with-glass-cap",
     "name": "Panci Stainless dengan Tutup Kaca",
-    "brand": "KALA GOODS",
+    "brand": "DOPAMINE GOODS",
     "category": "Rumah",
     "price": 560000,
     "oldPrice": 623000,
@@ -1530,7 +1530,7 @@ const baseProducts = [
     "description": "Beri ruang buat keseharian yang lebih nyaman. Barang pilihan untuk melengkapi sudut rumah, merapikan rutinitas, dan menikmati waktu di rumah.",
     "keywords": "rumah dapur panci masak cookware pots",
     "location": "Bandung",
-    "merchant": "KALA GOODS Store",
+    "merchant": "DOPAMINE GOODS Store",
     "created": 153,
     "demo": true,
     "source": {
@@ -1562,7 +1562,7 @@ const baseProducts = [
     "description": "Beri ruang buat keseharian yang lebih nyaman. Barang pilihan untuk melengkapi sudut rumah, merapikan rutinitas, dan menikmati waktu di rumah.",
     "keywords": "rumah dapur rak bumbu kitchen tools organization",
     "location": "Surabaya",
-    "merchant": "KALA GOODS Store",
+    "merchant": "DOPAMINE GOODS Store",
     "created": 154,
     "demo": true,
     "source": {
@@ -1815,7 +1815,7 @@ const baseProducts = [
       "/assets/products/attitude-super-leaves-hand-soap-3.webp"
     ],
     "contain": true,
-    "badge": "PILIHAN KALA",
+    "badge": "PILIHAN DOPAMINE",
     "specs": [
       "Perawatan harian",
       "Koleksi beauty",
@@ -1958,7 +1958,7 @@ const baseProducts = [
     "description": "Bikin waktu bergerak jadi lebih seru. Pilih perlengkapan untuk latihan, bermain bersama teman, dan mengikuti aktivitas favoritmu.",
     "keywords": "olahraga  bola basket sports equipment basketball",
     "location": "Surabaya",
-    "merchant": "KALA GOODS Store",
+    "merchant": "DOPAMINE GOODS Store",
     "created": 166,
     "demo": true,
     "source": {
@@ -1990,7 +1990,7 @@ const baseProducts = [
     "description": "Bikin waktu bergerak jadi lebih seru. Pilih perlengkapan untuk latihan, bermain bersama teman, dan mengikuti aktivitas favoritmu.",
     "keywords": "olahraga  kok bulutangkis badminton sports equipment badminton",
     "location": "Tangerang",
-    "merchant": "KALA GOODS Store",
+    "merchant": "DOPAMINE GOODS Store",
     "created": 167,
     "demo": true,
     "source": {
@@ -2001,7 +2001,7 @@ const baseProducts = [
   {
     "id": "football",
     "name": "Bola Sepak",
-    "brand": "KALA GOODS",
+    "brand": "DOPAMINE GOODS",
     "category": "Olahraga",
     "price": 252000,
     "oldPrice": 280000,
@@ -2022,7 +2022,7 @@ const baseProducts = [
     "description": "Bikin waktu bergerak jadi lebih seru. Pilih perlengkapan untuk latihan, bermain bersama teman, dan mengikuti aktivitas favoritmu.",
     "keywords": "olahraga  bola sepak sports equipment football",
     "location": "Jakarta Selatan",
-    "merchant": "KALA GOODS Store",
+    "merchant": "DOPAMINE GOODS Store",
     "created": 168,
     "demo": true,
     "source": {
@@ -2045,7 +2045,7 @@ const baseProducts = [
       "/assets/products/tennis-ball-1.webp"
     ],
     "contain": true,
-    "badge": "PILIHAN KALA",
+    "badge": "PILIHAN DOPAMINE",
     "specs": [
       "Untuk aktivitas",
       "Perlengkapan olahraga",
@@ -2054,7 +2054,7 @@ const baseProducts = [
     "description": "Bikin waktu bergerak jadi lebih seru. Pilih perlengkapan untuk latihan, bermain bersama teman, dan mengikuti aktivitas favoritmu.",
     "keywords": "olahraga  bola tenis sports equipment tennis",
     "location": "Bandung",
-    "merchant": "KALA GOODS Store",
+    "merchant": "DOPAMINE GOODS Store",
     "created": 169,
     "demo": true,
     "source": {
@@ -2086,7 +2086,7 @@ const baseProducts = [
     "description": "Bikin waktu bergerak jadi lebih seru. Pilih perlengkapan untuk latihan, bermain bersama teman, dan mengikuti aktivitas favoritmu.",
     "keywords": "olahraga  raket tenis sports equipment tennis",
     "location": "Surabaya",
-    "merchant": "KALA GOODS Store",
+    "merchant": "DOPAMINE GOODS Store",
     "created": 170,
     "demo": true,
     "source": {
@@ -2097,7 +2097,7 @@ const baseProducts = [
   {
     "id": "volleyball",
     "name": "Bola Voli",
-    "brand": "KALA GOODS",
+    "brand": "DOPAMINE GOODS",
     "category": "Olahraga",
     "price": 168000,
     "oldPrice": 191000,
@@ -2118,7 +2118,7 @@ const baseProducts = [
     "description": "Bikin waktu bergerak jadi lebih seru. Pilih perlengkapan untuk latihan, bermain bersama teman, dan mengikuti aktivitas favoritmu.",
     "keywords": "olahraga  bola voli sports equipment volleyball",
     "location": "Tangerang",
-    "merchant": "KALA GOODS Store",
+    "merchant": "DOPAMINE GOODS Store",
     "created": 171,
     "demo": true,
     "source": {
@@ -2150,7 +2150,7 @@ const baseProducts = [
     "description": "Lengkapi stok favorit di rumah. Pilihan untuk menemani sarapan, jeda di tengah hari, dan momen berkumpul bersama orang terdekat.",
     "keywords": "makanan  madu condiments",
     "location": "Jakarta Selatan",
-    "merchant": "KALA GOODS Store",
+    "merchant": "DOPAMINE GOODS Store",
     "created": 172,
     "demo": true,
     "source": {
@@ -2182,7 +2182,7 @@ const baseProducts = [
     "description": "Lengkapi stok favorit di rumah. Pilihan untuk menemani sarapan, jeda di tengah hari, dan momen berkumpul bersama orang terdekat.",
     "keywords": "makanan  jus minuman beverages",
     "location": "Bandung",
-    "merchant": "KALA GOODS Store",
+    "merchant": "DOPAMINE GOODS Store",
     "created": 173,
     "demo": true,
     "source": {
@@ -2193,7 +2193,7 @@ const baseProducts = [
   {
     "id": "milk",
     "name": "Susu Harian",
-    "brand": "KALA GOODS",
+    "brand": "DOPAMINE GOODS",
     "category": "Makanan",
     "price": 49000,
     "oldPrice": 57000,
@@ -2214,7 +2214,7 @@ const baseProducts = [
     "description": "Lengkapi stok favorit di rumah. Pilihan untuk menemani sarapan, jeda di tengah hari, dan momen berkumpul bersama orang terdekat.",
     "keywords": "makanan  susu minuman dairy",
     "location": "Surabaya",
-    "merchant": "KALA GOODS Store",
+    "merchant": "DOPAMINE GOODS Store",
     "created": 174,
     "demo": true,
     "source": {
@@ -2246,7 +2246,7 @@ const baseProducts = [
     "description": "Lengkapi stok favorit di rumah. Pilihan untuk menemani sarapan, jeda di tengah hari, dan momen berkumpul bersama orang terdekat.",
     "keywords": "makanan  kopi minuman beverages coffee",
     "location": "Tangerang",
-    "merchant": "KALA GOODS Store",
+    "merchant": "DOPAMINE GOODS Store",
     "created": 175,
     "demo": true,
     "source": {
@@ -2269,7 +2269,7 @@ const baseProducts = [
       "/assets/products/rice-1.webp"
     ],
     "contain": true,
-    "badge": "PILIHAN KALA",
+    "badge": "PILIHAN DOPAMINE",
     "specs": [
       "Kebutuhan dapur",
       "Pilihan harian",
@@ -2278,7 +2278,7 @@ const baseProducts = [
     "description": "Lengkapi stok favorit di rumah. Pilihan untuk menemani sarapan, jeda di tengah hari, dan momen berkumpul bersama orang terdekat.",
     "keywords": "makanan  beras grains",
     "location": "Jakarta Selatan",
-    "merchant": "KALA GOODS Store",
+    "merchant": "DOPAMINE GOODS Store",
     "created": 176,
     "demo": true,
     "source": {

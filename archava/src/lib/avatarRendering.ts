@@ -18,7 +18,7 @@ interface RendererSource {
 }
 
 function renderStatus(view: RendererSource, status: AvatarRenderStatus['status']): AvatarRenderStatus {
-  // AvatarKit 1.3.9 exposes no initialization-error event. Read its pinned
+  // Pinned AvatarKit exposes no initialization-error event. Read its internal
   // internal stage only for diagnostics; never change SDK initialization.
   const stage = (view as RendererSource & { _initStage?: unknown })._initStage;
   const safeStage = AVATAR_RENDER_STAGES.find(value => value === stage) || 'unknown';

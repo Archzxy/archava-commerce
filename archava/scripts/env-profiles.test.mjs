@@ -150,6 +150,22 @@ test("export also rejects credentials accidentally added to the compatibility ex
   assert.ok(!existsSync(join(f.root, "exports/archava-template.tar.gz")));
 });
 
+for (const name of ["MIDTRANS_SERVER_KEY", "CHECKOUT_SIGNING_KEY", "SMTP_HOST", "SMTP_USER", "SMTP_PASS", "SMTP_FROM", "CHECKOUT_EMAIL_BUCKET", "CHECKOUT_EMAIL_STATE_DIR"]) {
+  test(`client setup rejects ${name} and export checks both examples`, (t) => {
+    const f = fixture(t);
+    for (const example of [".env.client.example", ".env.example"]) {
+      const path = join(f.root, example);
+      const original = readFileSync(path, "utf8");
+      writeFileSync(path, original.replace(`${name}=`, `${name}=private-canary-checkout-value`));
+      if (example === ".env.client.example") f.run("setup", ["--profile", "client"], 1);
+      f.run("export", [], 1);
+      assert.ok(!existsSync(join(f.root, ".env")));
+      assert.ok(!existsSync(join(f.root, "exports/archava-template.tar.gz")));
+      writeFileSync(path, original);
+    }
+  });
+}
+
 test("saved profile replacement requires force and preserves private permissions", (t) => {
   const f = fixture(t);
   f.run("save-personal-env", ["--from", f.source]);
@@ -181,6 +197,9 @@ test("export from a personal project excludes active, nested, and shared credent
   writeFileSync(join(f.root, "server/.env.personal"), readFileSync(f.profile, "utf8"));
   writeFileSync(join(f.root, "server/.env.client.example"), readFileSync(f.profile, "utf8"));
   writeFileSync(join(f.root, "backend/.env.example"), readFileSync(f.profile, "utf8"));
+  mkdirSync(join(f.root, 'server/.state'), { recursive: true });
+  const emailStateCanary = randomUUID();
+  writeFileSync(join(f.root, 'server/.state/mail.json'), emailStateCanary);
   f.run("export");
   const archive = join(f.root, "exports/private-export.tar.gz");
   const list = spawnSync("tar", ["-tzf", archive], { encoding: "utf8" });
@@ -189,9 +208,11 @@ test("export from a personal project excludes active, nested, and shared credent
   assert.ok(names.includes(".env.client.example"));
   assert.ok(names.includes("scripts/env-profiles.mjs"));
   assert.ok(!names.some((name) => basename(name).startsWith(".env") && ![".env.example", ".env.client.example"].includes(name)));
+  assert.ok(!names.some(name => name.includes('.state')));
   const contents = spawnSync("tar", ["-xOzf", archive], { maxBuffer: 15_000_000 });
   assert.equal(contents.status, 0);
   for (const value of canaries) assert.ok(!contents.stdout.includes(Buffer.from(value)), "No saved credential may appear anywhere in the client archive");
+  assert.ok(!contents.stdout.includes(Buffer.from(emailStateCanary)));
   const blank = spawnSync("tar", ["-xOzf", archive, ".env.client.example"], { encoding: "utf8" });
   assert.equal(parseEnv(blank.stdout).LIVEKIT_API_SECRET, "");
 });

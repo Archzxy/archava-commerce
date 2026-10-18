@@ -21,12 +21,20 @@ Untuk integrasi langsung pada React/Vite, pakai `src/components/VideoHero.tsx` s
 | --- | --- |
 | `GET /api/health` | Status proses API. Tidak melakukan panggilan provider. |
 | `GET /api/config` | ProjectId, provider public config, flag session, readiness konfigurasi, durasi. |
-| `POST /api/session` body `{}` | Buka satu guest conversation; respons memuat token LiveKit, serverUrl, endsAt, ticket, provider dan public renderer IDs. |
+| `POST /api/session` body `{}` | Buka satu guest conversation; respons memuat token LiveKit, serverUrl, endsAt (`null` saat tanpa countdown), ticket, provider dan public renderer IDs. |
 | `POST /api/session/end` body `{ "ticket": "..." }` | Tutup room milik ticket. Aman dipanggil berulang. Tidak menerima roomName arbitrary. |
 
 Jangan kirim token/ticket ke log, query string, analytics, atau localStorage. Frontend menyimpannya hanya di state/memory. Provider credentials tidak dikirim browser. Endpoint ini bukan API pelanggan terautentikasi; tambahkan auth server-side untuk integrasi privat.
 
-Urutan penting untuk Spatius pada widget KALA:
+Default sumber `SESSION_SECONDS=0` membiarkan percakapan berlangsung sampai
+kebutuhan selesai dan pengunjung menyatakan cukup atau meminta berhenti. Tool
+`end_call` mengucapkan pamit sebelum menutup sesi dan room; browser membedakan
+metadata `archavaSession.status=ending` dari agent yang terputus. API menyapu
+room yang hilang untuk membebaskan slot; room tanpa guest setelah grace join
+60 detik dibersihkan. Konfigurasi lama tetap berlaku sampai diubah dan proses
+direstart. Lihat [lifecycle sesi](SESSION_LIFECYCLE.md) untuk kontrak dan batas bukti.
+
+Urutan penting untuk Spatius pada widget DOPAMINE:
 
 1. Hover/focus launcher dapat memulai inisialisasi AvatarKit dan preload asset publik melalui `prepareSpatiusAvatar` di background tanpa membuat room. Klik launcher menyegarkan konfigurasi dan menunggu persiapan yang sama. Jangan menjadikan `isDeviceSupported()` penghalang startup: AvatarKit 1.3.9 menyimpan hasil probe termasuk false selama halaman hidup, walaupun grafis kemudian pulih.
 2. Dari aksi pengguna, minta izin microphone dan lepaskan stream preflight; tunggu promise preload yang di-cache sebelum membuat sesi.
@@ -36,7 +44,7 @@ Urutan penting untuk Spatius pada widget KALA:
 
 Urutan renderer tersebut mengikuti [RTC Adapter](https://docs.spatius.ai/sdk-reference/web-sdk/rtc-adapter) dan [LiveKit Client](https://docs.spatius.ai/livekit-agents/client), bukan urutan lama di sumber Onchain/Platform.
 
-Widget KALA menjalankan urutan itu langsung dari satu klik **Tanya Ava**.
+Widget DOPAMINE menjalankan urutan itu langsung dari satu klik **Tanya Ava**.
 Panel segera menampilkan status pemuatan, lalu wajah Ava dengan tiga kontrol
 di bawahnya: mikrofon, Chat, dan Disconnect. Chat tertutup secara default;
 toggle Chat dan minimize mempertahankan renderer serta room yang sama.

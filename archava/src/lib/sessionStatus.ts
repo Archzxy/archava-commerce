@@ -3,6 +3,11 @@ const messages: Record<string, string> = {
   avatar_unavailable: 'Layanan avatar belum bisa tersambung. Coba lagi nanti.',
 };
 
+export function sessionIsEnding(metadata: string | undefined): boolean {
+  try { return JSON.parse(metadata || '{}')?.archavaSession?.status === 'ending'; }
+  catch { return false; }
+}
+
 export function sessionStartupError(metadata: string | undefined): string | null {
   try {
     const status = JSON.parse(metadata || '{}')?.archavaSession;

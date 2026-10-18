@@ -53,5 +53,5 @@ export function ShoppingAwareness() {
     send(true);
     return () => { disposed = true; clearTimeout(retry); room.off(RoomEvent.DataReceived, onData); room.off(RoomEvent.ParticipantConnected, rejoined); window.removeEventListener('kala:context-change', changed); window.removeEventListener('storage', changed); };
   }, [room, connection]);
-  return <div className={`av-context ${confirmed ? 'is-confirmed' : ''}`} role="status"><span />{confirmed ? 'Produk pilihanmu sudah diterima Archava' : 'Menyambungkan konteks produk…'}</div>;
+  return <div className={`av-context ${confirmed ? 'is-confirmed' : ''}`} role="status"><span />{confirmed ? 'Produk pilihanmu sudah diterima Ava' : 'Menyambungkan konteks produk…'}</div>;
 }

@@ -9,15 +9,22 @@ test("a blank template boots offline without provider secrets or old domains", (
   assert.equal(config.providerConfigured, false);
   assert.deepEqual(config.origins, ["http://localhost:5174"]);
   assert.equal(config.agentName, `${project.projectId}-host`);
+  assert.equal(config.seconds, 0);
   assert.equal(checkProject(), true);
 });
 
 test("bad deployment values fail early and do not silently change a safety limit", () => {
   for (const env of [
     { SESSION_SECONDS: "NaN" }, { MAX_ACTIVE_SESSIONS: "0" }, { SESSION_SECONDS: "10" },
+    { SESSION_SECONDS: "-1" }, { SESSION_SECONDS: "1801" }, { SESSION_SECONDS: "0.5" },
     { WEB_ORIGIN: "https://site.test/" }, { PROJECT_ID: "../another" },
     { AVATAR_PROVIDER: "unknown" }, { LIVEKIT_URL: "https://room.test" },
   ]) assert.throws(() => runtimeConfig(env));
+});
+
+test("session duration accepts completion mode and optional bounded deadlines", () => {
+  assert.equal(runtimeConfig({ SESSION_SECONDS: "0" }).seconds, 0);
+  for (const seconds of [30, 120, 1800]) assert.equal(runtimeConfig({ SESSION_SECONDS: String(seconds) }).seconds, seconds);
 });
 
 test("voice readiness requires LiveKit and Gemini, and dispatch defaults to its own project", () => {

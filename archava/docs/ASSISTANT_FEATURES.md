@@ -1,10 +1,39 @@
 # Shopping assistant features
 
-All six additions are implemented in the KALA widget and Python agent. Local
+October 19 deployed change: `SESSION_SECONDS=0` removes the fixed
+call countdown. Ava has an `end_call` tool that says goodbye and closes the room
+when the task is resolved and the visitor is done or asks to stop. A
+recommendation, cart action, pending checkout, silence or minimizing alone must
+not end the call. Source/SDK regressions are offline; Cloud Run activation and
+public config checks pass. Actual long voice calls and the model's closing
+behavior remain unverified. See [session lifecycle](SESSION_LIFECYCLE.md).
+
+October 18 checkout addition: `prepare_checkout` shows a server-priced summary
+in a separate compact card; Chat need not open. `confirm_checkout` requires a
+new user confirmation after review or a direct card button. The backend uses
+only Midtrans sandbox endpoints, reuses signed order drafts on retry/reload, and checks
+provider status. `get_checkout_status` refreshes it; the worker requires a fresh
+server-signed receipt before using payment facts. Without a key the card says
+QRIS is unavailable and creates no QR. The host's earlier deployed Midtrans
+sandbox transaction was verified with the official simulator; full human voice
+checkout remains unverified. Unit/SDK and
+1440/390/320 px browser tests use a synthetic provider. Use only the official
+Midtrans simulator; never scan sandbox codes with a real bank/wallet application.
+No real order, fulfillment or cart clearing is introduced. Recipient email is
+collected only through a dedicated explicit-consent checkout form for optional
+receipt mail, never as model context. The local cashier prompt now reviews totals,
+requests fresh QR confirmation and distinguishes payment from email acceptance.
+The background encrypted outbox suppresses duplicate submissions across restart;
+SMTP acceptance does not prove inbox delivery. Cloud activation and one actual
+sandbox-paid email test passed; the user reported the message in Gmail Spam.
+Inbox placement and full human voice checkout remain open. See
+[CHECKOUT_EMAIL.md](CHECKOUT_EMAIL.md).
+
+All six additions are implemented in the DOPAMINE widget and Python agent. Local
 checks use the real storefront, cart adapter, DOM actions, and tool SDK with a
 simulated agent transport. Live startup, rendering, and audio playback have been
 checked; microphone recognition and all six spoken flows need a full rehearsal.
-Public deployment is pending.
+The host's current public deployment includes the email/cashier changes.
 
 Clicking **Tanya Ava** opens the compact panel and starts the call immediately;
 there is no second start button. Microphone, Chat, and Disconnect sit directly
@@ -71,7 +100,7 @@ codes have been removed. This proves a retry defect; the user's initial probe
 failure still has no confirmed cause. See `docs/LATENCY.md` for research evidence.
 
 An isolated renderer test loaded the exact SDK/WASM from Archava Onchain with
-KALA's public avatar IDs, without a LiveKit room. In headed Brave with the GPU,
+DOPAMINE's public avatar IDs, without a LiveKit room. In headed Brave with the GPU,
 the SDK support check passed and the first frame rendered (518×411). With
 GPU rendering disabled, the SDK returned false. Neither case created a session.
 The production widget then passed a live headed Brave check at DPR 1.2:

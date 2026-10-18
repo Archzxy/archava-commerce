@@ -18,6 +18,33 @@ from assistant import ACTION_TOPIC, RESULT_TOPIC, STATE_TOPIC
 
 
 class HostToolTests(unittest.IsolatedAsyncioTestCase):
+    async def test_checkout_tools_review_then_require_new_real_consent_before_sandbox_creation(self):
+        from livekit.agents.llm import ChatMessage
+        from checkout import CheckoutContext, RESULT_TOPIC as CHECKOUT_RESULT
+        from test_checkout import KEY, receipt, sign
+        room = Mock()
+        host = ArchavaHost(SiteContext(), room, make_instructions(), MarketplaceContext('guest-owned'))
+        host._checkout = CheckoutContext('guest-owned', KEY)
+        actions = []
+        async def receive(data, **kwargs):
+            value = json.loads(data)
+            actions.append(value)
+            order = receipt() | {'status': 'preview' if value['action'] == 'prepare' else 'pending'}
+            packet = {'requestId': value['requestId'], 'revision': len(actions), 'code': 'review_ready' if value['action'] == 'prepare' else 'status_received', 'receipt': sign(order)}
+            self.assertTrue(host._checkout.accept(CHECKOUT_RESULT, json.dumps(packet).encode(), 'guest-owned'))
+        room.local_participant.publish_data = AsyncMock(side_effect=receive)
+        host._checkout_consent.observe(ChatMessage(id='checkout-request', role='user', content=['Lanjut checkout'], created_at=time.time() - 1))
+        result = json.loads(await host.prepare_checkout())
+        self.assertEqual(result['checkout']['status'], 'preview')
+        self.assertEqual(json.loads(await host.confirm_checkout())['code'], 'confirmation_required')
+        self.assertEqual(len(actions), 1)
+        host._checkout_consent.observe(ChatMessage(id='checkout-review', role='assistant', content=['Total demo 465 ribu, mau buat QR sandbox?'], created_at=time.time() + 1))
+        host._checkout_consent.observe(ChatMessage(id='checkout-yes', role='user', content=['Ya buat QR'], created_at=time.time() + 2))
+        self.assertEqual(json.loads(await host.confirm_checkout())['checkout']['status'], 'pending')
+        self.assertEqual(actions[-1]['orderId'], result['checkout']['orderId'])
+        await host.sync_checkout_knowledge()
+        self.assertIn('APPROVED CHECKOUT STATE:', host.chat_ctx.items[-1].text_content)
+
     async def test_six_feature_tools_wait_for_browser_and_check_real_confirmation(self):
         from livekit.agents.llm import ChatMessage
         room = Mock()
@@ -131,7 +158,12 @@ class HostToolTests(unittest.IsolatedAsyncioTestCase):
         metadata = {"product": "archava-template", "projectId": PROJECT_ID, "guestIdentity": "guest-owned", "avatarProvider": "voice", "sessionSeconds": 120, "endsAt": int(time.time()) + 120}
         with patch.dict(os.environ, {"AVATAR_PROVIDER": "voice"}):
             self.assertEqual(session_metadata(json.dumps(metadata)), metadata)
-            for overrides in [{"projectId": "other-project"}, {"avatarProvider": "spatius"}, {"guestIdentity": "agent-host"}, {"endsAt": 0}, {"sessionSeconds": True}]:
+            unlimited = {**metadata, "sessionSeconds": 0, "endsAt": None}
+            self.assertEqual(session_metadata(json.dumps(unlimited)), unlimited)
+            missing_expiry = {key: value for key, value in unlimited.items() if key != 'endsAt'}
+            with self.assertRaises(ValueError):
+                session_metadata(json.dumps(missing_expiry))
+            for overrides in [{"projectId": "other-project"}, {"avatarProvider": "spatius"}, {"guestIdentity": "agent-host"}, {"endsAt": 0}, {"sessionSeconds": True}, {"endsAt": None}, {"sessionSeconds": 0}, {"sessionSeconds": -1}, {"sessionSeconds": 1801}, {"sessionSeconds": False, "endsAt": None}]:
                 with self.subTest(overrides=overrides):
                     with self.assertRaises(ValueError):
                         session_metadata(json.dumps({**metadata, **overrides}))

@@ -32,12 +32,14 @@ export function runtimeConfig(env = process.env) {
       : [env.TAVUS_API_KEY, env.FACE_ID].every(configured))
   ));
   const agentName = env.ARCHAVA_AGENT_NAME?.trim() || `${projectId}-host`;
+  const seconds = integer(env.SESSION_SECONDS, 0, 0, 1800, "SESSION_SECONDS");
+  if (seconds > 0 && seconds < 30) throw new Error("SESSION_SECONDS must be 0 (until finished) or 30–1800");
   return {
     projectId, avatarProvider, origins, livekitConfigured, providerConfigured, agentName,
     enabled: env.ENABLE_SESSIONS === "true",
     trustProxy: env.TRUST_PROXY === "true",
     port: integer(env.PORT, 5002, 1, 65535, "PORT"),
-    seconds: integer(env.SESSION_SECONDS, 120, 30, 1800, "SESSION_SECONDS"),
+    seconds,
     maxActive: integer(env.MAX_ACTIVE_SESSIONS, 10, 1, 100, "MAX_ACTIVE_SESSIONS"),
     startsPerMinute: integer(env.SESSION_STARTS_PER_MINUTE, 3, 1, 60, "SESSION_STARTS_PER_MINUTE"),
     publicFields: {

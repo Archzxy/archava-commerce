@@ -25,7 +25,8 @@ interface LiveRoomProps {
   onError: (message: string) => void;
 }
 
-const timeLeft = (seconds: number) => {
+const timeLeft = (seconds: number | null) => {
+  if (seconds === null) return "";
   const left = Math.max(0, seconds - Math.floor(Date.now() / 1000));
   return String(Math.floor(left / 60)).padStart(2, "0") + ":" + String(left % 60).padStart(2, "0");
 };
@@ -88,9 +89,11 @@ export function LiveRoom({ session, onClose, onError }: LiveRoomProps) {
   const stateLabel = STATE_LABELS[state];
 
   useEffect(() => {
+    if (session.endsAt === null) return;
+    const endsAt = session.endsAt;
     const timer = window.setInterval(() => {
-      setRemaining(timeLeft(session.endsAt));
-      if (session.endsAt <= Math.floor(Date.now() / 1000)) {
+      setRemaining(timeLeft(endsAt));
+      if (endsAt <= Math.floor(Date.now() / 1000)) {
         onClose();
       }
     }, 1000);
@@ -131,10 +134,10 @@ export function LiveRoom({ session, onClose, onError }: LiveRoomProps) {
           </span>
         </div>
 
-        <div className="live-timer-badge">
+        {session.endsAt !== null && <div className="live-timer-badge">
           <Clock3 size={13} />
           <span className="timer-digits">{remaining}</span>
-        </div>
+        </div>}
       </div>
 
       {/* Main Video Viewport with HUD Brackets */}

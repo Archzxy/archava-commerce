@@ -39,6 +39,14 @@ class PageProtocolTests(unittest.TestCase):
 
 
 class KnowledgeTests(unittest.TestCase):
+    def test_completion_mode_prompt_has_no_countdown_and_ends_through_a_farewell_tool(self):
+        prompt = instructions.make_instructions()
+        self.assertIn('no fixed conversation countdown', prompt)
+        self.assertNotIn('120 seconds', prompt)
+        self.assertIn('call end_call', prompt)
+        self.assertIn('Pending/unknown actions', prompt)
+        self.assertIn('Do not end because time passed', prompt)
+
     def test_unknown_topic_and_availability_status_are_explicit(self):
         with patch.dict(knowledge.FACTS, {
             "business": {"status": "planned", "text": "Example use cases."},

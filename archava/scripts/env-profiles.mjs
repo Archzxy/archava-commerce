@@ -23,7 +23,7 @@ export function reusableValues(content) {
 
 export function assertBlankClientExample(content) {
   const values = parseEnv(content);
-  const credentials = ["LIVEKIT_API_KEY", "LIVEKIT_API_SECRET", "GEMINI_API_KEY", "SPATIUS_API_KEY", "SPATIUS_APP_ID", "SPATIUS_AVATAR_ID", "TAVUS_API_KEY", "FACE_ID", "PAL_ID"];
+  const credentials = ["LIVEKIT_API_KEY", "LIVEKIT_API_SECRET", "GEMINI_API_KEY", "SPATIUS_API_KEY", "SPATIUS_APP_ID", "SPATIUS_AVATAR_ID", "TAVUS_API_KEY", "FACE_ID", "PAL_ID", "MIDTRANS_SERVER_KEY", "CHECKOUT_SIGNING_KEY", "SMTP_HOST", "SMTP_USER", "SMTP_PASS", "SMTP_FROM", "CHECKOUT_EMAIL_BUCKET", "CHECKOUT_EMAIL_STATE_DIR"];
   for (const key of credentials) {
     if (values[key]?.trim()) throw new Error(`Client environment examples must leave ${key} empty. Keep credentials in a private profile or ignored .env.`);
   }

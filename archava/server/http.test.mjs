@@ -6,6 +6,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { createApp } from "./app.mjs";
 import { runtimeConfig } from "./config.mjs";
+import { createCheckout, checkoutSigningKey } from './checkout.mjs';
 
 async function fixture(t, overrides = {}) {
   const events = [];
@@ -14,7 +15,7 @@ async function fixture(t, overrides = {}) {
     async start() { events.push("start"); return { status: 200, body: { ticket: "a".repeat(64), token: "public-room-token" } }; },
     async end(ticket) { events.push(ticket); return { ok: true }; },
   };
-  const app = createApp({ config, sessions, distDir: overrides.distDir });
+  const app = createApp({ config, sessions, checkout: overrides.checkout, distDir: overrides.distDir });
   const server = createServer(app.handle);
   await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
   t.after(() => new Promise((resolve) => { server.close(resolve); server.closeAllConnections(); }));
@@ -85,4 +86,21 @@ test("unknown API routes stay JSON even when the frontend build exists", async (
     assert.equal((await response.json()).error, "Not found");
   }
   assert.equal((await request("/")).status, 200);
+});
+
+test('checkout HTTP routes enforce origins/schema, keep provider secrets private and cannot mark payment paid', async t => {
+  const checkout = createCheckout({ projectId: 'unit-project', signingKey: checkoutSigningKey({ CHECKOUT_SIGNING_KEY: 'offline-test-secret' }) });
+  const { request, events } = await fixture(t, { checkout });
+  const body = { items: [{ id: 'headphones', quantity: 1 }], shipping: 'standard' };
+  assert.equal((await request('/api/checkout/draft', body, 'https://foreign.test')).status, 403);
+  assert.equal((await request('/api/checkout/draft', { ...body, amount: 1 })).status, 400);
+  const draft = await (await request('/api/checkout/draft', body)).json();
+  assert.equal(draft.order.status, 'unavailable');
+  assert.equal(JSON.stringify(draft).includes('offline-test-secret'), false);
+  const forged = await request('/api/checkout/status', { token: draft.token, status: 'paid' });
+  assert.equal(forged.status, 400);
+  const confirmed = await (await request('/api/checkout/confirm', { token: draft.token, confirmed: true })).json();
+  assert.equal(confirmed.order.status, 'unavailable');
+  assert.equal(confirmed.qrUrl, undefined);
+  assert.deepEqual(events, [], 'checkout never allocates a voice room');
 });

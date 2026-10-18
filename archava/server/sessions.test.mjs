@@ -7,6 +7,57 @@ const config = {
   publicFields: { serverUrl: "wss://unit.test", avatarProvider: "voice" },
 };
 
+test("completion-mode calls survive elapsed time and release admission when Ava ends the room", async () => {
+  let clock = 1_000_000;
+  let live = true;
+  const deleted = [];
+  const sessions = createSessions({ config: { ...config, seconds: 0 }, now: () => clock, rooms: {
+    async open({ endsAt }) { assert.equal(endsAt, null); return { roomName: 'ongoing', token: 'token' }; },
+    async deleteRoom(name) { deleted.push(name); },
+    async sweep() { return new Set(live ? ['ongoing'] : []); },
+  } });
+  assert.equal((await sessions.start()).body.endsAt, null);
+  clock += 24 * 60 * 60 * 1000;
+  await sessions.sweep();
+  assert.deepEqual(deleted, []);
+  assert.equal((await sessions.start()).status, 429);
+  live = false;
+  await sessions.sweep();
+  assert.equal((await sessions.start()).status, 200);
+  await sessions.shutdown();
+  assert.deepEqual(deleted, ['ongoing']);
+});
+
+test("an opening during the provider snapshot keeps its admission slot", async () => {
+  let release;
+  const barrier = new Promise(resolve => { release = resolve; });
+  const sessions = createSessions({ config: { ...config, seconds: 0 }, rooms: {
+    async open() { return { roomName: 'new-room', token: 'token' }; },
+    async deleteRoom() {},
+    async sweep() { await barrier; return new Set(); },
+  } });
+  const sweeping = sessions.sweep();
+  assert.equal((await sessions.start()).status, 200);
+  release();
+  await sweeping;
+  assert.equal((await sessions.start()).status, 429);
+  await sessions.shutdown();
+});
+
+test("recovered active rooms still count toward capacity after an API restart", async () => {
+  let liveRooms = new Set(['recovered-room']);
+  const sessions = createSessions({ config: { ...config, seconds: 0 }, rooms: {
+    async open() { return { roomName: 'new-room', token: 'token' }; },
+    async deleteRoom() {}, async sweep() { return liveRooms; },
+  } });
+  await sessions.sweep();
+  assert.equal((await sessions.start()).status, 429);
+  liveRooms = new Set();
+  await sessions.sweep();
+  assert.equal((await sessions.start()).status, 200);
+  await sessions.shutdown();
+});
+
 test("disabled or unconfigured sessions never allocate a provider room", async () => {
   let opened = 0;
   const rooms = { async open() { opened++; } };

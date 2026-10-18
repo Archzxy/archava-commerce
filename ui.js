@@ -26,7 +26,7 @@ export function productCard(product, { sale = false, favorites = new Set() } = {
 }
 
 export function categoryCard(category) {
-  return `<a class="category-card" style="background:${category.color}" href="/kategori/${category.slug}"><span class="category-emoji" aria-hidden="true">${icon(category.symbol)}</span><strong>${category.label}</strong><small>${categoryCount(category)} produk pilihan</small></a>`;
+  return `<a class="category-card" style="--category-bg:${category.color}" href="/kategori/${category.slug}"><span class="category-emoji" aria-hidden="true">${icon(category.symbol)}</span><strong>${category.label}</strong><small>${categoryCount(category)} produk pilihan</small></a>`;
 }
 
 export function breadcrumb(items) {
@@ -44,5 +44,5 @@ export function cartItem(product, quantity) {
 
 export function fallbackImage(product) {
   const category = categories.find((item) => item.name === product.category);
-  return `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600"><rect width="600" height="600" fill="${category.color}"/><circle cx="300" cy="265" r="130" fill="#ffffff88"/><path d="M235 215h130v125H235zM275 220v-30a25 25 0 0 1 50 0v30" fill="none" stroke="#688561" stroke-width="8"/><text x="300" y="455" font-family="sans-serif" font-size="20" fill="#315340" text-anchor="middle">${escapeHTML(product.brand)}</text></svg>`)}`;
+  return `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600"><rect width="600" height="600" fill="${category.color}"/><circle cx="300" cy="265" r="130" fill="#ffffff88"/><path d="M235 215h130v125H235zM275 220v-30a25 25 0 0 1 50 0v30" fill="none" stroke="#7b3dff" stroke-width="8"/><text x="300" y="455" font-family="sans-serif" font-size="20" fill="#1f1f24" text-anchor="middle">${escapeHTML(product.brand)}</text></svg>`)}`;
 }

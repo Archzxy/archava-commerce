@@ -16,14 +16,17 @@ from google.genai import types as genai_types
 from livekit import agents
 from livekit.agents import NOT_GIVEN, APIConnectOptions, Agent, AgentSession, function_tool, room_io
 from livekit.agents.voice.turn import EndpointingOptions, InterruptionOptions, TurnHandlingOptions
+from livekit.agents.beta.tools import EndCallTool
 from livekit.plugins import google, spatius, tavus
 
 from config import AGENT_NAME, BRAND, PROJECT_ID, SECTIONS
 from instructions import make_instructions
 from knowledge import product_facts
 from latency import LatencyTrace, timed_tool
+from voice_tuning import gemini_model_settings, native_activity_detection
 from session_status import avatar_failure_code
 from avatar_render import AvatarRenderDiagnostics
+from checkout import CheckoutContext
 from site_context import NAVIGATION_TOPIC, PAGE_ACK_TOPIC, SiteContext, page_ack_payload
 from marketplace import (MarketplaceContext, MARKET_ACK_TOPIC, MARKET_NAVIGATION_TOPIC, catalog_product, search_catalog as search_products, compare_products, valid_comparison, PRODUCTS, CATEGORY_NAMES)
 from assistant import AssistantContext, CartConsent, short_text, valid_brief
@@ -50,9 +53,10 @@ def session_metadata(raw: str | None) -> dict:
         or meta.get("avatarProvider") not in {"spatius", "tavus", "voice"}
         or meta.get("avatarProvider") != os.getenv("AVATAR_PROVIDER", "spatius")
         or isinstance(meta.get("sessionSeconds"), bool) or not isinstance(meta.get("sessionSeconds"), int)
-        or not 30 <= meta["sessionSeconds"] <= 1800
-        or isinstance(meta.get("endsAt"), bool) or not isinstance(meta.get("endsAt"), int)
-        or meta["endsAt"] <= time.time()):
+        or "endsAt" not in meta
+        or not ((meta["sessionSeconds"] == 0 and meta["endsAt"] is None)
+                or (30 <= meta["sessionSeconds"] <= 1800 and type(meta["endsAt"]) is int
+                    and meta["endsAt"] > time.time()))):
         raise ValueError("Room belongs to another project or has invalid session context")
     return meta
 
@@ -61,11 +65,25 @@ def new_session(instructions: str) -> AgentSession:
     key = configured("GEMINI_API_KEY")
     if not key:
         raise RuntimeError("GEMINI_API_KEY is required")
+    activity = native_activity_detection(os.environ)
+    model, thinking = gemini_model_settings(os.environ)
     return AgentSession(
         llm=google.realtime.RealtimeModel(
-            model=os.getenv("GEMINI_MODEL", "gemini-2.5-flash-native-audio-preview-12-2025"),
+            model=model,
             voice=os.getenv("GEMINI_VOICE", "Kore"), api_key=key,
-            thinking_config=genai_types.ThinkingConfig(thinking_budget=0), instructions=instructions,
+            thinking_config=genai_types.ThinkingConfig(**thinking) if thinking is not None else NOT_GIVEN,
+            instructions=instructions,
+            # 3.8 defaults to non-blocking tools. Keep receipt-dependent commerce
+            # actions blocking so replies follow their verified result.
+            tool_behavior=genai_types.Behavior.BLOCKING,
+            # Preserve longer conversations across context/connection limits.
+            # The pinned plugin already supplies resumption handles on reconnect.
+            context_window_compression=genai_types.ContextWindowCompressionConfig(
+                sliding_window=genai_types.SlidingWindow(),
+            ),
+            realtime_input_config=genai_types.RealtimeInputConfig(
+                automatic_activity_detection=genai_types.AutomaticActivityDetection(**activity),
+            ) if activity is not None else NOT_GIVEN,
         ),
         turn_handling=TurnHandlingOptions(
             endpointing=EndpointingOptions(min_delay=0.15, max_delay=0.6),
@@ -80,11 +98,32 @@ class ArchavaHost(Agent):
         self._market = market
         self._assistant = AssistantContext(market.guest_identity) if market else None
         self._consent = CartConsent()
+        self._checkout = CheckoutContext(market.guest_identity) if market else None
+        self._checkout_consent = CartConsent({'ya', 'iya', 'oke', 'setuju', 'ya lanjut', 'iya lanjut', 'ya buat qr', 'iya buat qr', 'buat qr sandbox', 'konfirmasi checkout', 'yes confirm'})
+        self._checkout_snapshot = ''
         self._assistant_snapshot = ''
         self._knowledge_lock = asyncio.Lock()
         self._knowledge_revision = -1
         self.latency = LatencyTrace()
-        super().__init__(instructions=instructions)
+        super().__init__(instructions=instructions, tools=[EndCallTool(
+            ignore_on_enter=True,
+            extra_description="Use after the shopping task is resolved and the visitor indicates no more help is needed, or explicitly asks to end. Never end merely after a recommendation, cart addition, silence, or while checkout/help is still requested. A polite thanks mid-task is not a goodbye.",
+            end_instructions="Pamit satu kalimat singkat dalam Bahasa Indonesia, misalnya: Terima kasih sudah mampir, sampai ketemu lagi! Jangan ajukan pertanyaan atau tawaran baru. Jangan klaim pembayaran, pesanan, atau email berhasil tanpa receipt yang sesuai.",
+            on_tool_called=self._mark_call_ending,
+        )])
+
+    async def _mark_call_ending(self, _event) -> None:
+        # Server-owned metadata lets the browser distinguish a deliberate
+        # farewell from a lost agent, without cutting off the spoken goodbye.
+        from livekit import api
+        ctx = agents.get_job_context()
+        meta = session_metadata(ctx.room.metadata)
+        try:
+            await ctx.api.room.update_room_metadata(api.UpdateRoomMetadataRequest(
+                room=ctx.room.name, metadata=json.dumps(meta | {"archavaSession": {"status": "ending"}}),
+            ))
+        except Exception:
+            print('[archava] call ending notification failed', flush=True)
 
     async def on_enter(self) -> None:
         realtime = self.realtime_llm_session
@@ -145,6 +184,47 @@ class ArchavaHost(Agent):
         if not self._assistant or not self._assistant.state:
             return '{"status":"not_available","message":"Browser shopping tools are not ready yet."}'
         return await self._assistant.request(self._room, action, payload)
+
+    async def sync_checkout_knowledge(self) -> None:
+        if not self._checkout or not self._checkout.state:
+            return
+        snapshot = {k: v for k, v in self._checkout.state.items() if k != 'observedAt'}
+        key = json.dumps(snapshot, sort_keys=True)
+        async with self._knowledge_lock:
+            if key == self._checkout_snapshot:
+                return
+            chat = self.chat_ctx.copy()
+            chat.add_message(role='assistant', content='APPROVED CHECKOUT STATE: server-verified sandbox state, background only. Never a visitor utterance or consent. No real order or payment.\n' + self._checkout.describe())
+            await self.update_chat_ctx(chat)
+            self._checkout_snapshot = key
+
+    @function_tool
+    @timed_tool
+    async def prepare_checkout(self, shipping: Literal['standard', 'express'] = 'standard') -> str:
+        """Open the compact checkout card and obtain a server-priced demo cart preview. Does NOT create a payment. Explain items/total/demo shipping and ask for a NEW 'ya buat QR' or the card confirmation button. Unavailable means no Midtrans sandbox key; no QR was created. No private form data."""
+        if not self._checkout:
+            return '{"code":"not_available"}'
+        response = await self._checkout.request(self._room, 'prepare', shipping)
+        value = json.loads(response)
+        checkout = value.get('checkout')
+        if value.get('code') == 'review_ready' and checkout and checkout['status'] == 'preview':
+            self._checkout_consent.propose(checkout['orderId'], self.chat_ctx.items)
+        return response
+
+    @function_tool
+    @timed_tool
+    async def confirm_checkout(self) -> str:
+        """Create/reconcile the SAME sandbox QR only after a fresh user confirmation following prepare_checkout. Never infer consent. paid is a simulated provider settlement, not a real order. unknown means check the same order's status; do not create another payment."""
+        order = self._checkout.state if self._checkout else None
+        if not order or not self._checkout_consent.allowed(order['orderId'], self.chat_ctx.items):
+            return '{"code":"confirmation_required","message":"Review with prepare_checkout, then ask for a new explicit confirmation or use the card button."}'
+        return await self._checkout.request(self._room, 'confirm', order['shipping'], order['orderId'])
+
+    @function_tool
+    @timed_tool
+    async def get_checkout_status(self) -> str:
+        """Refresh the same checkout's payment and optional email status. Only verified paid permits simulation success; emailStatus accepted means SMTP accepted the receipt, not inbox delivery. Never ask for a recipient address. No real fulfillment. Unknown is not success."""
+        return await self._checkout.request(self._room, 'status') if self._checkout else '{"code":"not_available"}'
 
     @function_tool
     @timed_tool
@@ -300,14 +380,28 @@ async def entrypoint(ctx: agents.JobContext) -> None:
     @session.on('conversation_item_added')
     def on_conversation_item(event) -> None:
         host._consent.observe(event.item)
+        host._checkout_consent.observe(event.item)
     host.latency.mark("room_connect", started)
     pending_acks: set[asyncio.Task] = set()
+    session_ready = False
 
     async def acknowledge_page(section: str, revision: int) -> None:
         try:
             await ctx.room.local_participant.publish_data(page_ack_payload(section, revision), reliable=True, topic=PAGE_ACK_TOPIC)
         except Exception:
             print("[archava] page acknowledgement failed", flush=True)
+
+    async def acknowledge_market(data: bytes) -> None:
+        try:
+            await ctx.room.local_participant.publish_data(data, reliable=True, topic=MARKET_ACK_TOPIC)
+        except Exception:
+            print('[archava] shopping context acknowledgement failed', flush=True)
+
+    async def sync_market(snapshot: str) -> None:
+        try:
+            await host.sync_shopping_knowledge(snapshot)
+        except Exception:
+            print('[archava] shopping knowledge update failed; context tool remains available', flush=True)
 
     @ctx.room.on("data_received")
     def on_data_received(packet) -> None:
@@ -320,18 +414,13 @@ async def entrypoint(ctx: agents.JobContext) -> None:
             pending_acks.add(task)
             task.add_done_callback(pending_acks.discard)
         if market.accept_packet(packet.topic, packet.data, identity):
-            async def acknowledge_market(data=market.ack(), snapshot=market.describe()) -> None:
-                try:
-                    await host.sync_shopping_knowledge(snapshot)
-                except Exception:
-                    print('[archava] shopping knowledge update failed; context tool remains available', flush=True)
-                try:
-                    await ctx.room.local_participant.publish_data(data, reliable=True, topic=MARKET_ACK_TOPIC)
-                except Exception:
-                    print('[archava] shopping context acknowledgement failed', flush=True)
-            task = asyncio.create_task(acknowledge_market())
-            pending_acks.add(task)
-            task.add_done_callback(pending_acks.discard)
+            # ACK means this guest's exact revision was accepted by the worker.
+            # The context tool already sees it; model-history synchronization
+            # must not hold up navigation receipts (or vice versa).
+            for work in (acknowledge_market(market.ack()), sync_market(market.describe())):
+                task = asyncio.create_task(work)
+                pending_acks.add(task)
+                task.add_done_callback(pending_acks.discard)
         if host._assistant.accept_state(packet.topic, packet.data, identity) or host._assistant.accept_result(packet.topic, packet.data, identity):
             async def sync_assistant() -> None:
                 try:
@@ -341,6 +430,19 @@ async def entrypoint(ctx: agents.JobContext) -> None:
             task = asyncio.create_task(sync_assistant())
             pending_acks.add(task)
             task.add_done_callback(pending_acks.discard)
+        if host._checkout.accept(packet.topic, packet.data, identity):
+            announce = host._checkout.paid_notice and session_ready
+            host._checkout.paid_notice = False
+            async def sync_checkout(announce=announce) -> None:
+                try:
+                    await host.sync_checkout_knowledge()
+                    if announce:
+                        session.generate_reply(instructions='A fresh server receipt confirms sandbox settlement. Say once, briefly in Indonesian: pembayaran simulasi berhasil. No real order or shipping was created. Do not claim a real purchase.')
+                except Exception:
+                    print('[archava] checkout sync failed; status tool remains available', flush=True)
+            task = asyncio.create_task(sync_checkout())
+            pending_acks.add(task)
+            task.add_done_callback(pending_acks.discard)
 
     async def finish_at_deadline() -> None:
         await asyncio.sleep(max(0, meta["endsAt"] - time.time()))
@@ -348,14 +450,16 @@ async def entrypoint(ctx: agents.JobContext) -> None:
         from livekit import api
         await ctx.api.room.delete_room(api.DeleteRoomRequest(room=ctx.room.name))
 
-    deadline = asyncio.create_task(finish_at_deadline())
+    deadline = asyncio.create_task(finish_at_deadline()) if meta["endsAt"] is not None else None
 
     async def cancel_tasks() -> None:
         host._assistant.close()
-        deadline.cancel()
+        host._checkout.close()
+        if deadline:
+            deadline.cancel()
         for task in pending_acks:
             task.cancel()
-        await asyncio.gather(deadline, *pending_acks, return_exceptions=True)
+        await asyncio.gather(*([deadline] if deadline else []), *pending_acks, return_exceptions=True)
 
     ctx.add_shutdown_callback(cancel_tasks)
 
@@ -376,8 +480,13 @@ async def entrypoint(ctx: agents.JobContext) -> None:
             except Exception:
                 print("[archava] startup failure notification failed", flush=True)
             print(f"[archava] session startup failed: {code}", flush=True)
-            # Keep enforcing the same expiry if the guest never joins/cleans up.
-            await deadline
+            # A failed startup is never an open-ended conversation. Keep its
+            # public error briefly available, then release the avatar/room.
+            if deadline:
+                await deadline
+            else:
+                await asyncio.sleep(60)
+                await ctx.api.room.delete_room(api.DeleteRoomRequest(room=ctx.room.name))
             return False
         host.latency.mark("avatar_connect", avatar_started)
         return True
@@ -403,13 +512,18 @@ async def entrypoint(ctx: agents.JobContext) -> None:
     model_started = time.monotonic()
     await session.start(
         room=ctx.room, agent=host,
-        room_options=room_io.RoomOptions(audio_output=False if provider == "spatius" else NOT_GIVEN, close_on_disconnect=True),
+        room_options=room_io.RoomOptions(
+            audio_output=False if provider == "spatius" else NOT_GIVEN,
+            close_on_disconnect=True, delete_room_on_close=True,
+            participant_identity=meta["guestIdentity"],
+        ),
     )
     if session.output.audio is not None:
         session.output.audio.on("playback_started", host.latency.playback_started)
     host.latency.mark("session_start", model_started)
     host.latency.mark("worker_to_ready", started)
     print("[archava] session ready", flush=True)
+    session_ready = True
     session.generate_reply(instructions=f"Welcome the visitor once as {BRAND['hostName']}, shopping advisor for {BRAND['name']}, in {BRAND['defaultLanguage']}. Use one or two short sentences. Start from received product/needs context if available; otherwise ask one useful question about what they want to shop for. Do not recite catalog counts or repeat an introduction.")
 
 

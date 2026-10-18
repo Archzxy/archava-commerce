@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { extname, resolve, sep } from "node:path";
+import { CheckoutError } from './checkout.mjs';
 
 class RequestError extends Error {
   constructor(status, message) { super(message); this.status = status; }
@@ -20,7 +21,7 @@ async function readJson(req) {
   } catch { throw new RequestError(400, "Expected a JSON object"); }
 }
 
-export function createApp({ config, sessions, distDir, now = Date.now }) {
+export function createApp({ config, sessions, checkout, distDir, now = Date.now }) {
   const rateBuckets = new Map();
   const allowedOrigins = new Set(config.origins);
   function respond(res, status, body, origin, headers = {}) {
@@ -42,12 +43,13 @@ export function createApp({ config, sessions, distDir, now = Date.now }) {
     }
   }
 
-  function allowStart(req) {
+  function allowStart(req, scope = 'session', limit = config.startsPerMinute) {
     const forwarded = req.headers["x-forwarded-for"];
-    const key = config.trustProxy && typeof forwarded === "string"
+    const address = config.trustProxy && typeof forwarded === "string"
       ? forwarded.split(",")[0].trim() : req.socket.remoteAddress || "unknown";
+    const key = scope + ':' + address;
     const times = (rateBuckets.get(key) || []).filter((time) => now() - time < 60_000);
-    if (times.length >= config.startsPerMinute) return false;
+    if (times.length >= limit) return false;
     times.push(now());
     rateBuckets.set(key, times);
     return true;
@@ -111,12 +113,20 @@ export function createApp({ config, sessions, distDir, now = Date.now }) {
         }
         return respond(res, 200, await sessions.end(body.ticket), origin);
       }
+      if (req.method === 'POST' && ['/api/checkout/draft', '/api/checkout/confirm', '/api/checkout/status', '/api/checkout/email'].includes(path)) {
+        const body = await readJson(req);
+        const statusRead = path.endsWith('/status');
+        if (!allowStart(req, statusRead ? 'checkout-read' : 'checkout-write', statusRead ? 120 : 12)) return respond(res, 429, { error: 'Terlalu banyak percobaan checkout. Tunggu sebentar.' }, origin, { 'retry-after': '60' });
+        if (!checkout) throw new CheckoutError(503, 'Checkout demo belum tersedia.');
+        const result = path.endsWith('/draft') ? checkout.draft(body) : path.endsWith('/email') ? await checkout.email(body) : await checkout.update(body, path.endsWith('/confirm'));
+        return respond(res, 200, result, origin);
+      }
       // Unknown API routes always return JSON, including former product routes.
       if (path === "/api" || path.startsWith("/api/") || path === "/v1" || path.startsWith("/v1/")) return respond(res, 404, { error: "Not found" }, origin);
       if (req.method === "GET" && await serveStatic(path, res)) return;
       return respond(res, 404, { error: "Not found" }, origin);
     } catch (error) {
-      if (error instanceof RequestError) return respond(res, error.status, { error: error.message }, origin);
+      if (error instanceof RequestError || error instanceof CheckoutError) return respond(res, error.status, { error: error.message }, origin);
       // Provider errors may contain tokens or URLs. Keep public errors generic.
       console.error("[archava] request failed:", error?.name || "Error");
       return respond(res, 503, { error: "The live service is temporarily unavailable. Please try again." }, origin);

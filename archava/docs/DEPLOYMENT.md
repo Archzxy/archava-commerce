@@ -127,7 +127,7 @@ Di Railway, default `TRUST_PROXY=false` berarti request dari satu IP proxy dapat
 3. Tanyakan satu fakta verified, satu fitur planned/unavailable, dan satu hal di luar knowledge. Periksa jawaban mengikuti data/status dan tidak mengarang kemampuan.
 4. Pindah section lalu tanya konteks halaman; minta host membuka section yang diizinkan dan pastikan scroll/ack benar.
 5. Coba mute, Allow Audio bila autoplay diblokir, disconnect, dan start ulang. Batasi retry sesuai rate limit.
-6. Biarkan satu sesi mencapai `SESSION_SECONDS`. Pastikan UI berakhir dan room LiveKit hilang; periksa juga setelah tombol end/halaman ditutup.
+6. Untuk `SESSION_SECONDS=0`, lanjutkan tugas melewati dua menit dan pastikan tidak ada countdown/penutupan karena waktu. Setelah kebutuhan selesai, ucapkan "makasih, selesai"; periksa pamit selesai diputar, panel tertutup, room LiveKit hilang dan slot kembali tersedia. Coba juga tugas/pembayaran yang masih pending, minimize, Disconnect, dan halaman ditutup. Bila memilih batas tetap 30–1800 detik, verifikasi UI dan room berakhir pada deadline.
 
 Deployment dinyatakan terpasang setelah uji ini lolos. Simpan catatan model/region/provider yang digunakan bila membandingkan delay dengan Archava asal; [LATENCY.md](LATENCY.md) menjelaskan tuning yang sudah dipertahankan.
 

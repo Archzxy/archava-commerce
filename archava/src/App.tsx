@@ -9,8 +9,11 @@ import { ShoppingConversation } from './components/ShoppingConversation';
 import type { SpatiusAvatarPreparation } from './components/SpatiusAvatar';
 import { ShoppingWorkspace } from './components/ShoppingWorkspace';
 import { beginShoppingSession, endShoppingSession } from './lib/assistant';
+import { installCheckout } from './lib/checkout';
+import { CheckoutCard } from './components/CheckoutCard';
 
 export default function App() {
+  useEffect(installCheckout, []);
   const [open, setOpen] = useState(false);
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [config, setConfig] = useState<AppConfig | null>(null);
@@ -105,19 +108,20 @@ export default function App() {
       if (!canStartSession(readyConfig)) throw new Error('service_unavailable');
       if (!supportsAvatarRendering(readyConfig)) throw new Error('browser');
       if (!navigator.mediaDevices?.getUserMedia) throw new Error('microphone');
-      const microphone = await navigator.mediaDevices.getUserMedia({ audio: true });
-      microphone.getTracks().forEach(track => track.stop());
-      if (cancelled()) return;
+      // Permission and the visible renderer can prepare together. A slow or
+      // unanswered permission prompt must not hold up the face, but both must
+      // succeed before allocating a voice room. Always release late mic tracks.
+      const microphoneReady = navigator.mediaDevices.getUserMedia({ audio: true }).then(microphone => {
+        microphone.getTracks().forEach(track => track.stop());
+        return !cancelled();
+      }, cause => { reportFailure(cause); return false; });
       if (readyConfig.avatarProvider === 'spatius') {
-        const { prepareSpatiusAvatar } = await import('./lib/spatius');
-        await prepareSpatiusAvatar(readyConfig.spatiusAppId || '', readyConfig.spatiusAvatarId || '');
-        if (cancelled()) return;
         // The visible view proves readiness before a voice room is allocated.
         // It stays mounted when allocateSession supplies the room credentials.
         waitingForRenderer = true;
         const source = { appId: readyConfig.spatiusAppId || '', avatarId: readyConfig.spatiusAvatarId || '' };
-        setPreparation({ ...source, connect: () => allocateSession(source) });
-      } else {
+        setPreparation({ ...source, connect: async () => await microphoneReady ? allocateSession(source) : null });
+      } else if (await microphoneReady) {
         await allocateSession();
       }
     } catch (cause) { reportFailure(cause); }
@@ -151,12 +155,26 @@ export default function App() {
     return () => { disposed = true; clearInterval(timer); window.removeEventListener('archava:open', show); window.removeEventListener('archava:navigation-error', navigationError); window.removeEventListener('archava:show-shopping', showShopping); window.removeEventListener('archava:show-page', showPage); window.removeEventListener('pagehide', leaving); };
   }, [start]);
   useEffect(() => { preserveCallNavigation(Boolean(session)); return () => preserveCallNavigation(false); }, [session]);
-  const preload = () => {
+  const preload = useCallback(() => {
     if (!canStartSession(config) || config?.avatarProvider !== 'spatius' || !supportsAvatarRendering(config)) return;
-    // Hover/focus can load public assets; it never creates a provider room.
+    // Cached SDK initialization/public assets only: no view, microphone or room.
     void import('./lib/spatius').then(({ prepareSpatiusAvatar }) =>
-      prepareSpatiusAvatar(config.spatiusAppId || '', config.spatiusAvatarId || '')).catch(() => {});
-  };
+      prepareSpatiusAvatar(config.spatiusAppId || '', config.spatiusAvatarId || '')).then(() => {
+        if (!performance.getEntriesByName('archava-avatar-preloaded').length) performance.mark('archava-avatar-preloaded');
+      }).catch(() => {});
+  }, [config]);
+  useEffect(() => {
+    // Like the reference clients, warm while visitors read the store. Yield to
+    // the initial storefront work and respect the browser's data-saving setting.
+    const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+    if (connection?.saveData || document.visibilityState === 'hidden') return;
+    if ('requestIdleCallback' in window) {
+      const idle = window.requestIdleCallback(preload, { timeout: 1_500 });
+      return () => window.cancelIdleCallback(idle);
+    }
+    const timer = setTimeout(preload, 1_500);
+    return () => clearTimeout(timer);
+  }, [preload]);
   useEffect(() => {
     panel.current?.toggleAttribute('inert', !open);
     if (open) panel.current?.focus({ preventScroll: true });
@@ -168,7 +186,7 @@ export default function App() {
 
   return <div className="av-root">
     <aside id="ava-panel" ref={panel} className={`av-panel ${open ? 'is-open' : 'is-minimized'} ${detailsOpen ? 'is-expanded' : ''}`} aria-label="Asisten belanja Ava" aria-hidden={!open} tabIndex={-1}>
-      <header className="av-header"><span className="av-icon"><Sparkles size={19} /></span><div><strong>Ava</strong><span>Teman belanjamu di KALA</span></div><button type="button" onClick={minimize} aria-label="Minimalkan Ava"><Minus size={20} /></button></header>
+      <header className="av-header"><span className="av-icon"><Sparkles size={19} /></span><div><strong>Ava</strong><span>Teman belanjamu di DOPAMINE</span></div><button type="button" onClick={minimize} aria-label="Minimalkan Ava"><Minus size={20} /></button></header>
       {session || preparation ? <LiveKitRoom token={preparation ? undefined : session?.token} serverUrl={preparation ? undefined : session?.serverUrl} connect={Boolean(session && session.avatarProvider !== 'spatius')} audio video={false} options={preparation || session?.avatarProvider === 'spatius' ? { singlePeerConnection: false } : undefined} onDisconnected={roomDisconnected} onError={roomError}>
         <RoomAudioRenderer /><ShoppingConversation session={session} preparation={preparation || undefined} onClose={disconnect} onError={fail} question={question} detailsOpen={detailsOpen} onToggleChat={toggleChat} />
       </LiveKitRoom> : <div className="av-conversation">
@@ -186,6 +204,7 @@ export default function App() {
         </div>
       </div>}
     </aside>
+    <CheckoutCard />
     <button ref={launcher} hidden={open} className={`av-launcher ${session ? 'in-call' : ''}`} type="button" aria-expanded={open} aria-controls="ava-panel" aria-label={session ? 'Buka Ava' : 'Tanya Ava'} onPointerEnter={preload} onFocus={preload} onClick={() => void start()}><Sparkles size={21} /><span>{session ? 'Lanjut ngobrol' : 'Tanya Ava'}</span><i /></button>
   </div>;
 }

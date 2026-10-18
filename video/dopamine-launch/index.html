@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DOPAMINE — Product launch</title>
+<style>
+@font-face{font-family:Fredoka;src:url(assets/fredoka.ttf);font-weight:300 700}
+@font-face{font-family:DM;src:url(assets/font-0.ttf);font-weight:400}
+@font-face{font-family:DM;src:url(assets/font-3.ttf);font-weight:700}
+*{box-sizing:border-box}html,body{margin:0;background:#1f1f24;overflow:hidden;width:100%;height:100%}canvas{display:block;width:100%;height:100%;object-fit:contain}
+#controls{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:15px;align-items:center;padding:12px 20px;border-radius:20px;background:#1f1f24dd;color:white;font:14px DM}
+button{font:inherit;border:0;border-radius:20px;padding:8px 16px;background:#d5ff4f;color:#1f1f24;cursor:pointer}input{width:340px;accent-color:#d5ff4f}body.render #controls{display:none}
+</style>
+</head>
+<body><canvas id="stage" width="1920" height="1080" aria-label="DOPAMINE product launch motion"></canvas>
+<audio id="soundtrack" src="assets/soundtrack.m4a" preload="auto" loop></audio>
+<div id="controls"><button id="play">Play with sound</button><input id="scrub" aria-label="Seek the launch film" type="range" min="0" max="30" step="0.01"><span id="time">0.00 / 30</span></div>
+<script>
+const W=1920,H=1080,canvas=document.querySelector('canvas'),ctx=canvas.getContext('2d',{alpha:false});
+const C={purple:'#7b3dff',lime:'#d5ff4f',pink:'#ff6bc7',cream:'#fff9f5',ink:'#1f1f24',muted:'#6b6172',lilac:'#f0e7ff',white:'#ffffff'};
+const timeline = {
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "duration": 30,
+  "music": {
+    "bpm": 150,
+    "style": "warm upbeat electronic launch instrumental",
+    "key": "F major"
+  },
+  "voice": {
+    "model": "local Kokoro-82M",
+    "name": "af_heart",
+    "language": "en-us",
+    "speed": 1.08,
+    "leadSeconds": 0.22,
+    "tailSeconds": 0.2
+  },
+  "scenes": [
+    {
+      "id": "friction",
+      "start": 0,
+      "end": 4.4,
+      "title": "Good finds. Less guesswork.",
+      "narration": "Good finds. Less guesswork."
+    },
+    {
+      "id": "brand",
+      "start": 4.4,
+      "end": 8.4,
+      "title": "Meet DOPAMINE",
+      "narration": "Meet Dopamine. Good things. Happier you."
+    },
+    {
+      "id": "ava",
+      "start": 8.4,
+      "end": 14.4,
+      "title": "Meet Ava. Your shopping sidekick.",
+      "narration": "Meet Ava. Your voice and avatar shopping sidekick."
+    },
+    {
+      "id": "fit",
+      "start": 14.4,
+      "end": 20.4,
+      "title": "Say what you need. Find what fits.",
+      "narration": "Say what you need. Find what fits your budget, and your life."
+    },
+    {
+      "id": "store",
+      "start": 20.4,
+      "end": 26.4,
+      "title": "From discovery to a confident cart.",
+      "narration": "Compare your options. Confirm your choice. Continue with confidence."
+    },
+    {
+      "id": "resolve",
+      "start": 26.4,
+      "end": 30,
+      "title": "Good things. Happier you.",
+      "narration": "Dopamine. Good things. Happier you."
+    }
+  ]
+};
+const scenes=timeline.scenes;
+window.motion={width:W,height:H,fps:30,duration:30,scenes};
+const clamp=x=>Math.min(1,Math.max(0,x)),mix=(a,b,u)=>a+(b-a)*u;
+const ease=u=>{u=clamp(u);return 1-Math.pow(1-u,3)},smooth=u=>{u=clamp(u);return u*u*(3-2*u)},p=(t,s,d)=>clamp((t-s)/d);
+const images={};
+function rect(x,y,w,h,r,fill,stroke){ctx.beginPath();ctx.roundRect(x,y,w,h,r);if(fill){ctx.fillStyle=fill;ctx.fill()}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=2;ctx.stroke()}}
+function text(value,x,y,size=50,color=C.ink,weight=700,font='DM',align='left'){ctx.font=`${weight} ${size}px ${font}`;ctx.fillStyle=color;ctx.textAlign=align;ctx.textBaseline='top';ctx.fillText(value,x,y);ctx.textAlign='left'}
+function lines(values,x,y,size=100,color=C.ink,gap=1.08,font='Fredoka'){values.forEach((v,i)=>text(v,x,y+i*size*gap,size,color,600,font))}
+function fit(img,x,y,w,h,cover=false){const s=cover?Math.max(w/img.width,h/img.height):Math.min(w/img.width,h/img.height);ctx.drawImage(img,x+(w-img.width*s)/2,y+(h-img.height*s)/2,img.width*s,img.height*s)}
+function photo(img,x,y,w,h,r=30,cover=false){ctx.save();ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.clip();fit(img,x,y,w,h,cover);ctx.restore()}
+function star(x,y,r,color,rotation=0){ctx.save();ctx.translate(x,y);ctx.rotate(rotation);ctx.beginPath();for(let i=0;i<8;i++){const a=i*Math.PI/4-Math.PI/2,rr=i%2?r*.25:r;const xx=Math.cos(a)*rr,yy=Math.sin(a)*rr;i?ctx.lineTo(xx,yy):ctx.moveTo(xx,yy)}ctx.closePath();ctx.fillStyle=color;ctx.fill();ctx.restore()}
+function pill(value,x,y,{fill=C.lime,color=C.ink,size=24,pad=24}={}){ctx.font=`700 ${size}px DM`;const width=ctx.measureText(value).width+pad*2;rect(x,y,width,size+pad*1.1,30,fill);text(value,x+pad,y+pad*.5,size,color);return width}
+function logo(x,y,w,light=false){fit(images[light?'logoLight':'logo'],x,y,w,w*90/280)}
+function badge(value,x,y,color=C.purple){text(value,x,y,21,color,700)}
+function product(img,name,x,y,w,h,rotation=0,scale=1){ctx.save();ctx.translate(x+w/2,y+h/2);ctx.rotate(rotation);ctx.scale(scale,scale);ctx.shadowColor='#2e154c18';ctx.shadowBlur=28;ctx.shadowOffsetY=15;rect(-w/2,-h/2,w,h,34,C.white);ctx.shadowColor='transparent';photo(img,-w/2+14,-h/2+14,w-28,h-105,22,true);text(name,-w/2+26,h/2-65,25,C.ink,700);ctx.restore()}
+function topmark(light=false){logo(90,58,230,light);text('A NEW WAY TO FIND YOUR FIT',1830,84,20,light?'#ffffffbd':C.muted,700,'DM','right')}
+function slide(t,delay,fn){const u=ease(p(t,delay,.65));ctx.save();ctx.globalAlpha=u;ctx.translate(0,60*(1-u));fn();ctx.restore()}
+function drawFriction(t){ctx.fillStyle=C.cream;ctx.fillRect(0,0,W,H);topmark();
+ const enter=ease(p(t,0,.8));
+ product(images.headphones,'For your everyday.',-180+enter*110,270,445,570,-.16,1);
+ product(images.bag,'For your style.',1710-enter*80,390,410,540,.16,1);
+ slide(t,.15,()=>{text('Good finds.',960,290,148,C.ink,600,'Fredoka','center');text('Less guesswork.',960,448,148,C.ink,600,'Fredoka','center')});
+ // Whole lockup centered without distorting the type.
+ ctx.save();ctx.globalCompositeOperation='source-over';ctx.restore();
+ const reveal=ease(p(t,.55,.9));ctx.strokeStyle=C.purple;ctx.lineWidth=15;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(640,659);ctx.bezierCurveTo(800,710,1060,710,1280*reveal+640*(1-reveal),659);if(reveal>0)ctx.stroke();
+ slide(t,1,()=>text('Shopping should feel like a good choice.',960,779,36,C.muted,400,'DM','center'));
+ star(1457,260,48,C.lime,.12+Math.sin(t)*.05);
+}
+function drawBrand(t){ctx.fillStyle=C.purple;ctx.fillRect(0,0,W,H);
+ const u=ease(p(t,.15,.9));ctx.save();ctx.translate(960,470);ctx.scale(.84+.16*u,.84+.16*u);ctx.globalAlpha=u;logo(-640,-208,1280,true);ctx.restore();
+ slide(t,.6,()=>text('Good things. Happier you.',960,726,54,C.white,600,'Fredoka','center'));
+ const a=ease(p(t,1.1,.7));ctx.globalAlpha=a;pill('COMMERCE, WITH A LITTLE MORE HUMAN.',960-326,850,{fill:C.lime,size:22});ctx.globalAlpha=1;
+ star(305,300,62,C.pink,t*.03);star(1635,775,43,C.lime,-.25);
+}
+function drawAva(t){ctx.fillStyle=C.cream;ctx.fillRect(0,0,W,H);topmark();
+ slide(t,.05,()=>{badge('YOUR VOICE + AVATAR SHOPPING ASSISTANT',125,270);lines(['Meet Ava.','Your shopping','sidekick.'],118,345,115,C.ink,1.06)});
+ slide(t,.6,()=>{text('Talk through the options.',125,754,36,C.muted,400);text('Keep the choice yours.',125,802,36,C.muted,400)});
+ const u=ease(p(t,.1,.8));ctx.save();ctx.translate(1350+220*(1-u),595);ctx.rotate(-.03*(1-u));ctx.globalAlpha=u;rect(-270,-385,540,768,42,C.lilac);photo(images.ava,-246,-358,492,716,32);ctx.restore();
+ const q=ease(p(t,.9,.7));ctx.globalAlpha=q;pill('ASK. COMPARE. CHOOSE.',1050,891,{fill:C.lime,size:24});ctx.globalAlpha=1;
+ star(1700,253,59,C.pink,.2);badge('Actual prototype still · product preview',1268,1007,C.muted);
+}
+function drawFit(t){ctx.fillStyle=C.purple;ctx.fillRect(0,0,W,H);topmark(true);
+ slide(t,.1,()=>lines(['Say what you need.','Find what fits.'],116,205,110,C.white,1.04));
+ const xs=[190,730,1270],data=[['headphones','Your everyday sound.'],['watch','Your kind of detail.'],['bag','Your next favourite.']];
+ data.forEach(([id,name],i)=>{const u=ease(p(t,.42+i*.12,.7));product(images[id],name,xs[i],520+(1-u)*380,460,395,(-.04+i*.04)*(1-u),.96+.04*u)});
+ slide(t,1.1,()=>pill('YOUR BUDGET',116,445,{fill:C.lime,size:24}));
+ slide(t,1.3,()=>pill('YOUR NEEDS',377,445,{fill:C.pink,size:24}));
+ slide(t,1.5,()=>pill('CATALOG-GROUNDED OPTIONS',620,445,{fill:C.white,size:24,color:C.purple}));
+ text('Demo catalog',1810,1008,22,'#ffffffbb',400,'DM','right');
+}
+function drawStore(t){ctx.fillStyle=C.cream;ctx.fillRect(0,0,W,H);topmark();
+ slide(t,.06,()=>{badge('LESS BACK-AND-FORTH. MORE CLARITY.',115,250);lines(['From discovery','to a confident','cart.'],111,322,104,C.ink,1.08)});
+ const u=ease(p(t,.18,.85));ctx.save();ctx.translate(1020+(1-u)*260,275);ctx.rotate(-.025*(1-u));rect(0,0,820,589,27,C.white,'#e6d5ff');rect(0,0,820,45,[27,27,0,0],C.lilac);[C.pink,C.lime,C.purple].forEach((c,i)=>{ctx.fillStyle=c;ctx.beginPath();ctx.arc(24+i*22,23,5,0,Math.PI*2);ctx.fill()});photo(images.store,16,57,788,516,14);ctx.restore();
+ slide(t,.9,()=>{let x=117;for(const value of ['Compare.','Confirm.','Continue.'])x+=pill(value,x,825,{fill:C.lime,size:25})+14});
+ text('Actual storefront preview · demo catalog and checkout',1434,929,22,C.muted,400,'DM','center');
+}
+function drawResolve(t){ctx.fillStyle=C.purple;ctx.fillRect(0,0,W,H);
+ slide(t,.05,()=>logo(420,190,1080,true));
+ slide(t,.45,()=>text('Good things. Happier you.',960,615,58,C.white,600,'Fredoka','center'));
+ slide(t,.7,()=>text('Ava turns shopping questions into clearer choices.',960,704,35,'#ffffffd9',400,'DM','center'));
+ slide(t,.95,()=>{pill('SEE IT IN ACTION  →',960-177,831,{fill:C.lime,size:25});text('Gemini  ·  Google Cloud Run  ·  Archzxy',960,970,23,'#ffffffe0',400,'DM','center')});
+ star(312,477,55,C.pink,.2);star(1632,318,58,C.lime,-.2);
+}
+const draws=[drawFriction,drawBrand,drawAva,drawFit,drawStore,drawResolve];
+window.seek=async value=>{const t=Math.max(0,Math.min(29.999,Number(value)||0));let index=scenes.findIndex(s=>t>=s.start&&t<s.end);if(index<0)index=scenes.length-1;
+ ctx.globalAlpha=1;ctx.setTransform(1,0,0,1,0,0);ctx.shadowColor='transparent';draws[index](t-scenes[index].start);
+ for(let i=1;i<scenes.length;i++){const at=scenes[i].start,half=.34;if(Math.abs(t-at)<half){const u=smooth((t-at+half)/(half*2));ctx.fillStyle=i%2?C.lime:C.pink;ctx.fillRect(-W+2*W*u-20,0,W+40,H)}}
+ if(!document.body.classList.contains('render')){document.querySelector('#scrub').value=t;document.querySelector('#time').textContent=t.toFixed(2)+' / 30'}
+};
+window.motionReady=(async()=>{await Promise.all([document.fonts.load('600 100px Fredoka'),document.fonts.load('700 40px DM'),document.fonts.load('400 40px DM')]);
+ const paths={logo:'dopamine-wordmark.svg',logoLight:'dopamine-wordmark-light.svg',ava:'ava-preview.jpg',store:'store-preview.jpg',headphones:'headphones.jpg',watch:'watch.jpg',bag:'bag.jpg'};
+ await Promise.all(Object.entries(paths).map(async([name,path])=>{const img=new Image();img.src='assets/'+path;await img.decode();images[name]=img}));
+ const track=document.querySelector('#soundtrack'),response=await fetch('assets/soundtrack.m4a');if(!response.ok)throw new Error('Soundtrack unavailable');
+ const blob=await response.blob();await new Promise((resolve,reject)=>{track.onloadedmetadata=resolve;track.onerror=reject;track.src=URL.createObjectURL(blob);track.load()});
+ await document.fonts.ready;await window.seek(0);
+})();
+const render=new URLSearchParams(location.search).has('render');if(render)document.body.classList.add('render');
+const soundtrack=document.querySelector('#soundtrack');
+let playing=false,held=0;document.querySelector('#play').onclick=()=>{playing=!playing;document.querySelector('#play').textContent=playing?'Pause':'Play with sound';if(playing){soundtrack.currentTime=held;void soundtrack.play()}else{soundtrack.pause();held=soundtrack.currentTime}};
+document.querySelector('#scrub').oninput=e=>{held=Number(e.target.value);soundtrack.currentTime=held;window.seek(held)};
+if(!render)window.motionReady.then(()=>{function tick(){if(playing){held=soundtrack.currentTime%30;window.seek(held)}requestAnimationFrame(tick)}requestAnimationFrame(tick)});
+</script></body></html>

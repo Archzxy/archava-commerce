@@ -1,52 +1,56 @@
-
-      <div class="container">
-        <section class="hero" aria-labelledby="heroTitle">
-          <div class="hero-copy">
-            <div class="eyebrow"><span class="eyebrow-line"></span> SELAMAT DATANG DI KALA</div>
-            <h1 id="heroTitle">Temukan yang<br/>terasa <em>lebih kamu.</em></h1>
-            <p>Dari hal kecil yang bikin hari cerah sampai barang impian yang lama kamu cari. Semuanya ada di sini, dipilih dengan hati.</p>
-            <div class="hero-buttons"><a class="button button-primary" href="/produk">Mulai Jelajah <svg class="icon"><use href="#i-arrow"/></svg></a><a class="button button-text" href="/kategori">Lihat kategori <svg class="icon"><use href="#i-arrow"/></svg></a></div>
-            <div class="hero-social-proof"><div class="avatar-stack"><span>RA</span><span>DI</span><span>NA</span><span>+K</span></div><div><div class="social-stars">★★★★★</div><small>Tempat belanja yang bikin betah</small></div></div>
-          </div>
-          <div class="hero-art" aria-label="Koleksi pilihan KALA">
-            <div class="hero-photo hero-photo-main"><img src="/assets/hero-room.jpg" alt="Ruang hangat dengan furnitur pilihan" fetchpriority="high" /></div>
-            <div class="hero-photo hero-photo-small"><img src="/assets/watch.jpg" alt="Jam tangan pilihan" /></div>
-            <div class="hero-sticker"><span>NEW<br/>FINDS</span><svg class="icon"><use href="#i-sparkle"/></svg></div>
-            <div class="hero-float"><span class="float-icon">✦</span><div><strong>Barang pilihan</strong><small>Yang pas buat setiap momen</small></div></div>
-          </div>
-        </section>
-
-        <section class="benefits" aria-label="Keunggulan KALA">
-          <div class="benefit"><span class="benefit-icon mint"><svg class="icon"><use href="#i-truck"/></svg></span><div><strong>Gratis Ongkir*</strong><small>Biar belanja makin ringan</small></div></div>
-          <div class="benefit"><span class="benefit-icon peach"><svg class="icon"><use href="#i-shield"/></svg></span><div><strong>Belanja Nyaman</strong><small>Produk dipilih dengan cermat</small></div></div>
-          <div class="benefit"><span class="benefit-icon lilac"><svg class="icon"><use href="#i-sparkle"/></svg></span><div><strong>Selalu Ada Temuan</strong><small>Pilihan baru untukmu</small></div></div>
-          <div class="benefit"><span class="benefit-icon yellow">♡</span><div><strong>Favoritmu, Tersimpan</strong><small>Gampang ditemukan lagi</small></div></div>
-        </section>
-
-        <section class="section categories-section" id="categories">
-          <div class="section-header"><div><span class="section-kicker">BUAT SETIAP SISI DIRIMU</span><h2>Mau cari apa hari ini?</h2></div><a class="section-link" href="/produk">Lihat semua produk <svg class="icon"><use href="#i-arrow"/></svg></a></div>
-          <div class="category-grid" id="categoryGrid">{{CATEGORIES}}</div>
-        </section>
-
-        <section class="promo-grid" aria-label="Promo pilihan">
-          <article class="promo-card promo-card-green"><div class="promo-text"><span>WEEKEND PICKS</span><h2>Waktunya kasih ruang<br/>buat yang baru.</h2><p>Temukan inspirasi kecil untuk rumah yang lebih nyaman.</p><a class="promo-link" href="/kategori/rumah">Jelajahi sekarang <svg class="icon"><use href="#i-arrow"/></svg></a></div><img src="/assets/promo-home.jpg" alt="Dekorasi rumah" loading="lazy" /></article>
-          <article class="promo-card promo-card-pink"><div class="promo-text"><span>STYLE NOTES</span><h2>Gaya harian,<br/>versi terbaikmu.</h2><p>Barang favorit untuk menemanimu ke mana saja.</p><a class="promo-link" href="/kategori/fashion">Lihat pilihan <svg class="icon"><use href="#i-arrow"/></svg></a></div><img src="/assets/bag.jpg" alt="Tas fashion" loading="lazy" /></article>
-        </section>
-
-        <section class="section flash-section" id="flash-sale">
-          <div class="section-header flash-header"><div><span class="section-kicker">JANGAN SAMPAI LEWAT</span><h2>Promo kilat <span class="flash-glyph">✳</span></h2></div><div class="flash-right"><a class="section-link flash-all-link" href="/promo">Semua promo <svg class="icon"><use href="#i-arrow"/></svg></a><span>Berakhir dalam</span><div class="countdown" id="countdown"><b>08</b><i>:</i><b>30</b><i>:</i><b>00</b></div></div></div>
-          <div class="product-grid flash-grid" id="flashProducts">{{FLASH_PRODUCTS}}</div>
-        </section>
-
-        <section class="editorial-banner"><div><span class="section-kicker">KALA EDIT</span><h2>Hal bagus selalu<br/>punya cerita.</h2><p>Barang yang kamu pilih bisa mengubah hari biasa jadi lebih berkesan.</p><a class="button button-light" href="/produk">Cari ceritamu <svg class="icon"><use href="#i-arrow"/></svg></a></div><div class="editorial-image"><img src="/assets/editorial-style.jpg" alt="Pilihan gaya hidup" loading="lazy" /></div><span class="editorial-scribble">good things<br/>are found here ✦</span></section>
-
-        <section class="section products-section" id="products">
-          <div class="section-header"><div><span class="section-kicker">DIPILIH BUAT KAMU</span><h2>Temukan favorit baru.</h2><p class="section-subtitle">Pilihan yang seru untuk dijelajahi, satu per satu.</p></div><a class="section-link" href="/produk">Lihat {{PRODUCT_COUNT}} produk <svg class="icon"><use href="#i-arrow"/></svg></a></div>
-          <div class="product-grid catalog-grid" id="productGrid">{{HOME_PRODUCTS}}</div>
-          <div class="load-more-wrap"><a class="button button-outline" href="/produk">Jelajahi semua produk <svg class="icon"><use href="#i-arrow"/></svg></a></div>
-        </section>
-
-        <section class="section home-comparison"><div class="section-header"><div><span class="section-kicker">SAMA KEBUTUHANNYA, BEDA PILIHANNYA</span><h2>Bagus. Tapi mana yang pas?</h2><p class="section-subtitle">Lihat tiga alternatif sekelas, lengkap dengan spesifikasi dan komprominya.</p></div><a class="section-link" href="/bandingkan">Bandingkan produk <svg class="icon"><use href="#i-arrow"/></svg></a></div><div class="home-comparison-grid">{{COMPARE_GROUPS}}</div></section>
-
-        <section class="newsletter"><div class="newsletter-icon">✦</div><div><span class="section-kicker">KABAR BAIK BUATMU</span><h2>Temuan baru, langsung ke inbox.</h2><p>Daftar untuk dapat inspirasi dan pilihan produk terbaru dari KALA.</p></div><form id="newsletterForm"><label class="sr-only" for="emailInput">Alamat email</label><input id="emailInput" type="email" placeholder="Alamat email kamu" required/><button type="submit">Daftar <svg class="icon"><use href="#i-arrow"/></svg></button></form></section>
+<div class="container dopamine-home">
+  <section class="dop-hero" aria-labelledby="heroTitle">
+    <div class="dop-hero-copy">
+      <span class="dop-label">a little something to love ✳</span>
+      <h1 id="heroTitle">good things.<br/><span class="dop-handline">happier you.</span></h1>
+      <p>Semua kebutuhanmu, ada di <strong>dopamine.</strong> Temukan favoritmu, dengan Ava yang bantu pilih sesuai kebutuhan dan budgetmu.</p>
+      <div class="dop-hero-actions">
+        <a class="button button-primary" href="/produk">Temukan favoritmu <svg class="icon"><use href="#i-arrow"/></svg></a>
+        <button class="button dop-ava-button" type="button" data-archava-open aria-label="Bantu pilih, Ava"><svg class="icon"><use href="#i-sparkle"/></svg><span class="dop-ava-button-label">Bantu pilih, Ava</span></button>
       </div>
+      <svg class="dop-doodle dop-doodle-star" viewBox="0 0 60 62" fill="none" aria-hidden="true"><path d="M27 4l8 18 20-5-14 15 12 17-21-7-12 16 1-21L3 28l21-4z" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="dop-doodle dop-doodle-smile" viewBox="0 0 76 57" fill="none" aria-hidden="true"><path d="M13 30c8 23 39 25 51 0M22 10l-2 9M51 10l2 8" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
+    </div>
+    <div class="dop-hero-art" aria-label="Pilihan produk DOPAMINE">
+      <a class="dop-shopping-art" href="/produk" aria-label="Jelajahi koleksi DOPAMINE"><img src="/assets/dopamine-packaging-v2.webp" alt="Visual kampanye dopamine: tas kertas ungu dan lime serta kotak pink dengan logo dopamine" fetchpriority="high" width="1448" height="1086"/></a>
+    </div>
+  </section>
+
+  <div class="dop-mood-strip" aria-label="Cara belanja di DOPAMINE"><span>GOOD THINGS. HAPPIER YOU.</span><span aria-hidden="true">✳</span><span>PILIH SESUAI BUDGETMU</span><span aria-hidden="true">✳</span><span>SEMUA SISI DIRIMU</span><span aria-hidden="true">✳</span><span>TANYA AVA, CARI YANG PAS</span></div>
+
+  <section class="section categories-section" id="categories">
+    <div class="section-header"><div><span class="section-kicker">FOLLOW YOUR CURIOSITY</span><h2>Lagi suka apa?</h2></div><a class="section-link" href="/kategori">Semua kategori <svg class="icon"><use href="#i-arrow"/></svg></a></div>
+    <div class="category-grid" id="categoryGrid">{{CATEGORIES}}</div>
+  </section>
+
+
+
+  <section class="section products-section" id="products">
+    <div class="section-header"><div><span class="section-kicker">THE GOOD STUFF</span><h2>Kayaknya, ini kamu banget.</h2><p class="section-subtitle">Pilihan kecil untuk keseharian yang punya warna.</p></div><a class="section-link" href="/produk">Jelajahi {{PRODUCT_COUNT}} produk <svg class="icon"><use href="#i-arrow"/></svg></a></div>
+    <div class="product-grid catalog-grid" id="productGrid">{{HOME_PRODUCTS}}</div>
+    <div class="load-more-wrap"><a class="button button-outline" href="/produk">Masih banyak yang seru <svg class="icon"><use href="#i-arrow"/></svg></a></div>
+  </section>
+
+  <section class="dop-ava-intro" aria-labelledby="avaIntroTitle">
+    <span class="dop-ava-symbol" aria-hidden="true"><svg class="icon"><use href="#i-sparkle"/></svg></span>
+    <div><span class="section-kicker">MEET YOUR SHOPPING SIDEKICK</span><h2 id="avaIntroTitle">Banyak pilihan? Ada Ava.</h2><p>Ceritain kebutuhan dan budgetmu. Ava bantu cari, bandingkan, sampai siapkan keranjang.</p></div>
+    <button class="button button-primary" type="button" data-archava-open>Kenalan sama Ava <svg class="icon"><use href="#i-arrow"/></svg></button>
+  </section>
+
+  <section class="promo-grid" aria-label="Koleksi pilihan">
+    <article class="promo-card promo-card-green dop-poster"><div class="promo-text"><span>YOUR DAILY DOSE OF GOOD FINDS</span><h2>semua kebutuhanmu,<br/>ada di dopamine.</h2><p>Dari hal kecil sehari-hari sampai favorit yang baru kamu temukan.</p><a class="promo-link" href="/produk">Cari favoritmu <svg class="icon"><use href="#i-arrow"/></svg></a></div><span class="dop-poster-heart" aria-hidden="true">♡</span></article>
+    <article class="promo-card promo-card-pink dop-fashion-campaign"><div class="promo-text"><span>WEAR YOUR HAPPY</span><h2>good things.<br/>happier you.</h2><a class="promo-link" href="/kategori/fashion">Temukan gayamu <svg class="icon"><use href="#i-arrow"/></svg></a></div><img src="/assets/dopamine-campaign-v2.webp" alt="Visual kampanye fashion dopamine: model dewasa dengan hoodie pink membawa tas belanja ungu" width="1122" height="1402" loading="lazy"/></article>
+  </section>
+
+  <section class="section flash-section" id="flash-sale">
+    <div class="section-header flash-header"><div><span class="section-kicker">GOOD FINDS, NICE PRICES</span><h2>Harganya ikut bikin senyum. <span class="flash-glyph" aria-hidden="true">✳</span></h2></div><a class="section-link" href="/promo">Semua promo <svg class="icon"><use href="#i-arrow"/></svg></a></div>
+    <div class="product-grid flash-grid" id="flashProducts">{{FLASH_PRODUCTS}}</div>
+    <p class="dop-demo-note">Harga dan potongan merupakan contoh dari katalog demo.</p>
+  </section>
+
+  <section class="editorial-banner"><div><span class="section-kicker">THE DOPAMINE EDIT</span><h2>shop happy.<br/>live better.</h2><p>Nggak ada satu cara untuk jadi kamu. Mulai dari hal-hal yang kamu suka.</p><a class="button button-light" href="/produk">Cari warna harimu <svg class="icon"><use href="#i-arrow"/></svg></a></div><div class="editorial-image"><img src="/assets/dopamine-packaging-v2.webp" alt="Kemasan kampanye dopamine dalam warna ungu, lime, dan pink" width="1448" height="1086" loading="lazy"/></div><span class="editorial-scribble" aria-hidden="true">find your<br/>happy ♡</span></section>
+
+  <section class="section home-comparison"><div class="section-header"><div><span class="section-kicker">PICK WITH CONFIDENCE</span><h2>Sama-sama seru. Mana yang pas?</h2><p class="section-subtitle">Bandingkan fakta, harga, dan komprominya. Kamu yang tentukan.</p></div><a class="section-link" href="/bandingkan">Bandingkan produk <svg class="icon"><use href="#i-arrow"/></svg></a></div><div class="home-comparison-grid">{{COMPARE_GROUPS}}</div></section>
+
+  <section class="newsletter"><div class="newsletter-icon" aria-hidden="true">✳</div><div><span class="section-kicker">A LITTLE NOTE FROM US</span><h2>Kabar baik buat inbox-mu.</h2><p>Preview newsletter DOPAMINE. Pendaftaran email belum aktif.</p></div><form id="newsletterForm"><label class="sr-only" for="emailInput">Alamat email</label><input id="emailInput" type="email" placeholder="Alamat email kamu" required/><button type="submit">Coba daftar <svg class="icon"><use href="#i-arrow"/></svg></button></form></section>
+</div>

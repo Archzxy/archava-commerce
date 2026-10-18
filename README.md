@@ -1,81 +1,53 @@
-# KALA marketplace demo
+# Archava Commerse
 
-Website marketplace multipage berbahasa Indonesia dengan desain orisinal. Dibangun dengan HTML, CSS, JavaScript, dan server Node.js, dengan widget React untuk Archava. Setiap halaman dirender oleh server dan punya URL sendiri; navigasi, refresh, serta tombol back browser bekerja langsung.
+**Archava Commerse** is a voice/avatar commerce assistant product, demonstrated
+through **DOPAMINE**, an Indonesian demo store with **Ava** as its shopping
+assistant. Browse 80 demo products, compare suitable alternatives, review a cart
+and test QRIS checkout through the official Midtrans sandbox simulator.
 
-## Jalankan
+**[Open the Cloud Run prototype](https://dopamine-656573292283.asia-southeast1.run.app)**
 
-Pada mesin baru, selesaikan [persiapan Archava](#archava) terlebih dahulu. Untuk menjalankan source yang dependensi, environment, dan widget-nya sudah disiapkan:
+The product adapts the Archava template into a commerce experience. The storefront
+was previously called KALA; compatible internal IDs and browser storage names
+are intentionally preserved. See [sources and notices](THIRD_PARTY_NOTICES.md).
 
-```bash
-npm run dev
-```
+## What is verified
 
-Buka http://localhost:5173. Gunakan `PORT=3000 npm run dev` untuk port lain. `npm run dev` menjalankan marketplace, API Archava, dan worker Python. Sesi baru dibuka setelah worker terhubung. Untuk marketplace saja, gunakan `npm run dev:web`.
+Checkpoint: **October 19, 2026 (Asia/Jakarta)**. Implementation, offline tests, actual provider
+calls and deployment are different forms of evidence.
 
-## Halaman
-
-| URL | Halaman |
+| Journey | Status |
 | --- | --- |
-| `/` | Beranda |
-| `/produk` | Katalog 80 produk dengan pagination |
-| `/produk?q=tas&sort=price-asc` | Contoh pencarian dan pengurutan |
-| `/kategori` | Tujuh kategori |
-| `/kategori/elektronik` | Produk dalam kategori; tersedia juga fashion, rumah, kecantikan, olahraga, hobi, makanan |
-| `/produk/headphones` | Contoh detail produk; semua produk punya URL masing-masing |
-| `/promo` | Katalog potongan harga 20% atau lebih |
-| `/bandingkan` | Empat kelompok produk sejenis dan pemilihan produk |
-| `/bandingkan?produk=headphones,audia-focus-one,ritme-lite` | Contoh perbandingan tiga headphone; URL bisa dibagikan |
-| `/favorit` | Favorit tersimpan |
-| `/keranjang` | Keranjang dan jumlah barang |
-| `/checkout` | Form penerima dan pratinjau pesanan demo |
-| `/akun` | Ringkasan favorit dan keranjang di browser |
-| `/bantuan` | Panduan dan FAQ |
+| Browse, search, filter, compare, favorites and demo cart | Implemented; catalog/protocol and browser checks pass |
+| Assistant needs, shortlist, highlight and confirmed cart actions | Implemented; offline browser checks pass; selected live actions verified |
+| Avatar render before voice-session allocation; optional Chat; persistent canvas | Regression checks cover rendering, cancellation and retry; live sessions have worked |
+| QRIS sandbox preview → QR → simulated settlement | Verified against Midtrans and its official simulator on the deployed prototype |
+| Optional receipt email after verified sandbox settlement | Deployed and tested through actual simulator settlement and Spacemail; user confirmed Gmail received the test in Spam; Inbox placement remains open |
+| Entire shopping/checkout journey through human speech | **Not fully verified** |
+| Consistent response latency and reconnect reliability | **Open work**; intermittent RTC failures and a checkout receipt timeout were observed |
+| Real payment, orders, shipping, accounts or inventory integration | **Not implemented**; all commerce data and fulfillment are demo-only |
 
-URL yang tidak tersedia menampilkan halaman 404.
+The prototype now runs Gemini 3.8 Live with the coordinated SDK upgrade and
+model-specific setup, retained in the current `dopamine-completion-20261019` revision. Runtime readback
+and public HTTP checks pass; a direct model preflight returned audio. These
+checks do not establish faster human voice replies. Deployed typed filter and
+checkout-preview tests pass; the synthetic voice filter test did not pass. See the
+[service upgrade review](archava/docs/SERVICE_UPGRADE.md).
 
-## Fitur
+The pre-push audit's dependency/export safeguards are included in this image.
+CI is prepared locally and has not run on GitHub. See the [repository audit](docs/REPO_AUDIT.md),
+[latency audit](archava/docs/LATENCY.md) and [checkout evidence](docs/CHECKOUT_SANDBOX.md).
+The deployed [receipt email workflow](archava/docs/CHECKOUT_EMAIL.md)
+adds a confirmed recipient and background SMTP delivery without putting contact
+data into Ava's conversation. A private regional bucket retains encrypted state
+for duplicate suppression; SMTP acceptance and Inbox placement remain distinct.
 
-- 80 produk di 7 kategori, dengan aset lokal dan katalog 12 produk per halaman.
-- Pencarian nama/merek/kata kunci Indonesia, filter harga dan rating, serta lima urutan produk. Filter dan pagination tersimpan dalam URL.
-- Detail produk, galeri foto jika tersedia, tab informasi, jumlah barang, produk terkait, dan beli sekarang.
-- Favorit serta keranjang tersimpan di localStorage dan tersedia saat berpindah halaman, refresh, atau membuka tab lain.
-- Checkout demo dengan validasi form, pilihan pengiriman contoh, total harga, dan pratinjau pesanan.
-- Layout desktop dan mobile, filter mobile, navigasi keyboard, dan status tombol favorit.
-- 12 produk yang bisa dibandingkan dalam empat kelompok: headphone wireless, smartwatch harian, blender dapur, dan sepatu lari. Masing-masing kelompok punya tiga merek dengan kebutuhan serupa.
-- Pilih 2–3 produk sejenis dari katalog/detail; pilihan tersimpan saat pindah halaman. Tabel menampilkan harga, atribut dengan satuan yang sama, kecocokan penggunaan, kelebihan, dan kompromi.
-- Tampilkan hanya perbedaan, hapus/ganti pilihan, salin link perbandingan, dan tambah produk ke keranjang. Tabel bisa dibuka langsung dari URL, termasuk tanpa JavaScript.
+## Run locally
 
-Data produk, harga, stok, rating, dan promo adalah contoh. Form checkout hanya menampilkan pratinjau: tidak membuat pesanan, mengirim data penerima, atau memproses pembayaran. Layanan masuk/daftar akun, newsletter, pembayaran, dan pengiriman belum aktif.
-
-## Data dan aset
-
-Foto awal berasal dari [Unsplash](https://unsplash.com/license). Tambahan 60 produk dan foto contoh berasal dari [DummyJSON Products](https://dummyjson.com/docs/products). Harga rupiah merupakan nilai ilustrasi, tanpa kurs atau inventori langsung.
-
-Delapan produk pesaing tambahan adalah konsep merek fiktif dengan ilustrasi SVG lokal. Spesifikasi pada seluruh 12 profil perbandingan adalah skenario demo; tidak diklaim sebagai spesifikasi pabrikan atau hasil uji produk.
-
-Foto dan font Plus Jakarta Sans serta DM Sans disimpan lokal. Katalog dan font menggunakan aset lokal. Percakapan Ava memakai LiveKit, Gemini, dan Spatius setelah pengunjung menekan **Tanya Ava**. Lisensi font ada di `assets/fonts/`.
-
-- `data/products.js`: katalog yang digunakan server dan browser.
-- `data/product-knowledge.js`: knowledge khusus setiap produk, dikurasi dari deskripsi sumber lokal dan profil demo. Menandai RAM/varian, kompatibilitas, ukuran, dan fitur lain yang belum tersedia; tidak mengisi rincian pabrikan dari nama model.
-- `data/comparison.js`: kelompok, definisi atribut/satuan, profil perbandingan, dan delapan produk konsep. Setiap profil memiliki `group`, `attributes`, `useCase`, `strengths`, `tradeoffs`, serta sumber `demo`. Struktur ini dipakai oleh tabel perbandingan dan tool katalog Archava.
-- `data/seed-products.json`: 12 produk awal.
-- `data/catalog-source-products.json`: salinan data sumber yang dipilih.
-- `node scripts/expand-catalog.mjs`: bangun ulang katalog dari data sumber; hanya mengunduh foto yang belum tersedia.
-- `node scripts/download-assets.mjs`: unduh ulang foto awal dengan akses internet.
-- `node scripts/draw-competitors.mjs`: bangun ulang delapan ilustrasi SVG secara lokal.
-
-Referensi UX: [Baymard Product Lists & Filtering](https://baymard.com/research/ecommerce-product-lists).
-
-
-## Archava
-
-Template Archava diadaptasi di `archava/` menjadi Ava, pendamping belanja KALA. Widget tersedia di semua halaman melalui tombol **Tanya Ava**, termasuk tombol khusus di detail produk dan tabel perbandingan. Satu klik membuka panel avatar dan memulai persiapan panggilan; tombol peluncur tersembunyi selama panel terbuka. Kontrol **Mikrofon**, **Chat**, dan **Disconnect** berada di bawah avatar. Chat tertutup secara default dan dapat dibuka tanpa membuat ulang renderer atau panggilan. Saat panggilan aktif, navigasi memuat halaman dari server sambil menjaga widget dan audio tetap terhubung; URL, refresh, dan tombol back tetap tersedia.
-
-Asisten dibekali indeks 80 produk dan membaca snapshot knowledge yang sama dengan storefront: deskripsi khusus produk, kegunaan, spesifikasi beserta satuan, kelebihan/kompromi jika tersedia, dan detail yang belum diketahui. Saat halaman produk berubah, worker otomatis memasukkan knowledge lengkap produk itu ke konteks percakapan dari ID publik yang sudah divalidasi. Asisten juga mencari berdasarkan kata kunci/budget, membandingkan dua atau tiga produk dalam kelompok yang sama, dan bisa membuka halaman produk atau perbandingan. Tool perbandingan menyisihkan produk di atas budget sebelum mengurutkan prioritas baterai, bobot, atau harga. Konteks hanya berisi URL halaman dan ID produk; tidak memuat isi form penerima. Tool keranjang Archava menampilkan preview dan menunggu konfirmasi sebelum menambah barang ke keranjang demo; undo menjaga perubahan manual pada item tetap aman. Tool tidak membuat pesanan. Harga dan spesifikasi tetap berstatus demo.
-
-Env runtime berada di `archava/.env` yang diabaikan Git dan berizin 600. Profil pribadi disimpan di luar proyek. API key LiveKit/Gemini/Spatius digunakan server dan worker; browser hanya menerima konfigurasi publik dan token sesi singkat. Token/ticket disimpan di memori selama sesi. Batas bawaan 120 detik, tiga permulaan sesi per menit, dan sepuluh sesi aktif.
-
-Persiapan pada mesin baru (Node 22.18+, Python 3.12):
+Build toolchain: **Node 22.23.3 + npm 12.2.0**, **Python 3.12**, and provider access for live
+conversations. Catalog browsing and offline tests do not require a paid call.
+The root server has no npm dependencies; install the standalone module using its
+lockfile:
 
 ```bash
 npm ci --prefix archava
@@ -84,67 +56,137 @@ archava/.venv/bin/python -m pip install -r archava/backend/requirements.txt
 npm run setup --prefix archava
 ```
 
-Command setup mempertahankan konfigurasi KALA yang disertakan dan membuat `archava/.env` dengan kredensial kosong. Isi LiveKit, Gemini, dan ID/key Spatius di file itu. Setel `PORT=5180`, `WEB_ORIGIN=http://localhost:5173,http://127.0.0.1:5173`, dan `ENABLE_SESSIONS=true` di env lokal, lalu:
+Setup preserves the included DOPAMINE identity and creates an ignored
+`archava/.env` with blank credentials. For the combined local app, set:
+
+```dotenv
+PORT=5180
+WEB_ORIGIN=http://localhost:5173,http://127.0.0.1:5173
+ENABLE_SESSIONS=true
+```
+
+Fill the server-only LiveKit, Gemini and Spatius settings privately. Start live
+sessions only after credentials and the named worker are ready. Optional
+`MIDTRANS_SERVER_KEY` enables **sandbox** QRIS, never production payments.
 
 ```bash
 npm run build
 npm run dev
 ```
 
-Environment dan virtualenv lokal tidak disertakan di Git. Profil pribadi opsional dijelaskan di [panduan environment](archava/docs/ENV_PROFILES.md). Untuk port marketplace lain, sesuaikan WEB_ORIGIN juga. Log runtime lokal yang disamarkan disimpan di `.logs/` dan tidak masuk source/export.
+Open `http://localhost:5173`. For another storefront port, set `PORT` on the dev
+command and update `WEB_ORIGIN` in the private env. This workspace has also used
+5193 to avoid other projects. `npm run dev:web` runs only the storefront; the
+assistant API/worker are not started by that command.
 
-Setelah data katalog berubah, jalankan `npm run build` untuk memperbarui snapshot dan widget. Setelah mengubah worker, restart `npm run dev`.
+Do not commit `.env`, personal profiles, provider keys, session tickets, browser
+state, logs or generated exports. Never place secrets in `VITE_*` variables.
+Detailed setup: [module README](archava/README.md),
+[environment profiles](archava/docs/ENV_PROFILES.md).
 
-Pemeriksaan:
+## Explore the demo
+
+| Route | Purpose |
+| --- | --- |
+| `/` | DOPAMINE homepage |
+| `/produk` | Searchable catalog, 12 items per page |
+| `/kategori`, `/kategori/elektronik` | Seven category pages |
+| `/produk/headphones` | Product details and Ava entry point |
+| `/promo` | Illustrative product discounts |
+| `/bandingkan?produk=headphones,audia-focus-one,ritme-lite` | Shareable comparison |
+| `/favorit`, `/keranjang` | Browser-local favorites and cart |
+| `/checkout` | Local recipient preview and separate sandbox checkout card |
+| `/akun`, `/bantuan` | Demo account summary and help |
+
+Ava uses Gemini native audio, LiveKit rooms and Spatius rendering. One click on
+**Tanya Ava** prepares the face before allocating a voice session. Microphone,
+Chat and Disconnect controls sit below the avatar; Chat starts closed. Navigation
+and opening/closing Chat preserve an active call and its canvas.
+
+The deployed prototype now uses `SESSION_SECONDS=0`: Ava can keep helping past
+two minutes and use `end_call` to say goodbye and disconnect when the visitor is
+done. Deployment/config checks and offline lifecycle tests pass; an actual long
+voice call and model-driven farewell remain unverified. See
+[session lifecycle](archava/docs/SESSION_LIFECYCLE.md).
+
+Ava receives validated route, product and shopping-state snapshots. She does not
+see arbitrary screen pixels or recipient-form contents. Catalog tools use the
+same facts as the storefront. Cart changes require preview, fresh confirmation
+and a browser receipt; a timeout is not success.
+
+QRIS uses server-calculated demo prices, signed receipts and the same order ID
+on retries. Test only with the **official Midtrans simulator**; do not scan a
+sandbox QR with a real banking/wallet app. Simulated settlement creates no real
+order, shipping, inventory reservation or cart clearing.
+
+## Architecture and data
+
+- Root Node server: multipage storefront, assets and same-origin API proxy.
+- `archava/src/`: embedded React widget and browser-action bridges.
+- `archava/server/`: Node session and sandbox checkout API.
+- `archava/backend/`: Python voice agent and bounded shopping tools.
+- `data/`: source catalog, product knowledge and four comparison groups.
+- `archava/config/catalog.json`: standalone snapshot of the same catalog.
+
+After editing catalog/knowledge source, run `npm run build` to sync the snapshot.
+Restart the worker after changing its source, prompt or knowledge. The standalone
+module must not import files from this repository's parent directories.
+
+Product prices, stock, ratings, discounts and comparison specifications are demo
+scenarios. Initial photos come from Unsplash, additional sample data/photos from
+DummyJSON, and campaign photos were generated for the project. Font licenses and
+source references are retained in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+## Checks
 
 ```bash
 npm test
-cd archava
-PATH="$PWD/.venv/bin:$PATH" npm run test:agent
-.venv/bin/python backend/integration_tools.py
-.venv/bin/python backend/integration_worker.py
+archava/.venv/bin/python -m unittest discover -s archava/backend -p 'test_*.py' -v
+archava/.venv/bin/python -m unittest discover -s archava/backend -p 'integration_*.py' -v
 npm run build
+npm audit --prefix archava --audit-level=moderate
+npm run export --prefix archava
 ```
 
-Dari root marketplace, `npm run test:browser` menjalankan skenario belanja dengan transport simulasi; pasang Playwright secara terpisah atau set `PLAYWRIGHT_MODULE_PATH` ke modul yang sudah tersedia. `npm run test:avatar` memerlukan runtime lokal, ID avatar publik, browser Brave, dan display grafis; seluruh permintaan alokasi sesi di tes tersebut dicegat sehingga tidak membuat room provider.
-
-
-### Verifikasi integrasi lokal
-
-- Baseline terbaru: 75 tes Node/integritas knowledge/protokol, 25 tes Python, 13 tes integrasi SDK, dan build TypeScript/Vite lolos.
-- Browser: katalog multipage, perbandingan empat kelompok, keranjang/checkout demo, widget desktop/tablet/mobile 320/390, serta pembatasan akses source/env lolos.
-- Sesi nyata memakai profil Spatius + Gemini + LiveKit: konteks produk dikonfirmasi, tool katalog/perbandingan dipanggil, dan panggilan tetap hidup saat navigasi ke detail produk. Untuk budget Rp500.000 dan prioritas baterai, tool memilih SOUNDROOM Rp429.000 / 30 jam dengan kompromi tidak ada ANC.
-- Renderer menunggu `onFirstRendering` dari `AvatarView` sebelum meminta sesi, membuat player, attach, connect, dan mengaktifkan mikrofon. Tidak ada gerbang pemeriksaan kapabilitas grafis atau poster PNG. Tes renderer mencakup hasil probe negatif yang tersimpan di SDK, retry setelah grafis pulih, pembatalan startup, dan memulai panggilan kedua setelah Disconnect.
-- Pada pengujian, koneksi Spatius juga pernah putus dari sisi layanan. UI mengakhiri sesi dan menawarkan mulai ulang jika host/avatar keluar; tidak mengganti provider diam-diam. Integrasi lokal ini belum dinyatakan sebagai deployment produksi.
-- Audit jeda historis: thinking 0; tiga pertanyaan input teks menghasilkan audio pertama Gemini sekitar 1–2,1 detik, sebelum avatar. Worker disiapkan lebih dulu, aset avatar dipreload saat panel dibuka, dan kegagalan startup disampaikan melalui metadata room. Dua panggilan live berurutan pada pengujian berikutnya berhasil menampilkan avatar, mempertahankan sesi saat chat dibuka/tutup, mengubah status mikrofon, dan Disconnect. Pengujian memakai mikrofon simulasi serta input teks, bukan percakapan belanja melalui suara manusia. Hasil dan batas pengukuran ada di [audit latency](archava/docs/LATENCY.md) dan [panduan integrasi](archava/docs/INTEGRATION.md).
-- Export source `archava/exports/kala-archava.tar.gz` memakai allowlist dan tidak membawa env pribadi, dependensi, build, atau log runtime.
-
-### Knowledge produk Archava
-
-Audit dan bukti uji ada di [audit knowledge produk](archava/docs/product-knowledge-audit.md). Knowledge berasal dari katalog publik lokal; harga dan spesifikasi tetap berstatus demo. Untuk memperbarui, edit `data/product-knowledge.js` atau profil `data/comparison.js`, jalankan `npm run build`, lalu restart worker.
-
-Evaluasi Gemini realtime memakai model worker yang sama, dengan input teks dan konteks halaman buatan. Evaluasi ini melakukan panggilan provider hanya dengan flag eksplisit:
+SDK integration tests use mocks and do not start provider calls. CI runs these
+checks without application credentials and does not deploy. Browser QA uses a
+separately installed Playwright module and Chromium/Brave:
 
 ```bash
-archava/.venv/bin/python archava/backend/evaluate_shopping.py --live
+npm run test:browser
+npm run test:checkout
 ```
 
-Report lokal disimpan di `archava/.logs/` yang diabaikan Git/export. Evaluasi ini menguji jawaban dan pemakaian knowledge/tool; tidak menguji ASR mikrofon atau rendering avatar.
+Set `PLAYWRIGHT_MODULE_PATH` and `PLAYWRIGHT_CHROMIUM_EXECUTABLE` if needed.
+These two browser runners own and close their fixture servers/browsers and use
+synthetic transport/payment providers. `npm run test:avatar` additionally needs a
+running test host, public avatar configuration and a graphical display; it
+intercepts session allocation and tests rendering without creating provider rooms.
+Provider evaluation scripts require an explicit `--live` and consume provider
+usage; they are excluded from CI.
 
+## Deployment and project context
 
-### Enam fitur pendamping belanja
+The root `Dockerfile` packages the complete storefront, API and Python worker for
+Cloud Run. Runtime secrets are mounted from Secret Manager. A continuously
+allocated worker consumes cloud resources even without visitors; budget alerts
+are not a hard spending cap. Follow [the deployment runbook](docs/GCP_DEPLOYMENT.md)
+for updates and rollback. The bootstrap script refuses to replace an existing
+service. GitHub CI does not publish or deploy the app.
 
-Archava sekarang memiliki ringkasan kebutuhan yang bisa dikoreksi, filter katalog lewat tool suara, penunjuk kartu/harga/spesifikasi, kartu rekomendasi dengan fakta dan kompromi katalog, keranjang demo dengan preview/konfirmasi/undo, serta ringkasan setelah sesi. Ringkasan kebutuhan dan shortlist tersimpan pada tab yang sama maksimal 24 jam. Saat sesi berakhir, ringkasan ditampilkan sebelum panel untuk melanjutkan percakapan.
+`archava/Dockerfile`, Compose and `npm run export --prefix archava` cover only the
+standalone assistant module. Keep these for module consumers; they do not package
+the complete marketplace.
 
-Tindakan menunggu receipt browser; timeout berarti hasil belum diketahui. Perintah berulang tidak menambah barang dua kali. Konfirmasi suara diperiksa dari giliran pengguna yang baru setelah pertanyaan konfirmasi, bukan dari argumen model. Tombol konfirmasi juga tersedia. Perubahan kebutuhan membatalkan shortlist dan preview lama.
+- [Agent entrypoint](AGENTS.md) and [canonical handoff](docs/AGENT_HANDOFF.md)
+- [Repository audit and remaining work](docs/REPO_AUDIT.md)
+- [Archava reference comparison and startup improvements](docs/ARCHAVA_REFERENCE_COMPARISON.md)
+- [Service versions, workflow upgrade and activation](archava/docs/SERVICE_UPGRADE.md)
+- [Prototype submission package and video plan](docs/SUBMISSION_PREP.md)
+- [Assistant capabilities](archava/docs/ASSISTANT_FEATURES.md)
+- [Prompting and verification limits](archava/docs/PROMPTING.md)
+- [DOPAMINE design direction](docs/DOPAMINE_DESIGN.md)
+- [Dated event research and unresolved rules](HACKATHON_RULES.md)
 
-Panduan, protokol, dan skenario pengujian ada di [fitur pendamping belanja](archava/docs/ASSISTANT_FEATURES.md). Implementasi dan pengujian browser menggunakan transport agent simulasi; percakapan Gemini/Spatius live belum diuji ulang untuk keenam fitur ini. Jalankan ulang runtime setelah perubahan worker.
-
-## Deployment
-
-Repositori memuat storefront, widget, API sesi, dan worker. Command root saat ini menargetkan pengembangan lokal. `archava/Dockerfile` dan `archava/compose.yaml` hanya mengemas modul Archava; keduanya belum mengemas storefront KALA sebagai deployment lengkap. Deployment Google Cloud belum dilakukan. Arsip dari `npm run export --prefix archava` juga hanya membawa modul Archava, bukan seluruh marketplace.
-
-
-### Peran sales advisor
-
-Prompt Archava diarahkan untuk melayani sekaligus mewakili KALA: menggali kebutuhan, menghubungkan manfaat produk ke kebutuhan pembeli, memilih satu rekomendasi utama, menangani keberatan, dan menawarkan satu langkah berikutnya sesuai kesiapan pembeli. Manfaat toko berasal dari knowledge `store_service`; contoh penjualan dibentuk dari harga, ranking budget, dan kompromi katalog terbaru. Perubahan ini baru diverifikasi pada perakitan prompt, source, dan tes offline, belum pada kepatuhan model live atau peningkatan konversi. Panduan uji ada di [prompting](archava/docs/PROMPTING.md).
+The repository has no selected top-level source license yet. Preserve upstream
+provenance and third-party notices when deciding how to publish or license it.

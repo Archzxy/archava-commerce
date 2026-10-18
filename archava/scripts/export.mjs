@@ -18,7 +18,7 @@ for (const file of files) if (!existsSync(resolve(root, file))) throw new Error(
 const safeFiles = [];
 function collect(path) {
   const name = path.split("/").at(-1);
-  if ((name.startsWith(".env") && ![".env.example", ".env.client.example"].includes(path)) || ["node_modules", "__pycache__", ".git", ".venv"].includes(name) || /\.(pyc|tsbuildinfo|log|pem|key|p12)$/.test(name)) return;
+  if ((name.startsWith(".env") && ![".env.example", ".env.client.example"].includes(path)) || ["node_modules", "__pycache__", ".git", ".venv", ".state"].includes(name) || /\.(pyc|tsbuildinfo|log|pem|key|p12)$/.test(name)) return;
   const parent = path.includes("/") ? path.slice(0, path.lastIndexOf("/")) : "";
   const entry = readdirSync(resolve(root, parent), { withFileTypes: true }).find((item) => item.name === name);
   if (entry.isSymbolicLink()) throw new Error(`Do not export symlinks: ${path}`);

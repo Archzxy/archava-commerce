@@ -4,8 +4,8 @@ Pilih jalur lokal untuk mengubah dan memeriksa proyek. Setelah itu gunakan [DEPL
 
 ## Prasyarat
 
-- Node 22.18+ beserta npm; periksa `node --version` dan `npm --version`. Gunakan versi Node yang sama pada lokal dan build hosting.
-- Python 3.12 atau 3.13 beserta modul `venv`/pip untuk worker lokal. Periksa `python3.12 --version`; ganti perintah menjadi `python3.13` jika itu versi yang dipasang.
+- Node 22.23.3 + npm 12.2.0 untuk menyamai Docker/CI; periksa `node --version` dan `npm --version`. Runtime Node lain harus memenuhi `engines`. Lockfile dengan scoped override ini tidak dapat diinstal oleh npm 10.
+- Python 3.12 beserta modul `venv`/pip untuk worker lokal. Periksa `python3.12 --version`. Resolusi dependency yang dikunci dan diuji menggunakan Python 3.12.
 - `tar` untuk export/ekstraksi, Git bila memakai repo, serta akses internet untuk dependency dan provider.
 - Untuk Docker, pasang Docker Engine/Desktop dan Compose v2. `docker info` harus berhasil; `docker compose version` harus tersedia. Image menyediakan Node, Python, dan library audio sehingga tidak perlu venv host.
 - Browser dengan microphone, `RTCRtpScriptTransform` untuk Spatius, serta WebGL2 atau WebGPU. Kesiapan widget dibuktikan dengan first frame renderer; hasil `AvatarSDK.isDeviceSupported()` saja tidak cukup karena probe AvatarKit 1.3.9 disimpan selama halaman hidup. Mode voice bisa dipakai untuk memisahkan masalah renderer dari masalah audio.
@@ -60,7 +60,7 @@ Isi `.env` lewat editor. Pertahankan `ENABLE_SESSIONS=false` selama setup. Semua
 | `WEB_ORIGIN` | Origin frontend persis, misalnya `http://localhost:5174`; tanpa path/trailing slash. | API CORS. |
 | `VITE_API_BASE_URL` | Kosong untuk lokal/satu host; URL HTTPS backend publik untuk frontend terpisah. | Frontend saat build. |
 | `ENABLE_SESSIONS` | `false` selama setup, `true` setelah siap melakukan uji live. | API admission. |
-| `SESSION_SECONDS`, `MAX_ACTIVE_SESSIONS`, `SESSION_STARTS_PER_MINUTE` | Default `120`, `10`, `3`; durasi didukung 30–1800 detik. | API admission/expiry. |
+| `SESSION_SECONDS`, `MAX_ACTIVE_SESSIONS`, `SESSION_STARTS_PER_MINUTE` | Default `0`, `10`, `3`; `0` tanpa countdown panggilan, opsional 30–1800 detik untuk batas tetap. | API admission/lifecycle. |
 | `TRUST_PROXY` | Default `false`; lihat deployment untuk proxy yang menimpa header client IP. | API rate limit. |
 
 Sumber resmi: [LiveKit CLI/project URL](https://docs.livekit.io/reference/developer-tools/livekit-cli/) dan [pasangan project credentials](https://docs.livekit.io/reference/developer-tools/livekit-cli/projects/), [Gemini API keys](https://ai.google.dev/gemini-api/docs/api-key), [Spatius Apps/Avatar Library](https://docs.spatius.ai/livekit-agents/server), serta [Tavus face/PAL dan authentication](https://docs.livekit.io/agents/models/avatar/plugins/tavus/). Template memakai SDK yang dipin di `backend/requirements.txt`; gunakan requirements tersebut untuk memasang, jangan mengganti versinya dengan contoh terbaru di dokumentasi provider tanpa menguji ulang.

@@ -1,8 +1,13 @@
-# Archava widget untuk KALA
+# Archava widget untuk DOPAMINE
+
+Default sumber `SESSION_SECONDS=0` tidak memakai batas waktu tetap. Ava dapat
+memakai `end_call` setelah kebutuhan selesai dan pengunjung menyatakan cukup
+atau meminta berhenti; pamit diputar sebelum room ditutup. Konfigurasi deployment
+lama tidak otomatis berubah. Lihat [lifecycle sesi](docs/SESSION_LIFECYCLE.md).
 
 Fork lokal dari Archava Template untuk integrasi marketplace. Runtime dan tool menggunakan `config/catalog.json` yang disertakan, tanpa import kode dari repositori Archava lain. API dan worker tetap dapat dijalankan dari folder ini.
 
-Frontend dibangun menjadi library `dist/widget.js` dan `dist/widget.css`, dipasang pada host KALA di elemen `archava-widget-root`. Host menyediakan empat ID bagian (`top`, `catalog-section`, `protocol-section`, `business-section`), halaman produk/compare, dan endpoint `/api` yang diproksikan ke API Archava. Snapshot katalog ini berisi data demo, bukan harga atau spesifikasi pabrikan.
+Frontend dibangun menjadi library `dist/widget.js` dan `dist/widget.css`, dipasang pada host DOPAMINE di elemen `archava-widget-root`. Host menyediakan empat ID bagian (`top`, `catalog-section`, `protocol-section`, `business-section`), halaman produk/compare, dan endpoint `/api` yang diproksikan ke API Archava. Snapshot katalog ini berisi data demo, bukan harga atau spesifikasi pabrikan.
 
 Untuk menjalankan integrasi lengkap, lihat README marketplace di workspace ini. Instruksi template asal di bawah tetap menjadi referensi untuk env, worker, dan protokol; frontend halaman penuh asal sudah diganti widget.
 
@@ -12,11 +17,32 @@ Untuk menjalankan integrasi lengkap, lihat README marketplace di workspace ini. 
 
 Fondasi Archava yang bisa dicopy ke proyek lain: frontend React, API Node, worker Python, Gemini realtime voice, LiveKit, dan renderer Spatius. Tavus dan mode voice-only juga tersedia. Template ini dipisahkan dari Archava Onchain; wallet, kontrak, token pembayaran, saldo menit, dan dashboard yang memakai tanda tangan wallet tidak ikut dibawa.
 
+Checkout demo opsional memakai Core API Midtrans **sandbox**. `prepare_checkout`
+menampilkan ringkasan server; `confirm_checkout` memerlukan konfirmasi pengguna
+baru; `get_checkout_status` memverifikasi status lewat backend. Kartu terpisah
+dari Chat. Simpan `MIDTRANS_SERVER_KEY` sandbox hanya di runtime privat; tanpa key,
+statusnya `unavailable` dan tidak ada QR dibuat. Uji hanya di simulator resmi
+Midtrans, jangan lewat aplikasi bank/dompet nyata. Provider sandbox pernah
+diverifikasi pada deployment host; hasil itu bukan bukti percakapan suara penuh
+atau pengujian untuk setiap salinan modul. Node/Python memakai shared signing key
+opsional `CHECKOUT_SIGNING_KEY` atau derivasi terpisah dari `LIVEKIT_API_SECRET`.
+Draft disimpan di tab yang sama maksimal 24 jam untuk mengecek order ID yang sama
+setelah reload; receipt bertanda tangan server menentukan status. Tidak ada
+pesanan, pengiriman, data penerima atau fulfillment nyata.
+
+Email bukti simulasi opsional sudah ditambahkan secara lokal: alamat dikonfirmasi
+di kartu checkout, status pembayaran diverifikasi server, lalu antrean terenkripsi
+mengirim lewat SMTP di luar worker suara. Ava hanya menerima status email bertanda
+tangan. Fitur sudah aktif di deployment host; uji QR sandbox sampai email nyata
+berhasil dan pengguna melaporkan pesan masuk Spam. Inbox placement masih perlu
+ditingkatkan. Konfigurasi serta batasannya ada di
+[docs/CHECKOUT_EMAIL.md](docs/CHECKOUT_EMAIL.md).
+
 Di repo Archava Platform, foldernya berada di `Archava Template/`. Jalankan command template dari folder ini; template memakai npm dan dependency sendiri, sedangkan workspace Platform memakai pnpm.
 
 ## Mulai dari sini
 
-Pakai Node **22.18+** dan Python **3.12 atau 3.13**. Semua perintah dijalankan dari folder ini. Panduan dari nol, sumber kredensial, dependency sistem, dan cara ekstrak arsip ada di [docs/INSTALLATION.md](docs/INSTALLATION.md). Perintah shell mengikuti Linux/macOS; di Windows gunakan WSL2.
+Toolchain Docker/CI memakai **Node 22.23.3 + npm 12.2.0** dan **Python 3.12**. Versi Node lain yang memenuhi `engines` dapat dipakai untuk development; npm harus tetap cocok dengan lockfile. Semua perintah dijalankan dari folder ini. Panduan dari nol, sumber kredensial, dependency sistem, dan cara ekstrak arsip ada di [docs/INSTALLATION.md](docs/INSTALLATION.md). Perintah shell mengikuti Linux/macOS; di Windows gunakan WSL2.
 
 ```bash
 cd "Archava Template"
@@ -74,7 +100,7 @@ npm run dev
 .venv/bin/python backend/agent.py start
 ```
 
-Buka `http://localhost:5174`. Vite meneruskan `/api` ke port API dari `.env`, default `5002`. Hot reload worker bersifat opsional: setelah memasang [LiveKit CLI](https://docs.livekit.io/reference/developer-tools/livekit-cli/), aktifkan venv dengan `source .venv/bin/activate`, lalu gunakan `lk agent dev backend/agent.py`. Jangan menjalankan worker start dan dev bersamaan untuk environment yang sama. Model Gemini bawaan berasal dari baseline Archava; cek akses model di akunmu dan ubah `GEMINI_MODEL` bila diperlukan.
+Buka `http://localhost:5174`. Vite meneruskan `/api` ke port API dari `.env`, default `5002`. Hot reload worker bersifat opsional: setelah memasang [LiveKit CLI](https://docs.livekit.io/reference/developer-tools/livekit-cli/), aktifkan venv dengan `source .venv/bin/activate`, lalu gunakan `lk agent dev backend/agent.py`. Jangan menjalankan worker start dan dev bersamaan untuk environment yang sama. Default source/contoh env sekarang Gemini 3.8 Live; nilai `GEMINI_MODEL` di env lama tetap berlaku. Cek akses provider sebelum mengaktifkan sesi. Paket, workflow dan rollback 2.5 dijelaskan di [panduan upgrade](docs/SERVICE_UPGRADE.md).
 
 ## Yang bisa diubah
 

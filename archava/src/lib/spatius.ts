@@ -24,9 +24,9 @@ export async function prepareSpatiusAvatar(appId: string, avatarId: string): Pro
   }
   await initialization;
 
-  // AvatarKit 1.3.9 caches its capability probe, including false, for the page
-  // lifetime. A recovered renderer can work while isDeviceSupported() still
-  // returns false. The actual view's first frame gates the call instead.
+  // SDK capability results can be stale after graphics recovery. Preserve the
+  // real visible first-frame gate rather than restoring isDeviceSupported()
+  // as a veto. Cached-false recovery is covered by the renderer regressions.
 
   let loading = avatars.get(avatarId);
   if (!loading) {

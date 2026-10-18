@@ -15,7 +15,7 @@ assert.ok(config.spatiusAppId && config.spatiusAvatarId, 'Public avatar IDs are 
 await mkdir(output, { recursive: true });
 const reports = [];
 
-for (const mode of ['normal', 'cached-false', 'graphics-recovery', 'cancel-render']) {
+for (const mode of ['normal', 'cached-false', 'graphics-recovery', 'cancel-render', 'mic-wait', 'mic-denied', 'mic-cancel']) {
   const browser = await chromium.launch({
     headless: false,
     executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE || '/usr/bin/brave',
@@ -24,7 +24,25 @@ for (const mode of ['normal', 'cached-false', 'graphics-recovery', 'cancel-rende
   let releaseAllocation;
   try {
     const context = await browser.newContext({ permissions: ['microphone'], viewport: { width: 1440, height: 900 } });
-    if (mode !== 'normal') {
+    await context.addInitScript(({ mode }) => {
+      const original = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
+      window.__avatarMicCalls = 0;
+      window.__avatarMicTracks = [];
+      navigator.mediaDevices.getUserMedia = constraints => {
+        window.__avatarMicCalls++;
+        const acquire = async () => {
+          const stream = await original(constraints);
+          window.__avatarMicTracks.push(...stream.getTracks());
+          return stream;
+        };
+        if (!mode.startsWith('mic-')) return acquire();
+        return new Promise((resolveMic, rejectMic) => {
+          window.__releaseAvatarMic = () => resolveMic(acquire());
+          window.__denyAvatarMic = () => rejectMic(new DOMException('Fixture denied microphone', 'NotAllowedError'));
+        });
+      };
+    }, { mode });
+    if (['cached-false', 'graphics-recovery', 'cancel-render'].includes(mode)) {
       await context.addInitScript(({ mode }) => {
         const original = HTMLCanvasElement.prototype.getContext;
         window.__avatarGraphicsRecovered = mode === 'cached-false';
@@ -38,6 +56,7 @@ for (const mode of ['normal', 'cached-false', 'graphics-recovery', 'cancel-rende
     }
     const page = await context.newPage();
     const errors = [];
+    let firstFrameAt, clickedAt, preloadedBeforeClick = false;
     let rendered = false, sessionRequests = 0, sockets = 0, connectedBeforeFrame = false, blankCanvas = false;
     page.on('pageerror', error => errors.push(error.message));
     page.on('websocket', () => sockets++);
@@ -45,7 +64,7 @@ for (const mode of ['normal', 'cached-false', 'graphics-recovery', 'cancel-rende
       if (message.text().includes('[AvatarView] Blank canvas:')) blankCanvas = true;
       if (!message.text().startsWith('[archava] avatar render: ')) return;
       const status = JSON.parse(message.text().slice('[archava] avatar render: '.length));
-      if (status.status === 'rendered') rendered = true;
+      if (status.status === 'rendered') { rendered = true; firstFrameAt ??= Date.now(); }
     });
     await page.route('**/api/config', route => route.fulfill({ contentType: 'application/json', body: JSON.stringify({ ...config, sessionsEnabled: true, providerConfigured: true }) }));
     await page.route('**/api/session', async route => {
@@ -55,9 +74,38 @@ for (const mode of ['normal', 'cached-false', 'graphics-recovery', 'cancel-rende
       await route.fulfill({ status: 503, contentType: 'application/json', body: '{"error":"Intercepted test session; no room created"}' }).catch(() => {});
     });
     await page.goto(`${base}/kategori`, { waitUntil: 'domcontentloaded' });
+    if (mode === 'normal') {
+      // No hover, click or permission request: public assets warm on idle.
+      await page.waitForFunction(() => performance.getEntriesByName('archava-avatar-preloaded').length > 0, null, { timeout: 60_000 });
+      assert.equal(await page.evaluate(() => window.__avatarMicCalls), 0);
+      assert.equal(await page.locator('.spatius-avatar-canvas canvas').count(), 0);
+      assert.equal(sessionRequests, 0);
+      preloadedBeforeClick = true;
+    }
+    clickedAt = Date.now();
     await page.getByRole('button', { name: 'Tanya Ava', exact: true }).click();
 
-    if (mode === 'cancel-render') {
+    if (mode.startsWith('mic-')) {
+      await page.waitForFunction(() => document.querySelector('.spatius-avatar-status') === null && document.querySelector('.spatius-avatar-canvas canvas') !== null, null, { timeout: 60_000 });
+      assert.equal(rendered, true, 'The face must appear while microphone permission is still pending');
+      assert.equal(await page.evaluate(() => window.__avatarMicCalls), 1);
+      assert.equal(sessionRequests, 0, 'A rendered face alone must not allocate a room');
+      if (mode === 'mic-wait') await page.evaluate(() => window.__releaseAvatarMic());
+    }
+    if (mode === 'mic-denied') {
+      await page.evaluate(() => window.__denyAvatarMic());
+      await page.getByText('Izinkan mikrofon di browser untuk ngobrol dengan Ava.', { exact: true }).waitFor();
+      assert.equal(await page.locator('.spatius-avatar-canvas canvas').count(), 0);
+      assert.equal(sessionRequests, 0);
+      await page.getByRole('button', { name: 'Disconnect Ava', exact: true }).click();
+    } else if (mode === 'mic-cancel') {
+      await page.getByRole('button', { name: 'Disconnect Ava', exact: true }).click();
+      await page.locator('.av-launcher').waitFor({ state: 'visible' });
+      assert.equal(await page.locator('.spatius-avatar-canvas canvas').count(), 0);
+      await page.evaluate(() => window.__releaseAvatarMic());
+      await page.waitForFunction(() => window.__avatarMicTracks.length > 0 && window.__avatarMicTracks.every(track => track.readyState === 'ended'));
+      assert.equal(sessionRequests, 0, 'Late permission after Disconnect must release the mic without starting a room');
+    } else if (mode === 'cancel-render') {
       await page.locator('.spatius-avatar-canvas canvas').waitFor({ timeout: 60_000 });
       await page.getByRole('button', { name: 'Disconnect Ava', exact: true }).click();
       await page.locator('.av-launcher').waitFor({ state: 'visible' });
@@ -80,6 +128,7 @@ for (const mode of ['normal', 'cached-false', 'graphics-recovery', 'cancel-rende
       assert.equal(rendered, true);
       assert.equal(sessionRequests, 1);
       assert.equal(connectedBeforeFrame, false);
+      assert.equal(await page.evaluate(() => window.__avatarMicTracks.every(track => track.readyState === 'ended')), true);
       assert.equal(await page.locator('.av-call-actions > button').count(), 3);
       assert.equal(await page.getByRole('button', { name: 'Aktifkan mikrofon', exact: true }).isDisabled(), true);
       const canvas = await page.locator('.spatius-avatar-canvas canvas').elementHandle();
@@ -119,7 +168,7 @@ for (const mode of ['normal', 'cached-false', 'graphics-recovery', 'cancel-rende
     }
     assert.equal(sockets, 0);
     assert.deepEqual(errors, []);
-    reports.push({ mode, result: 'passed', rendered, restartAfterDisconnect: mode === 'normal', sessionRequests, providerRooms: 0, sockets, errors });
+    reports.push({ mode, result: 'passed', rendered, preloadedBeforeClick, clickToFirstFrameHarnessMs: firstFrameAt ? firstFrameAt - clickedAt : null, restartAfterDisconnect: mode === 'normal', sessionRequests, providerRooms: 0, sockets, errors });
   } finally {
     releaseAllocation?.();
     await browser.close();

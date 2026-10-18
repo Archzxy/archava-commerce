@@ -1,7 +1,8 @@
 {
-  "name": "kala-marketplace",
+  "name": "dopamine-marketplace",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "npm@12.2.0",
   "type": "module",
   "scripts": {
     "dev": "node scripts/dev.mjs",
@@ -10,6 +11,11 @@
     "build": "node scripts/sync-archava-catalog.mjs && npm run build --prefix archava",
     "test": "node --test scripts/catalog-knowledge.test.mjs && npm test --prefix archava",
     "test:browser": "node scripts/assistant-browser.mjs",
-    "test:avatar": "node scripts/avatar-browser.mjs"
+    "test:avatar": "node scripts/avatar-browser.mjs",
+    "test:checkout": "node scripts/checkout-browser.mjs"
+  },
+  "engines": {
+    "node": "^22.23.3 || ^24.15.0 || >=26.0.0",
+    "npm": "12.2.0"
   }
 }

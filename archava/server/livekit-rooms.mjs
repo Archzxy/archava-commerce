@@ -24,7 +24,7 @@ export function createRoomProvider({ rooms, dispatch, key, secret, config, now =
     });
     try {
       await attachHostAgent({ roomName, rooms, dispatch, agentName: config.agentName });
-      const ttl = Math.min(300, endsAt - Math.floor(now() / 1000));
+      const ttl = endsAt === null ? 300 : Math.min(300, endsAt - Math.floor(now() / 1000));
       if (ttl <= 0) throw new Error("Session expired while preparing its host");
       const token = new AccessToken(key, secret, { identity: guestIdentity, name: "Website guest", ttl });
       token.addGrant({
@@ -39,15 +39,32 @@ export function createRoomProvider({ rooms, dispatch, key, secret, config, now =
   }
   async function sweep() {
     const expired = [];
+    const liveRooms = new Set();
+    const failures = [];
     for (const room of await rooms.listRooms()) {
       let meta;
       try { meta = JSON.parse(room.metadata || "{}"); } catch { continue; }
-      if (meta?.product !== "archava-template" || meta.projectId !== config.projectId || !Number.isFinite(meta.endsAt)) continue;
-      if (meta.endsAt <= Math.floor(now() / 1000)) expired.push(room.name);
+      if (meta?.product !== "archava-template" || meta.projectId !== config.projectId) continue;
+      liveRooms.add(room.name);
+      if (Number.isFinite(meta.endsAt) && meta.endsAt <= Math.floor(now() / 1000)) expired.push(room.name);
+      // Open-ended calls remain live while their exact guest is present. Give
+      // newly allocated rooms a minute to join, including after an API restart.
+      else if (meta.endsAt === null && meta.sessionSeconds === 0 && typeof meta.guestIdentity === "string"
+        && Number(room.creationTime) > 0 && Number(room.creationTime) + 60 <= Math.floor(now() / 1000)) {
+        try {
+          const participants = await rooms.listParticipants(room.name);
+          if (!participants.some(participant => participant.identity === meta.guestIdentity)) expired.push(room.name);
+        } catch (error) {
+          if (isMissingRoom(error)) liveRooms.delete(room.name);
+          else failures.push(error);
+        }
+      }
     }
     const results = await Promise.allSettled(expired.map(deleteRoom));
-    const failures = results.filter((result) => result.status === "rejected").map((result) => result.reason);
+    failures.push(...results.filter((result) => result.status === "rejected").map((result) => result.reason));
     if (failures.length) throw new AggregateError(failures, "Some expired rooms could not close; retry next sweep");
+    for (const name of expired) liveRooms.delete(name);
+    return liveRooms;
   }
   return { open, deleteRoom, sweep };
 }

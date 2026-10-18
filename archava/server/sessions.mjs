@@ -1,8 +1,9 @@
 import { randomBytes } from "node:crypto";
 
-/** In-memory admissions for one API replica. Expiry is also stored in LiveKit. */
+/** In-memory admissions for one API replica; room lifecycle is also tracked in LiveKit. */
 export function createSessions({ rooms, config, now = Date.now, newTicket = () => randomBytes(32).toString("hex") }) {
   const tickets = new Map();
+  const recoveredRooms = new Set();
   const openings = new Set();
   let pending = 0;
   let stopping = false;
@@ -12,10 +13,11 @@ export function createSessions({ rooms, config, now = Date.now, newTicket = () =
   async function openSession() {
     if (!config.enabled) return { status: 403, body: { error: "The live conversation is not open right now." } };
     if (!config.providerConfigured || !rooms) return { status: 503, body: { error: "The live service is not configured yet." } };
-    if (tickets.size + pending >= config.maxActive) return { status: 429, body: { error: "All conversation slots are busy. Please try again shortly." } };
+    const active = new Set([...recoveredRooms, ...[...tickets.values()].map(session => session.roomName)]);
+    if (active.size + pending >= config.maxActive) return { status: 429, body: { error: "All conversation slots are busy. Please try again shortly." } };
     pending += 1;
     try {
-      const endsAt = Math.floor(now() / 1000) + config.seconds;
+      const endsAt = config.seconds === 0 ? null : Math.floor(now() / 1000) + config.seconds;
       const { roomName, token } = await rooms.open({ endsAt });
       const ticket = newTicket();
       tickets.set(ticket, { roomName, endsAt });
@@ -44,17 +46,31 @@ export function createSessions({ rooms, config, now = Date.now, newTicket = () =
       // Keep the ticket and occupied slot when deletion fails, so it can retry.
       await rooms.deleteRoom(session.roomName);
       tickets.delete(ticket);
+      recoveredRooms.delete(session.roomName);
     }
     return { ok: true };
   }
 
   async function sweep() {
-    const expired = [...tickets].filter(([, session]) => session.endsAt <= Math.floor(now() / 1000));
+    const tracked = [...tickets];
+    const expired = tracked.filter(([, session]) => session.endsAt !== null && session.endsAt <= Math.floor(now() / 1000));
     const results = await Promise.allSettled(expired.map(([ticket]) => end(ticket)));
     const failures = results.filter((result) => result.status === "rejected").map((result) => result.reason);
     // Recovers abandoned rooms after an API process restart using scoped metadata.
     if (rooms) {
-      try { await rooms.sweep(); } catch (error) { failures.push(error); }
+      try {
+        const liveRooms = await rooms.sweep();
+        // Ava and LiveKit can end a room without the browser's end request.
+        // Reconcile only tickets present before the provider snapshot, so a
+        // concurrent opening cannot lose its occupied slot.
+        if (liveRooms instanceof Set) {
+          recoveredRooms.clear();
+          for (const name of liveRooms) recoveredRooms.add(name);
+          for (const [ticket, session] of tracked) {
+            if (tickets.get(ticket) === session && !liveRooms.has(session.roomName)) tickets.delete(ticket);
+          }
+        }
+      } catch (error) { failures.push(error); }
     }
     if (failures.length) throw new AggregateError(failures, "Some expired rooms could not close; retry next sweep");
   }

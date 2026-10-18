@@ -8,6 +8,7 @@ __pycache__/
 *.pyc
 *.tsbuildinfo
 .logs/
+.state/
 *.log
 .DS_Store
 .vercel/
@@ -15,3 +16,13 @@ __pycache__/
 coverage/
 archava/dist/
 archava/exports/
+output/
+.playwright-cli/
+.codex/
+*.pem
+*.key
+*.p12
+*.pfx
+*.har
+playwright/.auth/
+storage-state*.json

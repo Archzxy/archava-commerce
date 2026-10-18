@@ -1,4 +1,4 @@
-# Audit knowledge produk — KALA / Archava
+# Audit knowledge produk — DOPAMINE / Archava
 
 Tanggal: 4 Oktober 2026. Model yang diuji: `gemini-2.5-flash-native-audio-preview-12-2025`, sama dengan worker lokal.
 

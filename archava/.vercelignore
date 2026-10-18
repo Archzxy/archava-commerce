@@ -12,3 +12,4 @@ exports/
 *.log
 *.pyc
 *.tsbuildinfo
+**/.state
