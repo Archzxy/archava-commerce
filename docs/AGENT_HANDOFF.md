@@ -1,5 +1,14 @@
 # DOPAMINE — current project and hackathon handoff
 
+**Latest name correction, October 19: Muhammad Afif Alfawwaz.**
+The user corrected the member's surname to **Alfawwaz** (double w). The latest
+October 19 PPTX/PDF, source generator and team documentation now use
+**Muhammad Afif Alfawwaz**. Only page 1 PDF text changed, exactly by that surname;
+all other page text is preserved, the 13-page PDF remains under 5 MB and the
+PPTX archive validates. Prior artifacts are backed up under ignored
+`.logs/name-fix-20261019/`; October 18 outputs remain historical. No portal
+upload or submission was performed by this correction.
+
 **Latest repository checkpoint, October 19: latest source pushed and repository made public.**
 The user explicitly requested pushing to the existing Archzxy repository,
 making it public and replacing its old snapshot with the latest local overhaul.
@@ -360,7 +369,7 @@ blank pages were omitted. See [PITCH_DECK.md](PITCH_DECK.md) for mapping, inputs
 regeneration and checks; source generator is `scripts/create-pitch-deck.py`.
 
 User supplied registered team **Archzxy**, leader **Muhammad Fikri Haikal**, member
-**Muhammad Afif Alfawaz**. The deck lists leader/member without inventing prior
+**Muhammad Afif Alfawwaz**. The deck lists leader/member without inventing prior
 contributions. Fikri leads product engineering; QA/demo support was proposed as
 Afif's next responsibility, not completed coding. Two link fields remain:
 GitHub CLI readback reports the real repository PRIVATE (labelled access pending)

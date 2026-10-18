@@ -39,7 +39,7 @@ complete competition submission.
 
 | PDF slide | Template section | Content |
 | --- | --- | --- |
-| 1 | Team Details | Archzxy; leader Muhammad Fikri Haikal; member Muhammad Afif Alfawaz; exact Retail & Commerce theme |
+| 1 | Team Details | Archzxy; leader Muhammad Fikri Haikal; member Muhammad Afif Alfawwaz; exact Retail & Commerce theme |
 | 2 | Brief about the idea | Ava's shopping experience, audience context and demo boundary |
 | 3 | Opportunities | Differentiation, problem addressed, USP and outcomes proposed for validation |
 | 4 | Features | Catalog grounding, budget discovery, visible store actions, confirmed cart, compact avatar, sandbox checkout |

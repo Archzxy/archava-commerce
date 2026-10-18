@@ -183,7 +183,7 @@ def main():
     text(s, 0.35, 3.10, 6.3, 0.35, 'Team Details', 18, DARK, True)
     text(s, 0.36, 3.61, 6.4, 0.23, 'TEAM  Archzxy', 12, PURPLE, True)
     text(s, 0.36, 3.99, 6.5, 0.28, 'Team leader: Muhammad Fikri Haikal', 12.5)
-    text(s, 0.36, 4.32, 6.5, 0.25, 'Team member: Muhammad Afif Alfawaz', 12.5)
+    text(s, 0.36, 4.32, 6.5, 0.25, 'Team member: Muhammad Afif Alfawwaz', 12.5)
     text(s, 0.36, 4.75, 6.6, 0.53, 'Problem Statement: Retail & Commerce:\nIntelligent Customer and Business Experiences', 11.5, MUTED)
     picture(s, assets/'dopamine-wordmark.png', 7.03, 3.18, 2.55, 0.60)
     text(s, 7.10, 3.99, 2.52, 0.95, 'Meet Ava.\nYour in-store\nshopping advisor.', 16.5, PURPLE, True)
